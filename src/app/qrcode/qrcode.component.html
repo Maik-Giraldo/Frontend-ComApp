@@ -1,0 +1,20 @@
+<!-- <div *ngIf="load" class="divdatos"> -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Url</label>
+            <input formControlName="url" type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Nombre</label>
+            <input formControlName="nombre" type="text" class="form-control" >
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generar Codigo</button>
+    </form>
+<!-- </div> -->
+
+<img [src]="image">
+
+<h5 *ngIf="cargando">Cargando...</h5>

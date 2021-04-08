@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ComApp"
+    }
+  },
+  "defaultProject": "ComApp",
+  "cli": {
+    "analytics": "a6053dea-83e1-493c-9a99-27d756f0549b"
+  }
 }
