@@ -1,0 +1,53 @@
+
+<app-navbar></app-navbar>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hello_Game</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Pangolin&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="flex-container">
+        <fieldset>
+        <div id="cuadroletra1">
+            <h1>Registrarse</h1>
+
+
+        </div>
+
+
+
+        <div *ngIf="load" class="divdatos">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nombre usuario</label>
+                <input formControlName="nombre" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Correo</label>
+                <input formControlName="correo" type="email" class="form-control" >
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input formControlName="password" type=password class="form-control" >
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Confirma contraseña</label>
+                <input formControlName="password" type="password" class="form-control" >
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="diniciar">Registrarse</button>
+        </form>
+    </div>
+    </fieldset>
+
+    </div>
+
+</body>

@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hello_Game</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+<div class="flex-container">
+<fieldset>
+    <div id="cuadroletra1">
+        <h1>Iniciar Sesion</h1>
+
+
+    </div>
+
+
+    <!-- <div *ngIf="load" class="divdatos"> -->
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+            <div class="form-group">
+                <label for="exampleInputEmail1">Correo</label>
+                <input formControlName="correo" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input formControlName="password" type="password" class="form-control" >
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="diniciar">Iniciar sesion</button>
+        </form>
+    <!-- </div> -->
+
+    <div *ngIf="!load" class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</fieldset>
+
+
+
+    </div>
+
+
+</body>

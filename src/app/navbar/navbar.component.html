@@ -1,0 +1,28 @@
+
+<nav class="navbar navbar-expand-lg n" id="navbar">
+  <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="botonnav" [routerLink]= "['/']">Qr</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          </li>
+          <hr>
+
+          <hr>
+          <li  *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
+              <a class="botonnav" [routerLink]= "['/login']">Iniciar Sesion </a>
+          </li>
+          <hr>
+          <li *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
+              <a class="botonnav" [routerLink]= "['/register']">Registrarse </a>
+          </li>
+
+          <hr>
+          <li *ngIf="auth.isLoggedIn() | async" class="nav-item">
+              <a class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</a>
+          </li>
+      </ul>
+  </div>
+</nav>
