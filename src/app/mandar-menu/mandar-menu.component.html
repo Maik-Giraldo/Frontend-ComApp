@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hello_Game</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<div class="div card" style="width: 500px; text-align:center; margin: auto;">
+  <div class="car-body">
+    <div class="card-title">
+      Ingrese un nuevo platillo para enviar la peticion de cambio
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedMenu.id_platillo" class="form-control" placeholder="Ingrese el id del platillo"/>
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo"/>
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo"/>
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo"/>
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
+    </div>
+    <div class="form-group">
+      <button class="btn-primary" (click)="guardar()">
+        Enviar
+      </button>
+      <button class="btn-danger" (click)="nuevo()">
+        Limpiar
+      </button>
+    </div>
+  </div>
+</div>
+</body>

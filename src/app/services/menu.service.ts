@@ -18,4 +18,7 @@ export class MenuService {
   crearMenu(menu:Object):Observable<any>{
     return this.http.post(`${environment.BASE_API}/menu/crearMenu`, menu);
   }
+  mandarMenu(menu:Object):Observable<any>{
+    return this.http.post(`${environment.BASE_API}/menu/mandarMenu`, menu);
+  }
 }
