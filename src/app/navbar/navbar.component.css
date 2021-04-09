@@ -1,0 +1,38 @@
+#navbar{
+  background-color: rgb(24, 23, 23);
+}
+.botonnav{
+
+    background-color:transparent;
+    border-radius:10px;
+    border:1px solid #941df5;
+    width: 200px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:7px ;
+    text-decoration:none;
+
+
+}
+.botonnav:hover {
+	background:linear-gradient(to bottom, #8c06fa 5%, #bf2df9 100%);
+	background-color:#8c06fa;
+}
+.botonnav:active {
+	position:relative;
+	top:1px;
+}
+
+.navbar-nav{
+  margin-left: 18%;
+  margin-right: auto;
+  text-align:center;
+  padding: 0px;
+  width: 60%;
+
+
+
+}
