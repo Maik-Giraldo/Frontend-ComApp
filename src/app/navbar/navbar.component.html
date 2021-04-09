@@ -23,6 +23,16 @@
           <li *ngIf="auth.isLoggedIn() | async" class="nav-item">
               <a class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</a>
           </li>
+          <li class="nav-item active">
+            <a class="botonnav" [routerLink]= "['/menu']">menu</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          </li>
+          <hr>
+          <li *ngIf="auth.isLoggedIn() | async" class="nav-item">
+              <a class="botonnav" [routerLink]= "['/crearMenu']">crearMenu</a>
+          </li>
       </ul>
   </div>
 </nav>

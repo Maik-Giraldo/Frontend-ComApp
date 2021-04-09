@@ -10,6 +10,8 @@ import { QrcodeComponent } from './qrcode/qrcode.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
+import { ListarMenuComponent } from './listar-menu/listar-menu.component';
+import { CrearMenuComponent } from './crear-menu/crear-menu.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { RegisterComponent } from './register/register.component';
     QrcodeComponent,
     LoginAdminComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListarMenuComponent,
+    CrearMenuComponent
   ],
   imports: [
     BrowserModule,
