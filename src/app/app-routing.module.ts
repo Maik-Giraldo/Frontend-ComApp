@@ -5,11 +5,16 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { RegisterComponent } from './register/register.component';
 import { AllGuard } from './guardias/all.guard';
+import { ListarMenuComponent } from './listar-menu/listar-menu.component';
+import { CrearMenuComponent } from './crear-menu/crear-menu.component';
+
 
 const routes: Routes = [
   {path: '', component: QrcodeComponent},
   {path: 'login', component: LoginAdminComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'menu', component: ListarMenuComponent},
+  {path: 'crearMenu', component: CrearMenuComponent},
 ];
 
 @NgModule({

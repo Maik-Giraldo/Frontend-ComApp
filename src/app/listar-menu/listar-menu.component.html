@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hello_Game</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+<div class="flex-container">
+  <div class="div card">
+    <div class="card-body">
+      <table class="table table-light">
+        <thead>
+          <th scope="col">Platillo</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Precio</th>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let menu of menuArray">
+            <td>{{menu.descripcion}}</td>
+            <td>{{menu.platillo}}</td>
+            <td>{{menu.precio_unitario}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
