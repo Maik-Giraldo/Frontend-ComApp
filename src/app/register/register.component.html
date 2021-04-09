@@ -11,43 +11,53 @@
 </head>
 <body>
 
-    <div class="flex-container">
-        <fieldset>
-        <div id="cuadroletra1">
-            <h1>Registrarse</h1>
-
+    <br>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
 
         </div>
-
-
-
-        <div *ngIf="load" class="divdatos">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" >
-            <div class="form-group">
-                <label for="exampleInputEmail1">Nombre usuario</label>
-                <input formControlName="nombre" type="text" class="form-control">
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="login-wrap py-5">
+              <div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/bg.jpg);"></div>
+              <h3 class="text-center mb-0">Bienvenido</h3>
+              <p class="text-center">Que agradable es conocerte</p>
+              <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+                <div class="form-group">
+                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+                  <label for="exampleInputPassword1">Nombre de usuario</label>
+                  <input formControlName="nombre" type="text" class="form-control" placeholder="User@user.com" required>
+                </div>
+                <div class="form-group">
+                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+                  <label for="exampleInputPassword1">Correo</label>
+                  <input formControlName="correo" type="email" class="form-control" placeholder="User@user.com" required>
+                </div>
+                <div class="form-group">
+                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+                  <label for="exampleInputPassword1">Contraseña</label>
+                  <input formControlName="password" type="password" class="form-control" placeholder="**********" required>
+                </div>
+                <div class="form-group">
+                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
+                  <label for="exampleInputPassword1">Confirmar contraseña</label>
+                  <input formControlName="password" type="password" class="form-control" placeholder="**********" required>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn form-control btn-warning rounded submit px-3" id="diniciar" style="font-size: 25px;" >Registrar</button>
+                </div>
+              </form>
+              <div class="w-100 text-center mt-4 text">
+                <p class="mb-0">¿Ya tienes una cuenta?</p>
+                <a href="#">Inicia sesion</a>
+              </div>
             </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword1">Correo</label>
-                <input formControlName="correo" type="email" class="form-control" >
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword1">Contraseña</label>
-                <input formControlName="password" type=password class="form-control" >
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword1">Confirma contraseña</label>
-                <input formControlName="password" type="password" class="form-control" >
-            </div>
-
-            <button type="submit" class="btn btn-primary" id="diniciar">Registrarse</button>
-        </form>
-    </div>
-    </fieldset>
-
-    </div>
-
+          </div>
+        </div>
+      </div>
+    </section>
+    <div *ngIf="!load" class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+  </div>
 </body>

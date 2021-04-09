@@ -1,0 +1,20 @@
+
+.form-group{
+  padding-left: 20%;
+  padding-right: 20%;
+  }
+
+  .card{
+    font-weight: bold;
+    width: 100%;
+    height: 1192px;
+  }
+
+  label{
+    font-size: 40px;
+  }
+
+  button{
+    font-size: 40px;
+  }
+

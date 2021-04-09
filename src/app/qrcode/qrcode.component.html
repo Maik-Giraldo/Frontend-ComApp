@@ -1,21 +1,33 @@
 <app-navbar></app-navbar>
+
 <!-- <div *ngIf="load" class="divdatos"> -->
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+
+  <div class="card text-center bg-warning" style="font-size: 35px;">
+    <div class="card-header">
+      Codigo QR
+    </div>
+    <div class="card-body" style="background-color: #1c1c1c; color: aliceblue;">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" >
 
         <div class="form-group">
             <label for="exampleInputEmail1">Url</label>
             <input formControlName="url" type="text" class="form-control">
         </div>
-
+        <br>
         <div class="form-group">
             <label for="exampleInputPassword1">Nombre</label>
             <input formControlName="nombre" type="text" class="form-control" >
         </div>
-
-        <button type="submit" class="btn btn-primary">Generar Codigo</button>
+  <br>
+        <button type="submit" class="btn btn-warning" style="font-weight: bold;">Generar Codigo</button>
     </form>
-<!-- </div> -->
+    <br>
+    <img [src]="image">
+    </div>
+    <div class="card-footer text-muted" style="height: 50px;">
+      <!-- </div> -->
 
-<img [src]="image">
+    </div>
+  </div>
 
-<h5 *ngIf="cargando">Cargando...</h5>
+  <h5 *ngIf="cargando">Cargando...</h5>

@@ -1,15 +1,18 @@
 #navbar{
   background-color: rgb(24, 23, 23);
+  font-size: 30px;
+  font-weight: bold;
+  height: 100px;
 }
 .botonnav{
 
-    background-color:transparent;
+    background-color:#f3b324;
     border-radius:10px;
-    border:1px solid #941df5;
+    border:1px solid #f3b324;
     width: 200px;
     display:inline-block;
     cursor:pointer;
-    color:#ffffff;
+    color:#000000;
     font-family:Arial;
     font-size:17px;
     padding:7px ;
@@ -18,8 +21,8 @@
 
 }
 .botonnav:hover {
-	background:linear-gradient(to bottom, #8c06fa 5%, #bf2df9 100%);
-	background-color:#8c06fa;
+	background:linear-gradient(to bottom, #c5901d 5%, #f3b324 100%);
+	background-color:#f3b324;
 }
 .botonnav:active {
 	position:relative;
