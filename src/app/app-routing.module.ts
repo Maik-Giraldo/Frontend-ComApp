@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { AllGuard } from './guardias/all.guard';
 import { ListarMenuComponent } from './listar-menu/listar-menu.component';
 import { CrearMenuComponent } from './crear-menu/crear-menu.component';
+import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'menu', component: ListarMenuComponent},
   {path: 'crearMenu', component: CrearMenuComponent},
+  {path: 'mandarMenu', component: MandarMenuComponent},
 ];
 
 @NgModule({
