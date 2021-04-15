@@ -66,7 +66,12 @@ export class RegisterComponent implements OnInit {
       (error) => {
         this.load = true;
         console.log("error del usuario", error.status);
-
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: '',
+          footer: ''
+        })
       })
 
 

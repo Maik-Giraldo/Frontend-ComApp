@@ -30,7 +30,7 @@
             </button>
           </li>
           <hr>
-          <li *ngIf="auth.isLoggedIn() | async" class="nav-item">
+          <li *ngIf="auth.isAdmin()| async" class="nav-item">
               <a class="botonnav" [routerLink]= "['/crearMenu']">crearMenu</a>
           </li>
       </ul>

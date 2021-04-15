@@ -51,6 +51,8 @@ export class LoginAdminComponent implements OnInit {
 
           this.auth.login(response.token)
 
+          this.auth.loginAdmin(response.correo)
+
 
 
           Swal.fire({

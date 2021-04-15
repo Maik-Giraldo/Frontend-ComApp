@@ -9,16 +9,16 @@ export class AuthService {
 
   isLogin = new BehaviorSubject<boolean>(this.checkToken());
 
-  isAdm = new BehaviorSubject<boolean>(this.checkTipousuario())
+  isAdm = new BehaviorSubject<boolean>(this.checkcorreo())
 
-  valida:number
+  valida:string
 
   private checkToken() : boolean {
     return !!localStorage.getItem('token');
   }
 
-  private checkTipousuario() : boolean{
-    return !!localStorage.getItem('tipousuario')
+  private checkcorreo() : boolean{
+    return !!localStorage.getItem('correo')
   }
 
 
@@ -29,15 +29,15 @@ export class AuthService {
 
   }
 
-  loginAdmin(tipousuario: string) : void{
-    localStorage.setItem('tipousuario', tipousuario);
+  loginAdmin(correo: string) : void{
+    localStorage.setItem('correo', correo);
     this.isAdm.next(true);
   }
 
   validate(): void {
-    this.valida = Number(localStorage.getItem('tipousuario'));
+    this.valida = (localStorage.getItem('correo'));
     console.log(this.valida);
-    if(this.valida == 1){
+    if(this.valida == 'leiton@gmail.com'){
       this.isAdm.next(true)
     }else{
       this.isAdm.next(false)
@@ -46,7 +46,7 @@ export class AuthService {
 
   logout() : void {
     localStorage.removeItem('token');
-    localStorage.removeItem('tipousuario');
+    localStorage.removeItem('correo');
 
     this.isLogin.next(false);
     this.isAdm.next(false);
