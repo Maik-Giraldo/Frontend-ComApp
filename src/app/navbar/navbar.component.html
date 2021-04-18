@@ -2,8 +2,8 @@
 <nav class="navbar navbar-expand-lg n" id="navbar">
   <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="botonnav" [routerLink]= "['/']">Qr</a>
+          <li *ngIf="auth.isLoggedIn() | async" class="nav-item active">
+            <a class="botonnav" [routerLink]= "['/qrcode']">Qr</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,7 +24,7 @@
               <a class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</a>
           </li>
           <li class="nav-item active">
-            <a class="botonnav" [routerLink]= "['/menu']">menu</a>
+            <a class="botonnav" [routerLink]= "['/']">menu</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

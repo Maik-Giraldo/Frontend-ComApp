@@ -11,12 +11,12 @@ import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
 
 
 const routes: Routes = [
-  {path: '', component: QrcodeComponent},
+  {path: 'qrcode', component: QrcodeComponent, canActivate: [AllGuard]},
   {path: 'login', component: LoginAdminComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'menu', component: ListarMenuComponent},
-  {path: 'crearMenu', component: CrearMenuComponent},
-  {path: 'mandarMenu', component: MandarMenuComponent},
+  {path: '', component: ListarMenuComponent},
+  {path: 'crearMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
+  {path: 'mandarMenu', component: MandarMenuComponent, canActivate: [AllGuard]},
 ];
 
 @NgModule({
