@@ -16,6 +16,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: '', component: ListarMenuComponent},
   {path: 'crearMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
+  {path: 'editarMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
+  {path: 'eliminarMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
   {path: 'mandarMenu', component: MandarMenuComponent, canActivate: [AllGuard]},
 ];
 

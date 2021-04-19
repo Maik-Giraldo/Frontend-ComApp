@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { ListarMenuComponent } from './listar-menu/listar-menu.component';
 import { CrearMenuComponent } from './crear-menu/crear-menu.component';
 import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
+import { EditarMenuComponent } from './editar-menu/editar-menu.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
     RegisterComponent,
     ListarMenuComponent,
     CrearMenuComponent,
-    MandarMenuComponent
+    MandarMenuComponent,
+    EditarMenuComponent
   ],
   imports: [
     BrowserModule,
