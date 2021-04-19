@@ -21,4 +21,10 @@ export class MenuService {
   mandarMenu(menu:Object):Observable<any>{
     return this.http.post(`${environment.BASE_API}/menu/mandarMenu`, menu);
   }
+  editarMenu(menu:Object):Observable<any>{
+    return this.http.put(`${environment.BASE_API}/menu/editarMenu`, menu);
+  }
+  eliminarMenu(menu:Object):Observable<any>{
+    return this.http.post(`${environment.BASE_API}/menu/eliminarMenu`, menu);
+  }
 }
