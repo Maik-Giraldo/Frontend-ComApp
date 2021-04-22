@@ -1,38 +1,29 @@
 
-<nav class="navbar navbar-expand-lg n" id="navbar">
-  <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-          <li *ngIf="auth.isLoggedIn() | async" class="nav-item active">
+          <li class="nav-item active">
+            <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/']">Menu</a>
+          </li>
+          <hr>
+         <li *ngIf="auth.isLoggedIn() | async" class="nav-item active">
             <a class="botonnav" [routerLink]= "['/qrcode']">Qr</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
           </li>
-          <hr>
 
-          <hr>
           <li  *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
-              <a class="botonnav" [routerLink]= "['/login']">Iniciar Sesion </a>
+              <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/login']">Iniciar Sesion </a>
           </li>
           <hr>
           <li *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
-              <a class="botonnav" [routerLink]= "['/register']">Registrarse </a>
+              <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/register']">Registrarse </a>
+          </li>
+          <hr>
+          <li *ngIf="auth.isLoggedIn() | async" class="nav-item">
+              <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</a>
           </li>
 
           <hr>
-          <li *ngIf="auth.isLoggedIn() | async" class="nav-item">
-              <a class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</a>
-          </li>
-          <li class="nav-item active">
-            <a class="botonnav" [routerLink]= "['/']">menu</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-          </li>
-          <hr>
           <li *ngIf="auth.isAdmin()| async" class="nav-item">
-              <a class="botonnav" [routerLink]= "['/crearMenu']">CrudMenu</a>
+              <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/crearMenu']">CrudMenu</a>
           </li>
-      </ul>
-  </div>
-</nav>
+
