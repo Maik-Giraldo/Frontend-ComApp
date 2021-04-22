@@ -7,24 +7,12 @@
 </head>
 <body>
 
-<div class="flex-container">
-  <div class="div card">
-    <div class="card-body">
-      <table class="table table-light">
-        <thead>
-          <th scope="col">Platillo</th>
-          <th scope="col">Descripcion</th>
-          <th scope="col">Precio</th>
-        </thead>
-        <tbody>
-          <tr *ngFor = "let menu of menuArray">
-            <td>{{menu.descripcion}}</td>
-            <td>{{menu.platillo}}</td>
-            <td>{{menu.precio_unitario}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div *ngFor = "let menu of menuArray" class="card"  style="width: 18rem;">
+  <img src="https://image.freepik.com/foto-gratis/vista-frontal-hamburguesa-stand_141793-15542.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{menu.platillo}}</h5> <h5 class="card-title">{{menu.precio_unitario}}</h5>
+    <p class="card-text">{{menu.descripcion}}</p>
+    <a  href="#" class="pedir btn btn-primary">PEDIR</a>
   </div>
 </div>
 
