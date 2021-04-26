@@ -14,6 +14,7 @@ import { ListarMenuComponent } from './listar-menu/listar-menu.component';
 import { CrearMenuComponent } from './crear-menu/crear-menu.component';
 import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
 import { EditarMenuComponent } from './editar-menu/editar-menu.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,14 @@ import { EditarMenuComponent } from './editar-menu/editar-menu.component';
     ListarMenuComponent,
     CrearMenuComponent,
     MandarMenuComponent,
-    EditarMenuComponent
+    EditarMenuComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     HttpClientModule,
 
   ],
