@@ -8,6 +8,7 @@ import { AllGuard } from './guardias/all.guard';
 import { ListarMenuComponent } from './listar-menu/listar-menu.component';
 import { CrearMenuComponent } from './crear-menu/crear-menu.component';
 import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'editarMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
   {path: 'eliminarMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
   {path: 'mandarMenu', component: MandarMenuComponent, canActivate: [AllGuard]},
+  {path: 'carrito', component: CarritoComponent}
 ];
 
 @NgModule({

@@ -12,6 +12,9 @@ export class MenuService {
   constructor(private http:HttpClient) {
 
   }
+  getCarrito():Observable<any>{
+    return this.http.get(`${environment.BASE_API}/menu/carritocompras`);
+  }
   getMenu():Observable<any>{
     return this.http.get(`${environment.BASE_API}/menu/listarMenu`);
   }
