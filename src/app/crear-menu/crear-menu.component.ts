@@ -43,7 +43,6 @@ export class CrearMenuComponent implements OnInit {
           this.menuService.getMenu()
           .subscribe(data=>{
             console.log(data)
-            console.log("12")
             this.menuArray = data.data;
           },error => console.log(error));
           Swal.fire({
