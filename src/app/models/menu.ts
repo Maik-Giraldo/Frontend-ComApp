@@ -5,4 +5,5 @@ export class Menu {
   descripcion!: string;
   precio_unitario!: number;
   tipo!: number;
+  contador!: number;
 }
