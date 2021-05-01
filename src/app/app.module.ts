@@ -15,6 +15,7 @@ import { CrearMenuComponent } from './crear-menu/crear-menu.component';
 import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
 import { EditarMenuComponent } from './editar-menu/editar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { LecturaComponent } from './lectura/lectura.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CarritoComponent } from './carrito/carrito.component';
     CrearMenuComponent,
     MandarMenuComponent,
     EditarMenuComponent,
-    CarritoComponent
+    CarritoComponent,
+    LecturaComponent
   ],
   imports: [
     BrowserModule,

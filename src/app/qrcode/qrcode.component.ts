@@ -23,9 +23,11 @@ export class QrcodeComponent implements OnInit {
     private client: ClientService,
   ) { }
 
+  // public id_mesa : number = 0;
+
   ngOnInit(): void {
     this.form= this.fb.group({
-      url: ['', Validators.required],
+      id_mesa: ['', Validators.required],
       nombre: ['', Validators.required]
     });
   }
@@ -34,7 +36,7 @@ export class QrcodeComponent implements OnInit {
     if (this.form.valid){
       this.cargando = true;
       this.client.postRequest(`${environment.BASE_API}/suport/qrcode`,{
-        url: this.form.value.url,
+        id_mesa: `http://localhost:4200/lectura/${this.form.value.id_mesa}`,
         nombre: this.form.value.nombre
       }).subscribe(
         (res:any) => {
