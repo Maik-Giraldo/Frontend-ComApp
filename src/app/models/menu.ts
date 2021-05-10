@@ -12,3 +12,6 @@ export class Send {
   menu : Menu[];
   id_mesa : number;
 }
+export class Sendid {
+  id_mesa : number;
+}
