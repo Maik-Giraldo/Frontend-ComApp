@@ -25,9 +25,16 @@ export class ListarMenuComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.menuService.getMenu()
     .subscribe(data=>{
       this.menuArray = data.data;
+      for (let menu of this.menuArray){
+
+
+        // menu.contador = this.contar();
+        // console.log(men);
+    }
     },
     error =>console.log(error));
   }
