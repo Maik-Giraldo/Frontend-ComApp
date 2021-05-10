@@ -7,3 +7,8 @@ export class Menu {
   tipo!: number;
   contador!: number;
 }
+
+export class Send {
+  menu : Menu[];
+  id_mesa : number;
+}

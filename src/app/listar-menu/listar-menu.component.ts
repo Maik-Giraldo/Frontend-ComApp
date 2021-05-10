@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MenuService } from '../services/menu.service';
 import { CarritoService } from '../services/carrito.service';
-import { Menu } from '../models/menu';
+import { Menu, Send } from '../models/menu';
 
 @Component({
   selector: 'app-listar-menu',
@@ -41,7 +41,12 @@ export class ListarMenuComponent implements OnInit {
 
   guardar(lista: []){
     var contador;
-    this.carritoService.agregarCarrito(lista)
+    let send : Send = {
+      menu : lista, 
+      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+    };
+
+    this.carritoService.agregarCarrito(send)
       .subscribe(data=>{
         if(data.transaccion){
           contador = data.resultados_count;
@@ -54,7 +59,11 @@ export class ListarMenuComponent implements OnInit {
 
    eliminar(lista: []){
     var contador;
-    this.carritoService.eliminarCarrito(lista)
+    let send : Send = {
+      menu : lista, 
+      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+    };
+    this.carritoService.eliminarCarrito(send)
       .subscribe(data=>{
         if(data.transaccion){
           contador = data.resultados_count;
