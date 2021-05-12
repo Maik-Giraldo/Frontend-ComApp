@@ -20,7 +20,9 @@ export class CarritoService {
     return this.http.post(`${environment.BASE_API}/menu/eliminarCarrito`, menu);
   }
 
-  resultadosCarrito(menu:Object):Observable<any>{
-    return this.http.get(`${environment.BASE_API}/menu/resultadosCarrito`, menu);
-  }
+  // resultadosCarrito(menu:Object):Observable<any>{
+  //   return this.http.get(`${environment.BASE_API}/menu/resultadosCarrito`, menu);
+  // }
+
+
 }

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MenuService } from '../services/menu.service';
 import { CarritoService } from '../services/carrito.service';
-import { Menu, Send } from '../models/menu';
+import { Menu, Send, Contador } from '../models/menu';
 
 @Component({
   selector: 'app-listar-menu',
@@ -12,9 +12,9 @@ import { Menu, Send } from '../models/menu';
   styleUrls: ['./listar-menu.component.css']
 })
 export class ListarMenuComponent implements OnInit {
-  cont: Number
+  cont: Number = 0;
   menuArray: Menu[] = [];
-  // contador: Number;
+  contadorArray: Contador[] = [];
 
 
   constructor(
@@ -25,64 +25,41 @@ export class ListarMenuComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.menuService.getMenu()
     .subscribe(data=>{
       this.menuArray = data.data;
-      for (let menu of this.menuArray){
-
-
-        // menu.contador = this.contar();
-        // console.log(men);
-    }
     },
     error =>console.log(error));
   }
 
   guardar(lista: []){
-    var contador;
+    var contador1;
     let send : Send = {
-      menu : lista, 
+      menu : lista,
       id_mesa : parseInt(localStorage.getItem('id_mesa')),
     };
 
     this.carritoService.agregarCarrito(send)
       .subscribe(data=>{
         if(data.transaccion){
-          contador = data.resultados_count;
-          this.cont = contador
-          console.log(contador)
 
+          this.cont = data.resultados_count;
         }
       })
   }
 
    eliminar(lista: []){
-    var contador;
     let send : Send = {
-      menu : lista, 
+      menu : lista,
       id_mesa : parseInt(localStorage.getItem('id_mesa')),
     };
     this.carritoService.eliminarCarrito(send)
       .subscribe(data=>{
         if(data.transaccion){
-          contador = data.resultados_count;
-          console.log(contador)
+
+          this.cont = data.resultados_count;
+
         }
       })
   }
-
-  contar(lista: []){
-
-    var contador = 0;
-    this.carritoService.resultadosCarrito(lista)
-      .subscribe(data=>{
-        if(data.transaccion){
-          contador = data.resultados_count;
-          console.log(contador)
-        }
-    })
-    return contador
-  }
-
 }

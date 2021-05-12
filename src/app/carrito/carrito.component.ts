@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Carrito } from '../models/carrito';
 import { MenuService } from '../services/menu.service';
+import { CarritoService } from '../services/carrito.service';
+import { Menu, Send } from '../models/menu';
+
 
 @Component({
   selector: 'app-carrito',
@@ -14,6 +17,7 @@ export class CarritoComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
+    private carritoService: CarritoService,
     private route: Router,
   ) { }
 
@@ -25,5 +29,18 @@ export class CarritoComponent implements OnInit {
       this.carritoArray = data.data;
     },
     error =>console.log(error));
+  }
+
+  eliminar(lista: []){
+    let send : Send = {
+      menu : lista,
+      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+    };
+    this.carritoService.eliminarCarrito(send)
+      .subscribe(data=>{
+        if(data.transaccion){
+          window.location.reload();
+        }
+      })
   }
 }

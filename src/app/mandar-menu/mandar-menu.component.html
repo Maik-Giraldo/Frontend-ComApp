@@ -6,34 +6,212 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-<div class="div card" style="width: 500px; text-align:center; margin: auto;">
-  <div class="car-body">
-    <div class="card-title">
-      Ingrese un nuevo platillo para enviar la peticion de cambio
+
+<div style="float: left;">
+  <div>
+    <button  (click) = "formAgregar = true" type="button" class="pedir btn btn-primary" style="border-radius: 100%; width: 100px; height: 90px; margin-left: 10px; margin-bottom: 5px;">Peticion Agregar</button>
+  </div>
+  <div>
+    <button (click) = "formEditar = true"  type="button" class="pedir btn btn-primary" style="border-radius: 100%; width: 100px; height: 90px; margin-left: 10px; margin-bottom: 5px;">Peticion Editar</button>
+  </div>
+  <div>
+    <button (click) = "formEliminar = true" type="button" class="pedir btn btn-primary" style="border-radius: 100%; width: 100px; height: 90px; margin-left: 10px; margin-bottom: 5px;">Peticion Eliminar</button>
+  </div>
+  <div>
+    <button (click) = "formContacto = true" type="button" class="pedir btn btn-primary" style="border-radius: 100%; width: 100px; height: 90px; margin-left: 10px; margin-bottom: 5px;">Peticion Contacto</button>
+  </div>
+</div>
+
+<!-- FORMULARIO DE AGREGAR -->
+<div style="width: 100%; background-color: aqua;">
+  <div class="div card" style="width: 500px; text-align:center; margin: auto;" *ngIf = "formAgregar">
+    <div class="car-body">
+      <div class="card-title">
+        Ingrese un nuevo platillo para enviar la peticion de Agregar
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="selectedMenu.id_platillo " class="form-control" placeholder="Ingrese el id del platillo"/>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo"/>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo"/>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo"/>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
+      </div>
+      <div class="form-group">
+        <button class="btn-primary" (click)="guardar()">
+          Enviar
+        </button>
+        <button class="btn-danger" (click)="nuevo()">
+          Limpiar Formulario
+        </button>
+      </div>
     </div>
-    <div class="form-group">
-      <input type="text" [(ngModel)]="selectedMenu.id_platillo" class="form-control" placeholder="Ingrese el id del platillo"/>
+    <button type="button" class="pedir btn btn-primary" style=" width: 200px; height: 50px; text-align: center; margin: auto;" (click) = "formAgregar = false">
+      Ocultar Formulario
+    </button>
+  </div>
+</div>
+
+<!-- FORMULARIO DE EDITAR -->
+<div *ngIf = "formEditar" style="margin-bottom: 50px; margin-top: 50px; width: 100%; background-color: burlywood;">
+  <div class="div card" style="width: 500px; text-align:center; margin: auto;">
+    <div class="car-body">
+      <div class="card-title">
+        Seleccione un platillo del menu y edite sus campos, oprima enviar cuando ya este listo
+      </div>
+      <div class="form-group">
+        <input type="text" *ngIf = "formEditar == false" [(ngModel)]="selectedMenu.id_platillo" class="form-control" />
+      </div>
+      <div class="form-group">
+        <h1 style="font-size: 30px; color: gray;">Platillo</h1>
+        <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" />
+      </div>
+      <div class="form-group">
+        <h1 style="font-size: 30px; color: gray;">Descripcion</h1>
+        <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" />
+      </div>
+      <div class="form-group">
+        <h1 style="font-size: 30px; color: gray;">Precio</h1>
+        <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" />
+      </div>
+      <div class="form-group">
+        <h1 style="font-size: 30px; color: gray;">Tipo</h1>
+        <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" />
+      </div>
+      <div class="form-group">
+        <button class="btn-primary" (click)="editar()">
+          Enviar
+        </button>
+        <button class="btn-danger" (click)="nuevo()">
+          Limpiar Formulario
+        </button>
+      </div>
     </div>
-    <div class="form-group">
-      <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo"/>
+  </div>
+  <div class="div card" style="background-color: burlywood;">
+    <div class="card-body">
+      <table class="table table-light">
+        <thead>
+          <th scope="col">id</th>
+          <th scope="col">Platillo</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Precio</th>
+          <th scope="col">tipo</th>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let menu of menuArray"
+          (click)="seleccionar(menu)"
+          [class.active] = "menu == selectedMenu">
+            <td>{{menu.id_platillo}}</td>
+            <td>{{menu.platillo}}</td>
+            <td>{{menu.descripcion}}</td>
+            <td>{{menu.precio_unitario}}</td>
+            <td>{{menu.tipo}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="form-group">
-      <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo"/>
+    <button type="button" class="pedir btn btn-primary" style=" width: 200px; height: 50px; text-align: center; margin: auto;" (click) = "formEditar = false">
+      Ocultar Formulario
+    </button>
+  </div>
+</div>
+
+<!-- FORMULARIO PARA ELIMINAR -->
+<div *ngIf = "formEliminar" style="margin-bottom: 50px; margin-top: 50px; width: 100%; background-color: darksalmon;" >
+  <div class="div card" style="background-color: darksalmon; margin: auto;">
+    <div class="card-body">
+      <table class="table table-light">
+        <thead>
+          <th scope="col">id</th>
+          <th scope="col">Platillo</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Precio</th>
+          <th scope="col">tipo</th>
+          <th scope="col">Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let menu of menuArray"
+          (click)="seleccionar(menu)"
+          [class.active] = "menu == selectedMenu">
+            <td>{{menu.id_platillo}}</td>
+            <td>{{menu.platillo}}</td>
+            <td>{{menu.descripcion}}</td>
+            <td>{{menu.precio_unitario}}</td>
+            <td>{{menu.tipo}}</td>
+            <td><button type="button" (click)="eliminar(menu)" class="pedir btn btn-primary" style=" width: 100px; height: 50px; text-align: center; margin: auto;" >Eliminaar</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="form-group">
-      <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo"/>
-    </div>
-    <div class="form-group">
-      <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
-    </div>
-    <div class="form-group">
-      <button class="btn-primary" (click)="guardar()">
-        Enviar
-      </button>
-      <button class="btn-danger" (click)="nuevo()">
-        Limpiar
-      </button>
-    </div>
+    <button type="button" class="pedir btn btn-primary" style=" width: 200px; height: 50px; text-align: center; margin: auto;" (click) = "formEliminar = false">
+      Ocultar Formulario
+    </button>
+  </div>
+</div>
+
+<!-- FORMULARIO DE CONTACTO -->
+<div class="container" *ngIf = "formContacto" style="text-align: center; background-color: darkseagreen;">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="well well-sm">
+              <form class="form-horizontal" method="post">
+                  <fieldset>
+                      <legend class="text-center header">Contactanos</legend>
+
+                      <div class="form-group">
+                          <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                          <div class="col-md-8">
+                              <input id="fname" name="name" type="text" placeholder="Asuto del correo" class="form-control">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                          <div class="col-md-8">
+                              <input id="lname" name="name" type="text" placeholder="Nombre" class="form-control">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                          <div class="col-md-8">
+                              <input id="email" name="email" type="text" placeholder="Correo" class="form-control">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+                          <div class="col-md-8">
+                              <input id="phone" name="phone" type="text" placeholder="Telefono" class="form-control">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                          <div class="col-md-8">
+                              <textarea class="form-control" id="message" name="message" placeholder="Escribe detalladamente que solicitud requieres y nos pondremos en contacto contigo para darte solucion" rows="7"></textarea>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-md-12 text-center">
+                              <button type="submit" class="btn btn-primary btn-lg" (click) = "formContacto = false">Ocultar Fornulario</button>
+                              <button type="submit" class="btn btn-primary btn-lg" style="margin: 30px;">Enviar</button>
+                          </div>
+
+                      </div>
+
+                  </fieldset>
+              </form>
+          </div>
+      </div>
   </div>
 </div>
 </body>
