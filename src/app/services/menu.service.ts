@@ -43,5 +43,7 @@ export class MenuService {
   eliminarMenu(menu:Object):Observable<any>{
     return this.http.post(`${environment.BASE_API}/menu/eliminarMenu`, menu);
   }
-  // sa
+  getFaturas():Observable<any>{
+    return this.http.get(`${environment.BASE_API}/menu/personalcocina`);
+  }
 }

@@ -10,6 +10,7 @@ import { CrearMenuComponent } from './crear-menu/crear-menu.component';
 import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
+import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'eliminarMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
   {path: 'mandarMenu', component: MandarMenuComponent, canActivate: [AllGuard]},
   {path: 'carrito', component: CarritoComponent},
+  {path: 'facturas', component: PersonalCocinaComponent},
   {path: 'lectura/:id_mesa', component: LecturaComponent}
 
 ];
