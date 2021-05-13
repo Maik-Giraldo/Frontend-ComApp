@@ -15,4 +15,7 @@ export class Send {
 
 export class Contador{
   contador!: number;
+
+export class Sendid {
+  id_mesa : number;
 }
