@@ -16,6 +16,7 @@ import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
 import { EditarMenuComponent } from './editar-menu/editar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
+import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LecturaComponent } from './lectura/lectura.component';
     MandarMenuComponent,
     EditarMenuComponent,
     CarritoComponent,
-    LecturaComponent
+    LecturaComponent,
+    PersonalCocinaComponent
   ],
   imports: [
     BrowserModule,
