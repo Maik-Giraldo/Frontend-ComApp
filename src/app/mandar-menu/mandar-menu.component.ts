@@ -9,12 +9,22 @@ import { Menu } from '../models/menu';
 })
 export class MandarMenuComponent implements OnInit {
   menuArray: Menu[] = [];
+  formAgregar: boolean = false;
+  formEditar: boolean = false;
+  formEliminar: boolean = false;
+  formContacto: boolean = false;
 
   constructor(private menuService: MenuService) {
 
    }
 
   ngOnInit(): void {
+    this.menuService.getMenu()
+    .subscribe(data=>{
+      console.log(data)
+      this.menuArray = data.data;
+    },
+    error =>console.log(error));
   }
 
   selectedMenu: Menu = new Menu();
@@ -31,17 +41,26 @@ export class MandarMenuComponent implements OnInit {
     if (this.selectedMenu._identificacion == null){
       this.menuService.mandarMenu(this.selectedMenu)
       .subscribe(data=>{
-        if(data.transaccion){
-          this.menuService.getMenu()
-          .subscribe(data=>{
-            console.log(data)
-            this.menuArray = data.data;
-          },error => console.log(error));
-        }
+
       })
     }
-    else{
-      console.log("caso editar")
+  }
+
+  editar(){
+    if (this.selectedMenu._identificacion == null){
+      this.menuService.peticionEditar(this.selectedMenu)
+      .subscribe(data=>{
+
+      })
     }
+  }
+
+  eliminar(lista: []){
+    this.menuService.peticionEliminar(lista)
+      .subscribe(data=>{
+        if(data.transaccion){
+
+        }
+      })
   }
 }

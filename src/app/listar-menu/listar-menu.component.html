@@ -6,7 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-
+<a href="/carrito"><button type="button" class="pedir btn btn-primary" style="border-radius: 100%; width: 100px; height: 100px;"><a *ngIf="cont != 0">{{cont}}</a><a *ngIf="cont == 0 || cont == null">Carrito</a></button></a>
 <div *ngFor = "let menu of menuArray" class="card"  style="width: 18rem;">
   <img src="https://image.freepik.com/foto-gratis/vista-frontal-hamburguesa-stand_141793-15542.jpg" class="card-img-top" alt="...">
   <div class="card-body">
@@ -14,7 +14,7 @@
     <p class="card-text">{{menu.descripcion}}</p>
     <button type="button" class="pedir btn btn-primary" (click)="guardar(menu)">+</button>
     <button type="button" class="pedir btn btn-primary" style="float: right;" (click)="eliminar(menu)">-</button>
-    <h1>1</h1>
+    <h1>a</h1>
 
   </div>
 </div>

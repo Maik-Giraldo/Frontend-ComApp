@@ -30,10 +30,23 @@ export class CarritoComponent implements OnInit {
 
     this.menuService.getCarrito()
     .subscribe(data=>{
-      console.log(data)
+
       this.carritoArray = data.data;
     },
     error =>console.log(error));
+  }
+
+  eliminar(lista: []){
+    let send : Send = {
+      menu : lista,
+      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+    };
+    this.carritoService.eliminarCarrito(send)
+      .subscribe(data=>{
+        if(data.transaccion){
+          window.location.reload();
+        }
+      })
   }
 
 
@@ -71,8 +84,6 @@ export class CarritoComponent implements OnInit {
   }
 
 
-
-
   aceptar(){
 
     let sendid  : Sendid = {
@@ -102,13 +113,6 @@ export class CarritoComponent implements OnInit {
     })
 
   }
-
-
-
-
-
-
-
 }
 
 
