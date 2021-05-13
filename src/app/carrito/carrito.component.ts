@@ -25,7 +25,7 @@ export class CarritoComponent implements OnInit {
 
     this.menuService.getCarrito()
     .subscribe(data=>{
-      console.log(data)
+
       this.carritoArray = data.data;
     },
     error =>console.log(error));
