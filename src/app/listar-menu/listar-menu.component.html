@@ -1,12 +1,6 @@
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>ComApp</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-</head>
-<body>
-<a href="/carrito"><button type="button" class="pedir btn btn-primary" style="border-radius: 100%; width: 100px; height: 100px;"><a *ngIf="cont != 0">{{cont}}</a><a *ngIf="cont == 0 || cont == null">Carrito</a></button></a>
+<div class="div_listar">
+  <a href="/carrito"><button type="button" class="pedir btn btn-primary" style="border-radius: 100%; width: 100px; height: 100px;"><a *ngIf="cont != 0">{{cont}}</a><a *ngIf="cont == 0 || cont == null">Carrito</a></button></a>
 <div *ngFor = "let menu of menuArray" class="card"  style="width: 18rem;">
   <img src="https://image.freepik.com/foto-gratis/vista-frontal-hamburguesa-stand_141793-15542.jpg" class="card-img-top" alt="...">
   <div class="card-body">
@@ -17,7 +11,7 @@
     <h1>a</h1>
 
   </div>
+  </div>
+
+
 </div>
-
-
-</body>
