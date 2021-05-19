@@ -18,6 +18,7 @@ import { AuthService } from '../Services/auth.service';
 export class CarritoComponent implements OnInit {
 
   carritoArray: Carrito[] = [];
+  public precio_total: number = 0;
 
   constructor(
     private menuService: MenuService,
@@ -32,6 +33,7 @@ export class CarritoComponent implements OnInit {
     .subscribe(data=>{
 
       this.carritoArray = data.data;
+      this.carritoArray.forEach(carrito => this.precio_total += Number(carrito.precio_unitario))
     },
     error =>console.log(error));
   }
