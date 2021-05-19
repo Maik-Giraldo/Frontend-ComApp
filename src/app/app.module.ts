@@ -17,6 +17,7 @@ import { EditarMenuComponent } from './editar-menu/editar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
 import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
+import { FilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.compo
     EditarMenuComponent,
     CarritoComponent,
     LecturaComponent,
-    PersonalCocinaComponent
+    PersonalCocinaComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

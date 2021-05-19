@@ -1,21 +1,36 @@
-
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>ComApp</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-</head>
-<body>
-<div *ngFor = "let PersonalCocina of facturasArray" class="card"  style="width: 18rem;">
-<img src="https://image.freepik.com/foto-gratis/vista-frontal-hamburguesa-stand_141793-15542.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">{{PersonalCocina.platillo}}</h5> <h5 class="card-title">{{PersonalCocina.precio_unitario}}</h5>
-  <p class="card-text">{{PersonalCocina.descripcion}}</p>
-  <p class="card-text">{{PersonalCocina.id_mesa}}</p>
-
-
+<div class="container">
+  <h1>Pedidos</h1>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <input type="text" class="form-control" name="filterPost" placeholder="Numero de la mesa" [(ngModel)]="filterPost">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>id_platillo</th>
+            <th>Platillo</th>
+            <th>Descripcion</th>
+            <th>precio_unitario</th>
+            <th>Tipo</th>
+            <th>Mesa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let PersonalCocina of facturasArray | filter:filterPost ">
+            <td>{{PersonalCocina.id_platillo}}</td>
+            <td>{{PersonalCocina.platillo}}</td>
+            <td>{{PersonalCocina.descripcion}}</td>
+            <td>{{PersonalCocina.precio_unitario}}</td>
+            <td>{{PersonalCocina.tipo}}</td>
+            <td>{{PersonalCocina.id_mesa}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-</div>
-
-
-</body>
