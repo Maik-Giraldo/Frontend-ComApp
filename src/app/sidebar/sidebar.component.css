@@ -1,0 +1,25 @@
+.example-container {
+  min-height: 100vh;
+  background-color: #1c1c1c;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 5px;
+}
+
+.example-sidenav {
+  background-color: #1c1c1c;
+  padding: 20px;
+
+}
+
+.boton_sidebar{
+  background-color: #f3b324;
+}
+
+.div_listar{
+  display: none;
+}

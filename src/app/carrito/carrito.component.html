@@ -1,35 +1,33 @@
 
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>ComApp</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-</head>
-<body>
 
-<div *ngFor = "let menu of carritoArray" class="card"  style="width: 18rem;">
-<img src="https://image.freepik.com/foto-gratis/vista-frontal-hamburguesa-stand_141793-15542.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">{{menu.platillo}}</h5> <h5 class="card-title">{{menu.precio_unitario}}</h5>
-  <p class="card-text">{{menu.descripcion}}</p>
-  <p class="card-text">{{menu.id_mesa}}</p>
-  <button type="button" class="pedir btn btn-primary" style="float: right;" (click)="eliminar(menu)">Eliminar</button>
+<app-listar-menu style="display: none;"></app-listar-menu>
 
 
-
+<div class="tabla">
+  <div class="card-body">
+    <table class="table table-light">
+      <thead>
+        <th scope="col">Platillo</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">N* Mesa</th>
+        <th scope="col">Eliminar</th>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let menu of carritoArray">
+          <td>{{menu.platillo}}</td>
+          <td>{{menu.descripcion}}</td>
+          <td>{{menu.precio_unitario}}</td>
+          <td>{{menu.id_mesa}}</td>
+          <td><button type="button" class="pedir btn btn-danger" style="float: center;" (click)="eliminar(menu)">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+
+<div class="btn-group" role="group" aria-label="Basic mixed styles example" style="display: flex;">
+  <button mat-button (click)="aceptar()" type="button" class="btn btn-success">Aceptar</button>
+  <button (click)="rechazar()" type="button" class="btn btn-danger">Rechazar</button>
 </div>
-
-
-
-<button class="btn-primary" (click)="rechazar()">
-  rechazar
-</button>
-
-
-<button class="btn-primary" (click)="aceptar()">
-  aceptar
-</button>
-
-
-</body>

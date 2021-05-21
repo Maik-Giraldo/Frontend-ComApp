@@ -6,6 +6,7 @@ import { MenuService } from '../services/menu.service';
 import { CarritoService } from '../services/carrito.service';
 import { Menu, Send, Contador } from '../models/menu';
 
+
 @Component({
   selector: 'app-listar-menu',
   templateUrl: './listar-menu.component.html',
@@ -48,7 +49,7 @@ export class ListarMenuComponent implements OnInit {
       })
   }
 
-   eliminar(lista: []){
+  eliminar(lista: []){
     let send : Send = {
       menu : lista,
       id_mesa : parseInt(localStorage.getItem('id_mesa')),

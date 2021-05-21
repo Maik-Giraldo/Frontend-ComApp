@@ -18,7 +18,25 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
 import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
 
+
+import {  CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
+
+import { SidebarModule } from 'ng-sidebar';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatInputModule} from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatBadgeModule } from '@angular/material/badge';
+import {MatTableModule} from '@angular/material/table';
+
 @NgModule({
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   declarations: [
     AppComponent,
     QrcodeComponent,
@@ -31,7 +49,10 @@ import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.compo
     EditarMenuComponent,
     CarritoComponent,
     LecturaComponent,
-    PersonalCocinaComponent
+    PersonalCocinaComponent,
+    SidebarComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -39,7 +60,15 @@ import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.compo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    SidebarModule.forRoot(),
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatMenuModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatBadgeModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

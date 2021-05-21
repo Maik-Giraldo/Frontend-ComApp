@@ -12,11 +12,16 @@
   width: 100%;
 }
 
+a:link, a:visited, a:active {
+  text-decoration:none;
+}
+
 .card{
   border: none;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
   background-color: rgba(0, 0, 0, 0.75);
   color: #f3b324;
+  width: 18rem;
 }
 
 .card:hover{
@@ -30,6 +35,10 @@
   font-weight: bold;
   border: #f3b324;
   font-size: larger;
+}
+
+.boton_ae{
+  color: #f3b324;
 }
 
 @media (min-width:630px){
@@ -66,4 +75,28 @@
   .div_listar{
     grid-template-columns: repeat(7, 1fr);
   }
+}
+
+.example-card {
+  max-width: 400px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+.example-card:hover{
+  transform: scale(1.05);
+  transition: 1s;
+}
+
+.example-header-image {
+  background-image: url('https://pbs.twimg.com/media/E14UlspWEAASZOm?format=png&name=4096x4096');
+  background-size: cover;
+}
+
+.btn_carrito {
+  background-color: #f3b324;
+  color: #1c1c1c;
+}
+.div_b_c{
+  padding: 5px;
 }

@@ -9,3 +9,8 @@ body{
 
 .link { color: #f3b324; }
 a{ color: #f3b324;}
+
+.example-form{
+  color: white;
+  font-weight: bold;
+}
