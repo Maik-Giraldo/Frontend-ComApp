@@ -31,17 +31,7 @@
 </head>
 <body>
 
-<div *ngFor = "let menu of carritoArray" class="card"  style="width: 18rem;">
-<img src="https://image.freepik.com/foto-gratis/vista-frontal-hamburguesa-stand_141793-15542.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">{{menu.platillo}}</h5> <h5 class="card-title">{{menu.precio_unitario}}</h5>
-  <p class="card-text">{{menu.descripcion}}</p>
-  <p class="card-text">{{menu.id_mesa}}</p>
-  <button type="button" class="pedir btn btn-primary" style="float: right;" (click)="eliminar(menu)">Eliminar</button>
-</div>
-</div>
-
-{{precio_total}}
+Precio Total: {{precio_total}}
 
 <div class="btn-group" role="group" aria-label="Basic mixed styles example" style="display: flex;">
   <button mat-button (click)="aceptar()" type="button" class="btn btn-success">Aceptar</button>
