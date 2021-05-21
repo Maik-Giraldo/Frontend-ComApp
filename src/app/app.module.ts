@@ -19,7 +19,25 @@ import { LecturaComponent } from './lectura/lectura.component';
 import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
 import { FilterPipe } from './pipe/filter.pipe';
 
+
+import {  CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
+
+import { SidebarModule } from 'ng-sidebar';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatInputModule} from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatBadgeModule } from '@angular/material/badge';
+import {MatTableModule} from '@angular/material/table';
+
 @NgModule({
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   declarations: [
     AppComponent,
     QrcodeComponent,
@@ -33,6 +51,7 @@ import { FilterPipe } from './pipe/filter.pipe';
     CarritoComponent,
     LecturaComponent,
     PersonalCocinaComponent,
+    SidebarComponent,
     FilterPipe
   ],
   imports: [
@@ -41,7 +60,15 @@ import { FilterPipe } from './pipe/filter.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    SidebarModule.forRoot(),
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatMenuModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatBadgeModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

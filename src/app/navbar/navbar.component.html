@@ -1,39 +1,26 @@
+    <button type="button" mat-button class="" class="botonnav" [routerLink]= "['/']">Menu</button>
+<hr>
+  <button type="button" mat-button class="botonnav" [routerLink]= "['/facturas']">Pedidos</button>
+<hr>
+  <div *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
+    <button type="button" mat-button  class="botonnav" [routerLink]= "['/login']">Iniciar Sesion </button>
+  </div>
+<hr>
+  <div *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
+    <button type="button" mat-button class="botonnav" [routerLink]= "['/register']">Registrarse </button>
+  </div>
+<hr>
+  <button type="button" mat-button class="botonnav" [routerLink]= "['/carrito']">Carrito</button>
+<hr>
+  <div *ngIf="auth.isAdmin()| async" class="nav-item">
+    <button type="button" mat-button class="botonnav" [routerLink]= "['/crearMenu']">CrudMenu</button>
+  </div>
+<hr>
 
-          <li class="nav-item active">
-            <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/']">Menu</a>
-          </li>
-          <hr>
-         <li *ngIf="auth.isLoggedIn() | async" class="nav-item active">
-            <a class="botonnav" [routerLink]= "['/qrcode']">Qr</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-          </li>
-
-          <li  *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
-              <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/login']">Iniciar Sesion </a>
-          </li>
-          <hr>
-          <li *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
-              <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/register']">Registrarse </a>
-          </li>
-          <hr>
-          <li *ngIf="auth.isLoggedIn() | async" class="nav-item">
-              <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</a>
-          </li>
-
-          <hr>
-          <li *ngIf="auth.isAdmin()| async" class="nav-item">
-              <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/crearMenu']">CrudMenu</a>
-          </li>
-
-          <hr>
-          <li class="nav-item active">
-            <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/carrito']">Carrito</a>
-          </li>
-
-
-          <hr>
-          <li class="nav-item active">
-            <a style="background-color: #1c1c1c; color: #f3b324; font-size: 20px;" href="#" class="list-group-item list-group-item-action " class="botonnav" [routerLink]= "['/facturas']">Pedidos</a>
-          </li>
+    <div *ngIf="auth.isLoggedIn() | async" class="nav-item">
+      <button type="button" mat-button class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</button>
+    </div>
+<hr>
+    <div *ngIf="auth.isLoggedIn() | async" >
+      <button type="button" mat-button class="botonnav" [routerLink]= "['/qrcode']">Qr</button>
+    </div>
