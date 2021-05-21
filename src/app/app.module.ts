@@ -17,6 +17,7 @@ import { EditarMenuComponent } from './editar-menu/editar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
 import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
+import { FilterPipe } from './pipe/filter.pipe';
 
 
 import {  CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
@@ -51,8 +52,7 @@ import {MatTableModule} from '@angular/material/table';
     LecturaComponent,
     PersonalCocinaComponent,
     SidebarComponent,
-
-
+    FilterPipe
   ],
   imports: [
     BrowserModule,

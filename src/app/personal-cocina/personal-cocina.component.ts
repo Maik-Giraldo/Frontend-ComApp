@@ -11,11 +11,11 @@ import { MenuService } from '../services/menu.service';
 })
 export class PersonalCocinaComponent implements OnInit {
   facturasArray: PersonalCocina[] = [];
+  filterPost = '';
   constructor(
     private menuService: MenuService,
     private carritoService: CarritoService,
     private route: Router,
-
   ) {}
 
   ngOnInit(): void {
