@@ -34,6 +34,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
 import {MatTableModule} from '@angular/material/table';
 
+
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -68,7 +69,8 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatSidenavModule,
     MatBadgeModule,
-    MatTableModule
+    MatTableModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

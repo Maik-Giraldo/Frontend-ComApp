@@ -7,11 +7,16 @@ import { CarritoService } from '../services/carrito.service';
 import { Menu, Send, Contador } from '../models/menu';
 
 
+
 @Component({
   selector: 'app-listar-menu',
   templateUrl: './listar-menu.component.html',
   styleUrls: ['./listar-menu.component.css']
+
 })
+
+
+
 export class ListarMenuComponent implements OnInit {
   cont: Number = 0;
   menuArray: Menu[] = [];
@@ -32,7 +37,6 @@ export class ListarMenuComponent implements OnInit {
     },
     error =>console.log(error));
   }
-
   guardar(lista: []){
     var contador1;
     let send : Send = {
