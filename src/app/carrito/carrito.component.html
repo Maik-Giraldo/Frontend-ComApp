@@ -33,7 +33,44 @@
 
 Precio Total: {{precio_total}}
 
-<div class="btn-group" role="group" aria-label="Basic mixed styles example" style="display: flex;">
-  <button mat-button (click)="aceptar()" type="button" class="btn btn-success">Aceptar</button>
+<div *ngIf="mostrarVentana" class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">Ingresa tus datos para la factura</h5>
+    <div class="row" [formGroup]="form">
+      <div class="col">
+        <label for="basic-url" class="form-label">Nombre</label>
+        <div class="input-group mb-3">
+          <input type="text" formControlName="nombre" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+        
+        <label for="basic-url" class="form-label">N° Documento</label>
+        <div class="input-group mb-3">
+          <input type="text" formControlName="documento" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+
+      </div>
+      <div class="col">
+        <label for="basic-url" class="form-label">Teléfono</label>
+        <div class="input-group mb-3">
+          <input type="text" formControlName="telefono" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+        
+        <label for="basic-url" class="form-label">Correo</label>
+        <div class="input-group mb-3">
+          <input type="text" formControlName="correo" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <button (click)="envio()" class="btn btn-success">Aceptar</button>
+        <button (click)="ocultarVentana()" class="btn btn-danger ml-4">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!mostrarVentana" class="btn-group" role="group" aria-label="Basic mixed styles example" style="display: flex;">
+  <button mat-button (click)="verVentana()" type="button" class="btn btn-success">Aceptar</button>
   <button (click)="rechazar()" type="button" class="btn btn-danger">Rechazar</button>
 </div>

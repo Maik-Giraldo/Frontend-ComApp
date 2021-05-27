@@ -9,6 +9,7 @@ import { Menu, Send, Sendid } from '../models/menu';
 import { ClientService } from '../services/client.service';
 import { MenuService } from '../services/menu.service';
 import { AuthService } from '../Services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-carrito',
@@ -19,12 +20,15 @@ export class CarritoComponent implements OnInit {
 
   carritoArray: Carrito[] = [];
   public precio_total: number = 0;
+  public mostrarVentana: boolean = false;
+  form: FormGroup;
 
   constructor(
     private menuService: MenuService,
     private carritoService: CarritoService,
     private route: Router,
     public auth: AuthService,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +40,13 @@ export class CarritoComponent implements OnInit {
       this.carritoArray.forEach(carrito => this.precio_total += Number(carrito.precio_unitario))
     },
     error =>console.log(error));
+
+    this.form = this.fb.group({
+      nombre: ['', Validators.required],
+      documento: ['', Validators.required],
+      telefono: ['', Validators.required],
+      correo: ['', Validators.required],
+    });
   }
 
   eliminar(lista: []){
@@ -61,6 +72,10 @@ export class CarritoComponent implements OnInit {
     let sendid  : Sendid = {
 
       id_mesa : parseInt(localStorage.getItem('id_mesa')),
+      nombre : this.form.value.nombre,
+      documento : this.form.value.documento,
+      telefono : this.form.value.telefono,
+      correo : this.form.value.correo
     };
 
     this.carritoService.rechazarPedido(sendid)
@@ -86,34 +101,45 @@ export class CarritoComponent implements OnInit {
   }
 
 
-  aceptar(){
+  verVentana(){
+    this.mostrarVentana = true
+  }
 
-    let sendid  : Sendid = {
+  envio(){
+    let sendid : Sendid = {
 
       id_mesa : parseInt(localStorage.getItem('id_mesa')),
+      nombre : this.form.value.nombre,
+      documento : this.form.value.documento,
+      telefono : this.form.value.telefono,
+      correo : this.form.value.correo 
     };
+
 
     this.carritoService.aceptarPedido(sendid)
     .subscribe(
       data=>{
       if(data.transaccion){
+        Swal.fire({
+          icon: 'success',
+          title: 'pedido aceptado correctamente',
+          showConfirmButton: true,
+          confirmButtonText: `Ok`
+        }).then((result) => {
+          //Read more about isConfirmed, isDenied below
+          if (result.isConfirmed) {
+            this.mostrarVentana = false;
+            this.carritoArray = [];
+            this.precio_total = 0
+          }
+        })
       }
 
-      Swal.fire({
-        icon: 'success',
-        title: 'pedido aceptado correctamente',
-        showConfirmButton: true,
-        confirmButtonText: `Ok`
-      }).then((result) => {
-        //Read more about isConfirmed, isDenied below
-        if (result.isConfirmed) {
-          this.route.navigate( ['/'])
-        }
-      })
-
-
     })
+  }
 
+  ocultarVentana(){
+    this.mostrarVentana = false
   }
 }
 

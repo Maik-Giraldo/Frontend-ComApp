@@ -18,4 +18,8 @@ export class Contador{
 }
 export class Sendid {
   id_mesa : number;
+  nombre : string;
+  documento : string;
+  telefono : string;
+  correo : string;
 }
