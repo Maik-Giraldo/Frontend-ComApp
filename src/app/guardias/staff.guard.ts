@@ -8,7 +8,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Injectable({
   providedIn: 'root'
 })
-export class AllGuard implements CanActivate {
+export class StaffGuard implements CanActivate {
 
   constructor( public auth : AuthService, private route: Router ) {
   }
@@ -20,22 +20,24 @@ export class AllGuard implements CanActivate {
 
       return new Promise((resolve, reject) => {
 
-        this.auth.isadmin().subscribe(
+        this.auth.isstaff().subscribe(
           login => {
           if (login) {
             resolve(true);
           } else {
-            console.log('No eres gerente');
+            console.log('No eres personal de cocina');
             this.route.navigate(['/']);
             resolve(false);
           }
         });
-
       });
-
-
-
 
     }
 
   }
+
+
+
+
+
+

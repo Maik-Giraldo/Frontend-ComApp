@@ -16,13 +16,16 @@ export class PersonalCocinaComponent implements OnInit {
     private menuService: MenuService,
     private carritoService: CarritoService,
     private route: Router,
-  ) {}
+  ) {
+
+
+
+  }
 
   ngOnInit(): void {
     this.menuService.getFaturas()
     .subscribe(data=>{
       this.pedidos = data.data;
-
     },
     error =>console.log(error));
   }

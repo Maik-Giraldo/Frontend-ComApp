@@ -25,7 +25,6 @@ export class detale_platillo {
   descripcion!: string;
   precio_unitario!: number;
   tipo!: number;
-
 }
 
 
