@@ -36,7 +36,7 @@ export class QrcodeComponent implements OnInit {
     if (this.form.valid){
       this.cargando = true;
       this.client.postRequest(`${environment.BASE_API}/suport/qrcode`,{
-        id_mesa: this.form.value.id_mesa,
+        id_mesa: `http://localhost:4200/lectura/${this.form.value.id_mesa}`,
         nombre: this.form.value.nombre
       }).subscribe(
         (res:any) => {
