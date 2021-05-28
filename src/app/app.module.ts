@@ -32,7 +32,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -70,7 +71,7 @@ import {MatTableModule} from '@angular/material/table';
     MatSidenavModule,
     MatBadgeModule,
     MatTableModule,
-
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

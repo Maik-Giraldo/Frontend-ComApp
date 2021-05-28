@@ -101,5 +101,40 @@ a:link, a:visited, a:active {
   color: #1c1c1c;
 }
 .div_b_c{
+  padding-left: 5px;
+
+}
+/*
+.div_b_c{
   padding: 5px;
+  position: absolute;
+  top: 0.9%;
+  left: 20%;
+}*/
+
+/* Styles for tab labels */
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: #f3b324;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: #f3b324;
+  font-weight: 700;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: green;
+}
+
+p {
+font-family: Lato;
 }

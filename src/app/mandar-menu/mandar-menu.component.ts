@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MenuService } from '../services/menu.service';
 import { Menu } from '../models/menu';
 
 @Component({
   selector: 'app-mandar-menu',
   templateUrl: './mandar-menu.component.html',
-  styleUrls: ['./mandar-menu.component.css']
+  styleUrls: ['./mandar-menu.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MandarMenuComponent implements OnInit {
   menuArray: Menu[] = [];
