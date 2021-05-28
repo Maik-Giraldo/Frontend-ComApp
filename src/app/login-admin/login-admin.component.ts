@@ -51,7 +51,11 @@ export class LoginAdminComponent implements OnInit {
 
           this.auth.login(response.token)
 
-          this.auth.loginAdmin(response.correo)
+
+
+          this.auth.loginmanager(response.rol)
+
+          this.auth.loginadmin(response.rol)
 
 
 

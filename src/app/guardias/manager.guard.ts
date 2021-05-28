@@ -8,7 +8,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Injectable({
   providedIn: 'root'
 })
-export class AllGuard implements CanActivate {
+export class ManagerGuard implements CanActivate {
 
   constructor( public auth : AuthService, private route: Router ) {
   }
@@ -17,10 +17,9 @@ export class AllGuard implements CanActivate {
     route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
 
-
       return new Promise((resolve, reject) => {
 
-        this.auth.isadmin().subscribe(
+        this.auth.ismanage().subscribe(
           login => {
           if (login) {
             resolve(true);
@@ -30,11 +29,7 @@ export class AllGuard implements CanActivate {
             resolve(false);
           }
         });
-
       });
-
-
-
 
     }
 

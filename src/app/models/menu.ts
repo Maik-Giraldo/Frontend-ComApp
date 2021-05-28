@@ -19,3 +19,12 @@ export class Contador{
 export class Sendid {
   id_mesa : number;
 }
+
+export class Cliente {
+  nombre!: String;
+  documento!: String;
+  telefono!: String;
+  correo!: String;
+}
+
+

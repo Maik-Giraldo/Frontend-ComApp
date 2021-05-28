@@ -36,6 +36,8 @@ import { MatTableModule } from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 
 
+
+
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -54,7 +56,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     LecturaComponent,
     PersonalCocinaComponent,
     SidebarComponent,
-    FilterPipe
+    FilterPipe,
+
   ],
   imports: [
     BrowserModule,

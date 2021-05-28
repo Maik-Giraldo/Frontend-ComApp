@@ -18,7 +18,7 @@ export class LecturaComponent implements OnInit {
     this.id_mesa = parseInt(window.location.href.slice(30));
     localStorage.setItem('id_mesa', this.id_mesa.toString());
     this.router.navigate(['/']);
-    
+
   }
 
 }
