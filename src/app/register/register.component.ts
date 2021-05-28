@@ -26,6 +26,8 @@ export class RegisterComponent implements OnInit {
       nombre: ['', Validators.required],
       correo: ['', Validators.email],
       password: ['', Validators.required],
+      rol : ['', Validators.required],
+
     });
   }
 
@@ -38,7 +40,9 @@ export class RegisterComponent implements OnInit {
       this.client.postRequest(`${environment.BASE_API}/user/register`,{
         nombre: this.form.value.nombre,
         correo: this.form.value.correo,
-        password: this.form.value.password
+        password: this.form.value.password,
+        rol: this.form.value.rol,
+
       }).subscribe(
 
         (response: any) => {

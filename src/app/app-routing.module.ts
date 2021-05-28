@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 import { QrcodeComponent } from './qrcode/qrcode.component';
-import { RegisterComponent } from './register/register.component';
+
 import { AllGuard } from './guardias/all.guard';
 import { ListarMenuComponent } from './listar-menu/listar-menu.component';
 import { CrearMenuComponent } from './crear-menu/crear-menu.component';
@@ -11,19 +11,23 @@ import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
 import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
+import { ManagerGuard } from './guardias/manager.guard';
+import { RegisterComponent } from './register/register.component';
+import { StaffGuard } from './guardias/staff.guard';
+
 
 
 const routes: Routes = [
-  {path: 'qrcode', component: QrcodeComponent, canActivate: [AllGuard]},
+  {path: 'qrcode', component: QrcodeComponent, },
   {path: 'login', component: LoginAdminComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'register', component: RegisterComponent, canActivate: [AllGuard] },
   {path: '', component: ListarMenuComponent},
   {path: 'crearMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
-  {path: 'editarMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
+  {path: 'editarMenu', component: CrearMenuComponent, canActivate: [AllGuard] },
   {path: 'eliminarMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
-  {path: 'mandarMenu', component: MandarMenuComponent, canActivate: [AllGuard]},
+  {path: 'mandarMenu', component: MandarMenuComponent,  canActivate: [ManagerGuard]},
   {path: 'carrito', component: CarritoComponent},
-  {path: 'facturas', component: PersonalCocinaComponent},
+  {path: 'facturas', component: PersonalCocinaComponent,canActivate: [StaffGuard]},
   {path: 'lectura/:id_mesa', component: LecturaComponent}
 
 ];

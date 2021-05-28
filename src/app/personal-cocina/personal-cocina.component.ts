@@ -10,18 +10,29 @@ import { MenuService } from '../services/menu.service';
   styleUrls: ['./personal-cocina.component.css']
 })
 export class PersonalCocinaComponent implements OnInit {
-  facturasArray: PersonalCocina[] = [];
+  facturasArray: string[];
+  names: string[];
   filterPost = '';
   constructor(
     private menuService: MenuService,
     private carritoService: CarritoService,
     private route: Router,
-  ) {}
+  ) {
+
+
+
+  }
 
   ngOnInit(): void {
     this.menuService.getFaturas()
     .subscribe(data=>{
       this.facturasArray = data.data;
+
+      console.log(this.facturasArray)
+
+      data=Object.values(this.facturasArray)
+      console.log(data.detalle_Pedido)
+
     },
     error =>console.log(error));
   }

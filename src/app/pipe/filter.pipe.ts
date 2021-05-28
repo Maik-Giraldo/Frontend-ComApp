@@ -9,7 +9,7 @@ export class FilterPipe implements PipeTransform {
     if (arg === '' || arg.length < 1) return value;
     const resultPosts = [];
     for (const PersonalCocina of value) {
-      if (PersonalCocina.id_platillo.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+      if (PersonalCocina.id_mesa.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
         resultPosts.push(PersonalCocina);
       };
     };
