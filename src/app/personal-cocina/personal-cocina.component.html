@@ -1,3 +1,4 @@
+
 <div class="container">
   <h1>Pedidos</h1>
   <div class="row">
@@ -12,23 +13,59 @@
       <table class="table table-dark">
         <thead>
           <tr>
-            <!-- <th>id_platillo</th>
-            <th>Platillo</th>
-            <th>Descripcion</th>
-            <th>precio_unitario</th>
-            <th>Tipo</th>
-            <th>Mesa</th> -->
+            <th>pedido</th>
+            <th>fecha/hora</th>
+            <th>id_mesa</th>
+            <th style="margin: auto; text-align: center;">Informacion del pedido</th>
+            <th style="margin: auto; text-align: center;">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let name of facturasArray ">
-
-            <td>{{name.id_pedido}}</td>
-            <td>{{name.estado}}</td>
-
-
-
-
+          <tr *ngFor="let date of pedidos | filter:filterPost ">
+            <td>{{date.id_pedido}}</td>
+            <td>{{date.fechaHora}}</td>
+            <td>{{date.id_mesa}}</td>
+            <td>
+              <table>
+                <thead>
+                  <th>id_platillo</th>
+                  <th>cantidad por unidad</th>
+                  <th>Estado del pedido</th>
+                  <th style="margin: auto; text-align: center;">informacion Platillo</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let date2 of date.detalle_Pedido">
+                    <td>{{date2.id_platillo}}</td>
+                    <td>{{date2.platillo_cantidad}}</td>
+                    <td>{{date2.estado}}</td>
+                    <td>
+                      <table>
+                        <thead>
+                          <th>Platillo</th>
+                          <th>Descripcion</th>
+                          <th>Tipo</th>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let date3 of date2.detalle_platillo">
+                            <td>{{date3.platillo}}</td>
+                            <td>{{date3.descripcion}}</td>
+                            <td>{{date3.tipo}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-12">
+                  <button  class="btn btn-success ml-4" style="float: left;">Confirmar</button>
+                  <button class="btn btn-danger ml-4" style="float: left;">Rechazar</button>
+                </div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>

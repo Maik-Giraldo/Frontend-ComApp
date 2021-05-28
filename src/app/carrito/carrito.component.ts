@@ -5,10 +5,11 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { CarritoService } from '../services/carrito.service';
 import { Carrito } from '../models/carrito';
-import { Menu, Send, Sendid } from '../models/menu';
+import { Menu, Send, Sendid, Cliente } from '../models/menu';
 import { ClientService } from '../services/client.service';
 import { MenuService } from '../services/menu.service';
 import { AuthService } from '../Services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-carrito',
@@ -19,12 +20,17 @@ export class CarritoComponent implements OnInit {
 
   carritoArray: Carrito[] = [];
   public precio_total: number = 0;
+  formCliente: boolean = false;
+  id_mesa:number
+  load: boolean = true;
+  form: FormGroup;
 
   constructor(
     private menuService: MenuService,
     private carritoService: CarritoService,
     private route: Router,
     public auth: AuthService,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +42,13 @@ export class CarritoComponent implements OnInit {
       this.carritoArray.forEach(carrito => this.precio_total += Number(carrito.precio_unitario))
     },
     error =>console.log(error));
+
+    this.form = this.fb.group({
+      nombre: ['', Validators.required],
+      documento: ['', Validators.required],
+      telefono: ['', Validators.required],
+      correo: ['', Validators.required],
+    });
   }
 
   eliminar(lista: []){
@@ -51,12 +64,9 @@ export class CarritoComponent implements OnInit {
       })
   }
 
-
-  id_mesa:number
-  load: boolean = true;
-
-
   rechazar(){
+
+    this.formCliente = false
 
     let sendid  : Sendid = {
 
@@ -114,6 +124,36 @@ export class CarritoComponent implements OnInit {
 
     })
 
+  }
+
+  aceptarForm(){
+
+
+
+    let cliente  : Cliente = {
+
+      nombre : this.form.value.nombre,
+      documento : this.form.value.documento,
+      telefono : this.form.value.telefono,
+      correo : this.form.value.correo
+
+    };
+
+    this.carritoService.ingresarCliente(cliente)
+    .subscribe(
+      data=>{
+      if(data.transaccion){
+
+        this.formCliente = false
+        this.aceptar()
+      }
+
+    })
+
+  }
+
+  abrirForm(){
+    this.formCliente = true
   }
 }
 
