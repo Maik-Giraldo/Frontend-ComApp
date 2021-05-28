@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { CarritoService } from '../services/carrito.service';
 import { Carrito } from '../models/carrito';
-import { Menu, Send, Sendid } from '../models/menu';
+import { Menu, Send, Sendid, Cliente } from '../models/menu';
 import { ClientService } from '../services/client.service';
 import { MenuService } from '../services/menu.service';
 import { AuthService } from '../Services/auth.service';
@@ -20,7 +20,9 @@ export class CarritoComponent implements OnInit {
 
   carritoArray: Carrito[] = [];
   public precio_total: number = 0;
-  public mostrarVentana: boolean = false;
+  formCliente: boolean = false;
+  id_mesa:number
+  load: boolean = true;
   form: FormGroup;
 
   constructor(
@@ -62,20 +64,13 @@ export class CarritoComponent implements OnInit {
       })
   }
 
-
-  id_mesa:number
-  load: boolean = true;
-
-
   rechazar(){
+
+    this.formCliente = false
 
     let sendid  : Sendid = {
 
       id_mesa : parseInt(localStorage.getItem('id_mesa')),
-      nombre : this.form.value.nombre,
-      documento : this.form.value.documento,
-      telefono : this.form.value.telefono,
-      correo : this.form.value.correo
     };
 
     this.carritoService.rechazarPedido(sendid)
@@ -101,45 +96,64 @@ export class CarritoComponent implements OnInit {
   }
 
 
-  verVentana(){
-    this.mostrarVentana = true
-  }
+  aceptar(){
 
-  envio(){
-    let sendid : Sendid = {
+    let sendid  : Sendid = {
 
       id_mesa : parseInt(localStorage.getItem('id_mesa')),
-      nombre : this.form.value.nombre,
-      documento : this.form.value.documento,
-      telefono : this.form.value.telefono,
-      correo : this.form.value.correo 
     };
-
 
     this.carritoService.aceptarPedido(sendid)
     .subscribe(
       data=>{
       if(data.transaccion){
-        Swal.fire({
-          icon: 'success',
-          title: 'pedido aceptado correctamente',
-          showConfirmButton: true,
-          confirmButtonText: `Ok`
-        }).then((result) => {
-          //Read more about isConfirmed, isDenied below
-          if (result.isConfirmed) {
-            this.mostrarVentana = false;
-            this.carritoArray = [];
-            this.precio_total = 0
-          }
-        })
+      }
+
+      Swal.fire({
+        icon: 'success',
+        title: 'pedido aceptado correctamente',
+        showConfirmButton: true,
+        confirmButtonText: `Ok`
+      }).then((result) => {
+        //Read more about isConfirmed, isDenied below
+        if (result.isConfirmed) {
+          this.route.navigate( ['/'])
+        }
+      })
+
+
+    })
+
+  }
+
+  aceptarForm(){
+
+
+
+    let cliente  : Cliente = {
+
+      nombre : this.form.value.nombre,
+      documento : this.form.value.documento,
+      telefono : this.form.value.telefono,
+      correo : this.form.value.correo
+
+    };
+
+    this.carritoService.ingresarCliente(cliente)
+    .subscribe(
+      data=>{
+      if(data.transaccion){
+
+        this.formCliente = false
+        this.aceptar()
       }
 
     })
+
   }
 
-  ocultarVentana(){
-    this.mostrarVentana = false
+  abrirForm(){
+    this.formCliente = true
   }
 }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Send, Sendid } from '../models/menu';
+import { Send, Sendid, Cliente } from '../models/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +42,9 @@ export class CarritoService {
 
   eviarmenu(menu:Object):Observable<any>{
     return this.http.post(`${environment.BASE_API}/menu/crearMenu`, menu);
+  }
+
+  ingresarCliente(menu:Cliente):Observable<any>{
+    return this.http.post(`${environment.BASE_API}/menu/ingresarCliente`, menu);
   }
 }
