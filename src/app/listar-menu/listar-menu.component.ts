@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -11,8 +11,8 @@ import { Menu, Send, Contador } from '../models/menu';
 @Component({
   selector: 'app-listar-menu',
   templateUrl: './listar-menu.component.html',
-  styleUrls: ['./listar-menu.component.css']
-
+  styleUrls: ['./listar-menu.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 
@@ -21,6 +21,7 @@ export class ListarMenuComponent implements OnInit {
   cont: Number = 0;
   menuArray: Menu[] = [];
   contadorArray: Contador[] = [];
+
 
 
   constructor(
