@@ -1,80 +1,62 @@
 
 <body>
 
-
-
-
-<div class="div card">
-  <div class="card-body">
-    <table class="table table-light">
-      <thead>
-        <th scope="col" style="width: 90vh;">
-          <div class="div card" style="width: 90vh; text-align:center; margin: auto;">
-            <div class="car-body" >
-              <div class="card-title">
-                Formulario de accion
-              </div>
-              <div class="form-group">
-                <input type="text" [(ngModel)]="selectedMenu.id_platillo" class="form-control" placeholder="Ingrese el id del platillo"/>
-              </div>
-              <div class="form-group">
-                <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo"/>
-              </div>
-              <div class="form-group">
-                <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo"/>
-              </div>
-              <div class="form-group">
-                <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo"/>
-              </div>
-              <div class="form-group">
-                <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
-              </div>
-              <div class="form-group">
-                <button class="btn-danger" style="margin-left: 2px; margin-right: 2px;" (click)="nuevo()">
-                  Limpiar
-                </button>
-                <button class="btn-primary" style="margin-left: 2px; margin-right: 2px;" (click)="guardar()">
-                  Guardar
-                </button>
-                <button class="btn-info" style="margin-left: 2px; margin-right: 2px;" (click)="editar()">
-                  Editar
-                </button>
-                <button class="btn-dark" style="margin-left: 2px; margin-right: 2px;" (click)="eliminar()">
-                  Eliminar
-                </button>
-              </div>
-            </div>
-          </div>
-        </th>
-        <th scope="col" style="width: 90vh;">
-          <div class="div card">
-            <div class="card-body">
-              <table class="table table-light">
-                <thead>
-                  <th scope="col">id</th>
-                  <th scope="col">Platillo</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">tipo</th>
-                </thead>
-                <tbody>
-                  <tr *ngFor = "let menu of menuArray"
-                  (click)="seleccionar(menu)"
-                  [class.active] = "menu == selectedMenu">
-                    <td>{{menu.id_platillo}}</td>
-                    <td>{{menu.platillo}}</td>
-                    <td>{{menu.descripcion}}</td>
-                    <td>{{menu.precio_unitario}}</td>
-                    <td>{{menu.tipo}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </th>
-      </thead>
-    </table>
+<div class="example-container" >
+  <div class="card-title" style="font-size: x-large;">
+    Formulario de accion
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedMenu.id_platillo" class="form-control" placeholder="Ingrese el id del platillo"/>
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo"/>
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo"/>
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo"/>
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
+  </div>
+  <div class="form-group">
+    <button class="btn-danger" style="margin-left: 2px; margin-right: 2px;" (click)="nuevo()">
+      Limpiar
+    </button>
+    <button class="btn-primary" style="margin-left: 2px; margin-right: 2px;" (click)="guardar()">
+      Guardar
+    </button>
+    <button class="btn-info" style="margin-left: 2px; margin-right: 2px;" (click)="editar()">
+      Editar
+    </button>
+    <button class="btn-dark" style="margin-left: 2px; margin-right: 2px;" (click)="eliminar()">
+      Eliminar
+    </button>
   </div>
 </div>
+
+
+      <table class="table table-light">
+        <thead>
+          <th scope="col">id</th>
+          <th scope="col">Platillo</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Precio</th>
+          <th scope="col">tipo</th>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let menu of menuArray"
+          (click)="seleccionar(menu)"
+          [class.active] = "menu == selectedMenu">
+            <td>{{menu.id_platillo}}</td>
+            <td>{{menu.platillo}}</td>
+            <td>{{menu.descripcion}}</td>
+            <td>{{menu.precio_unitario}}</td>
+            <td>{{menu.tipo}}</td>
+          </tr>
+        </tbody>
+      </table>
+
 </body>
 

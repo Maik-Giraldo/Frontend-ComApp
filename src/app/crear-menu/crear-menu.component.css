@@ -1,0 +1,8 @@
+.example-container{
+
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  text-align: center;
+}

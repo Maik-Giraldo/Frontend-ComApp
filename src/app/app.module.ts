@@ -34,6 +34,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTableModule } from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -75,6 +76,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatBadgeModule,
     MatTableModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

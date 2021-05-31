@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { MenuService } from '../services/menu.service';
 import { CarritoService } from '../services/carrito.service';
 import { Menu, Send, Contador } from '../models/menu';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 
 
@@ -28,6 +29,8 @@ export class ListarMenuComponent implements OnInit {
     private menuService: MenuService,
     private carritoService: CarritoService,
     private route: Router,
+    public snackBar: MatSnackBar,
+
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +41,13 @@ export class ListarMenuComponent implements OnInit {
     },
     error =>console.log(error));
   }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
   guardar(lista: []){
     var contador1;
     let send : Send = {
@@ -69,3 +79,5 @@ export class ListarMenuComponent implements OnInit {
       })
   }
 }
+
+export class PizzaPartyComponent {}

@@ -5,10 +5,12 @@
 
 <div class="tab_cat">
   <mat-tab-group animationDuration="1000ms" mat-align-tabs="center">
+
+
   <!-- ENTRADAS -->
   <mat-tab mat label="Entradas" >
     <div class="div_listar">
-      <div *ngFor = "let menu of menuArray">
+      <div *ngFor = "let menu of menuArray" >
         <mat-card class="example-card" *ngIf = "menu.tipo == 1">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
@@ -21,12 +23,12 @@
             <p class="card-text">{{menu.descripcion}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button (click)="guardar(menu)">
+            <button mat-button (click)="guardar(menu)" (click)="openSnackBar('Producto Añadido', '+')">
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z"/>
               </svg>
             </button>
-            <button mat-button (click)="eliminar(menu) ">
+            <button mat-button (click)="eliminar(menu) " (click)="openSnackBar('Producto Eliminado', '-')">
               <svg class="boton_ae" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-dash-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM6 9.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"/>
               </svg>
@@ -44,8 +46,11 @@
       </div>
     </div>
   </mat-tab>
+
+
 <!-- PLATOS FUERTES -->
-  <mat-tab label="Platos Fuertes"><div class="div_listar" style="margin-left: 0%;">
+  <mat-tab label="Platos Fuertes">
+    <div class="div_listar" style="margin-left: 0%;">
     <div *ngFor = "let menu of menuArray">
       <mat-card class="example-card" *ngIf = "menu.tipo == 2">
         <mat-card-header>
@@ -59,12 +64,12 @@
           <p class="card-text">{{menu.descripcion}}</p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button (click)="guardar(menu)">
+            <button mat-button (click)="guardar(menu)" (click)="openSnackBar('Producto Añadido', '+')">
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z"/>
               </svg>
             </button>
-          <button mat-button (click)="eliminar(menu)">
+          <button mat-button (click)="eliminar(menu)" (click)="openSnackBar('Producto Eliminado', '-')">
             <svg class="boton_ae" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-dash-fill" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM6 9.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"/>
             </svg>
@@ -82,6 +87,8 @@
     </div>
   </div>
 </mat-tab>
+
+
 <!-- COMIDAS RAPIDAS -->
   <mat-tab label="Comidas Rapidas">
     <div class="div_listar" style="margin-left: 0%;">
@@ -98,12 +105,12 @@
             <p class="card-text">{{menu.descripcion}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button (click)="guardar(menu)">
+            <button mat-button (click)="guardar(menu)" (click)="openSnackBar('Producto Añadido', '+')">
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z"/>
               </svg>
             </button>
-            <button mat-button (click)="eliminar(menu)">
+            <button mat-button (click)="eliminar(menu)" (click)="openSnackBar('Producto Eliminado', '-')">
               <svg class="boton_ae" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-dash-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM6 9.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"/>
               </svg>
@@ -121,6 +128,8 @@
       </div>
     </div>
   </mat-tab>
+
+
 <!-- POSTRES -->
   <mat-tab label="Postres">
     <div class="div_listar" style="margin-left: 0%;">
@@ -137,12 +146,12 @@
             <p class="card-text">{{menu.descripcion}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button (click)="guardar(menu)">
+            <button mat-button (click)="guardar(menu)" (click)="openSnackBar('Producto Añadido', '+')">
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z"/>
               </svg>
             </button>
-            <button mat-button (click)="eliminar(menu)">
+            <button mat-button (click)="eliminar(menu)" (click)="openSnackBar('Producto Eliminado', '-')">
               <svg class="boton_ae" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-dash-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM6 9.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"/>
               </svg>
@@ -160,6 +169,8 @@
       </div>
     </div>
   </mat-tab>
+
+
 <!-- BEBIDAS -->
   <mat-tab label="Bebidas">
     <div class="div_listar" style="margin-left: 0%;">
@@ -176,12 +187,12 @@
             <p class="card-text">{{menu.descripcion}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button (click)="guardar(menu)">
+            <button mat-button (click)="guardar(menu)" (click)="openSnackBar('Producto Añadido', '+')">
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z"/>
               </svg>
             </button>
-            <button mat-button (click)="eliminar(menu)">
+            <button mat-button (click)="eliminar(menu)" (click)="openSnackBar('Producto Eliminado', '-')">
               <svg class="boton_ae" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#f3b324" class="bi bi-bag-dash-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM6 9.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"/>
               </svg>
