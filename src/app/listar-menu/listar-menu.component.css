@@ -135,6 +135,6 @@ a:link, a:visited, a:active {
   background-color: green;
 }
 
-p {
-font-family: Lato;
+.mat-form-field {
+  margin-right: 8px;
 }

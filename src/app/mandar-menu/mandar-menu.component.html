@@ -1,12 +1,12 @@
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms" style="width: 100%;">
-  <mat-tab label="Formulario Agregar">
-    <div style="width: 100%; background-color: #1c1c1c; padding: 15px;">
-      <div class="div card" style="width: 500px; text-align:center; margin: auto; padding: 100px;" >
-        <div class="car-body">
+  <mat-tab label="Formulario Agregar" >
+    <div class="container" style="width: 100%; background-color: #ffffff; padding: 15px; text-align: center;">
+      <div class="row">
+          <div class="col-md-12">
           <div class="card-title">
             Ingrese un nuevo platillo para enviar la peticion de Agregar
           </div>
-          <div class="form-group">
+          <div class="form-group" style="width: 100%;">
             <input type="text" [(ngModel)]="selectedMenu.id_platillo " class="form-control" placeholder="Ingrese el id del platillo"/>
           </div>
           <div class="form-group">
@@ -31,13 +31,18 @@
           </div>
         </div>
       </div>
-    </div>
+      </div>
+
+
+
+
+
   </mat-tab>
 
   <mat-tab label="Formulario de editar">
-    <div  style="width: 100%; background-color: #1c1c1c; padding: 15px;">
-      <div class="div card" style="width: 500px; text-align:center; margin: auto; padding: 100px;">
-        <div class="car-body">
+    <div class="container" style="width: 100%; background-color: #ffffff; padding: 15px; text-align: center;">
+      <div class="row">
+          <div class="col-md-12">
           <div class="card-title">
             Seleccione un platillo del menu y edite sus campos, oprima enviar cuando ya este listo
           </div>
@@ -70,8 +75,8 @@
           </div>
         </div>
       </div>
-      <div class="div card" style="width: 100%; background-color: #1c1c1c; padding: 15px;">
-        <div class="card-body">
+      <hr>
+      <div class="div card" style=" background-color: #1c1c1c; ">
           <table class="table table-light">
             <thead>
               <th scope="col">id</th>
@@ -94,14 +99,13 @@
           </table>
         </div>
       </div>
-    </div>
+
   </mat-tab>
 
   <mat-tab label="Formulario Para Eliminar">
-    <div style="width: 100%; background-color: #1c1c1c; padding: 15px;" >
-      <div class="div card" style="width: 100%; text-align:center; margin: auto; padding: 10px;">
-        <div class="card-body">
-          <table class="table table-light">
+    <div style=" background-color: #1c1c1c; " >
+      <div class="div card" style=" text-align:center; margin: auto;">
+          <table class=" table-light" >
             <thead>
               <th scope="col">id</th>
               <th scope="col">Platillo</th>
@@ -119,13 +123,13 @@
                 <td>{{menu.descripcion}}</td>
                 <td>{{menu.precio_unitario}}</td>
                 <td>{{menu.tipo}}</td>
-                <td><button type="button" (click)="eliminar(menu)" class="pedir btn btn-primary" style=" width: 100px; height: 50px; text-align: center; margin: auto;" >Eliminaar</button></td>
+                <td><button type="button" (click)="eliminar(menu)" class="pedir btn btn-primary"  >Eliminar</button></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-    </div>
+
   </mat-tab>
 
   <mat-tab label="Formulario de contacto">

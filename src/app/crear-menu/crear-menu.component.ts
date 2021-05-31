@@ -14,7 +14,7 @@ export class CrearMenuComponent implements OnInit {
 
   constructor(private menuService: MenuService) {
 
-   }
+  }
 
   ngOnInit(): void {
     this.menuService.getMenu()
