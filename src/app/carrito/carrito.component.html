@@ -1,7 +1,7 @@
 <app-listar-menu style="display: none;"></app-listar-menu>
 
 
-    <table class="table table-light">
+    <table class="table table-dark" >
       <thead>
         <th scope="col">Platillo</th>
         <th scope="col">Descripcion</th>
@@ -69,6 +69,6 @@
 </div>
 
 <div *ngIf="!formCliente" class="btn-group" role="group" aria-label="Basic mixed styles example" style="display: flex;">
-  <button mat-button (click)="abrirForm()" type="button" class="btn btn-success">Aceptar</button>
-  <button (click)="rechazar()" type="button" class="btn btn-danger">Rechazar</button>
+  <button mat-button (click)="abrirForm()" type="button" class="btn btn-success" style="font-size: xx-large; padding: 1rem;">Aceptar</button>
+  <button (click)="rechazar()" type="button" class="btn btn-danger" style="font-size: xx-large; padding: 1rem;">Rechazar</button>
 </div>
