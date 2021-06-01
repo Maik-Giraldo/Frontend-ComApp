@@ -25,29 +25,45 @@
               <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
                 <div class="form-group">
                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                  <label for="exampleInputPassword1">Nombre de usuario</label>
-                  <input formControlName="nombre" type="text" class="form-control" placeholder="User" required>
+                  <label for="correo">Correo</label>
+                  <input formControlName="correo" type="email" class="form-control" placeholder="User@gmail.com" required>
+                  <div class="alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                    <div class="container-error-message" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                      el correo es requerido.
+                    </div>
+                  <div class="container-error-message" *ngIf="(correo.dirty || correo.touched) && correo.invalid && correo.errors.pattern">
+                    ingrese un correo valido.
+                  </div>
                 </div>
-                <div class="form-group">
-                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                  <label for="exampleInputPassword1">Correo</label>
-                  <input formControlName="correo" type="email" class="form-control" placeholder="User@user.com" required>
                 </div>
                 <div class="form-group">
                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                   <label for="exampleInputPassword1">Contraseña</label>
                   <input formControlName="password" type="password" class="form-control" placeholder="**********" required>
                 </div>
+                <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                  <div class="container-error-message" *ngIf="password.errors.required">
+                    la contraseña es requerida.
+                  </div>
+                  <div class="container-error-message" *ngIf="password.errors.minlength">
+                    la contraseña debete tener minimo 8 caracteres.
+                  </div>
+                </div>
                 <div class="form-group">
                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
                   <label for="exampleInputPassword1">Confirmar contraseña</label>
-                  <input formControlName="password" type="password" class="form-control" placeholder="**********" required>
+                  <input formControlName="password2" type="password" class="form-control" placeholder="**********" required>
+                  <div class="alert-danger" *ngIf="(password2.dirty || password2.touched)">
+                    <div class="container-error-message" *ngIf="form.value.password2 != form.value.password">
+                      las contraseñas no coinciden.
+                    </div>
+                  </div>
                 </div>
 
 
                 <div class="form-group">
                   <label for="exampleInputPassword1" style="padding-right: 5px;">Rol </label>
-                    <select id="pais" formControlName="rol">
+                    <select formControlName="rol">
                       <option value="1">Gerente</option>
                       <option value="2">Cocinero</option>
                     </select>
@@ -56,13 +72,9 @@
 
 
                 <div class="form-group">
-                  <button type="submit" class="btn form-control btn-warning rounded submit px-3" id="diniciar" style="font-size: 25px;" >Registrar</button>
+                  <button type="submit" [disabled]="!(form.valid && (form.value.password == form.value.password2))" class="btn form-control btn-warning rounded submit px-3" id="diniciar" style="font-size: 25px;" >Registrar</button>
                 </div>
               </form>
-              <div class="w-100 text-center mt-4 text">
-                <p class="mb-0">¿Ya tienes una cuenta?</p>
-                <a href="#">Inicia sesion</a>
-              </div>
             </div>
           </div>
         </div>

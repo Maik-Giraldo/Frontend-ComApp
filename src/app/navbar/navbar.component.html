@@ -27,9 +27,9 @@
     <button type="button" mat-button class="botonnav" [routerLink]= "['/mandarMenu']">Solicitud de cambio</button>
     </div>
 <hr>
-
+    <div *ngIf="auth.isLoggedIn() | async" class="nav-item">
       <button type="button" mat-button class="botonnav" [routerLink]= "['/']" (click)="auth.logout()">Salir</button>
-
+    </div>
 <hr>
       <div  *ngIf="(auth.isadmin() | async)" class="nav-item">
       <button type="button" mat-button class="botonnav" [routerLink]= "['/qrcode']">Qr</button>

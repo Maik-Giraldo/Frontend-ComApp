@@ -6,29 +6,66 @@
           <div class="card-title">
             Ingrese un nuevo platillo para enviar la peticion de Agregar
           </div>
+          <form [formGroup]="form" >
           <div class="form-group" style="width: 100%;">
-            <input type="text" [(ngModel)]="selectedMenu.id_platillo " class="form-control" placeholder="Ingrese el id del platillo"/>
+            <input type="number" formControlName="id_platillo" [(ngModel)]="selectedMenu.id_platillo " class="form-control" placeholder="Ingrese el id del platillo" required />
+
+            <div class="alert-danger" *ngIf="id_platillo.invalid && (id_platillo.dirty || id_platillo.touched)">
+              <div class="container-error-message" *ngIf="id_platillo.errors.required">
+                el id es requerido.
+              </div>
+            </div>
+
           </div>
           <div class="form-group">
-            <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo"/>
+            <input type="text" formControlName="nombre_platillo" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo" required/>
+
+            <div class="alert-danger" *ngIf="nombre_platillo.invalid && (nombre_platillo.dirty || nombre_platillo.touched)">
+              <div class="container-error-message" *ngIf="nombre_platillo.errors.required">
+                el nombre es requerido.
+              </div>
+            </div>
+
           </div>
           <div class="form-group">
-            <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo"/>
+            <input type="text" formControlName="descripcion_platillo" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo" required/>
+            
+            <div class="alert-danger" *ngIf="descripcion_platillo.invalid && (descripcion_platillo.dirty || descripcion_platillo.touched)">
+              <div class="container-error-message" *ngIf="descripcion_platillo.errors.required">
+                el descripcion es requerido.
+              </div>
+            </div>
+
           </div>
           <div class="form-group">
-            <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo"/>
+            <input type="text" formControlName="precio_unitario" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo" required/>
+
+            <div class="alert-danger" *ngIf="precio_unitario.invalid && (precio_unitario.dirty || precio_unitario.touched)">
+              <div class="container-error-message" *ngIf="precio_unitario.errors.required">
+                el precio es requerido.
+              </div>
+            </div>
+
           </div>
           <div class="form-group">
-            <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
+            <input type="text" formControlName="tipo_platillo" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo" required/>
+
+            <div class="alert-danger" *ngIf="tipo_platillo.invalid && (tipo_platillo.dirty || tipo_platillo.touched)">
+              <div class="container-error-message" *ngIf="tipo_platillo.errors.required">
+                el tipo es requerido.
+              </div>
+            </div>
+
           </div>
           <div class="form-group">
-            <button class="btn-primary" (click)="guardar()">
+            <button [disabled]="!(form.valid)" class="btn-primary" (click)="guardar()">
               Enviar
             </button>
             <button class="btn-danger" (click)="nuevo()">
               Limpiar Formulario
             </button>
           </div>
+        </form>
         </div>
       </div>
       </div>
@@ -46,33 +83,60 @@
           <div class="card-title">
             Seleccione un platillo del menu y edite sus campos, oprima enviar cuando ya este listo
           </div>
+          <form [formGroup]="form" >
           <div class="form-group">
-            <input type="text" *ngIf = "formEditar == false" [(ngModel)]="selectedMenu.id_platillo" class="form-control" />
+            <input type="number" formControlName="id_platillo" *ngIf = "formEditar == false" [(ngModel)]="selectedMenu.id_platillo" class="form-control" required/>
+            <div class="alert-danger" *ngIf="id_platillo.invalid && (id_platillo.dirty || id_platillo.touched)">
+              <div class="container-error-message" *ngIf="id_platillo.errors.required">
+                el id es requerido.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <h1 style="font-size: 30px; color: gray;">Platillo</h1>
-            <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" />
+            <input type="text" formControlName="nombre_platillo" [(ngModel)]="selectedMenu.platillo" class="form-control" required/>
+            <div class="alert-danger" *ngIf="nombre_platillo.invalid && (nombre_platillo.dirty || nombre_platillo.touched)">
+              <div class="container-error-message" *ngIf="nombre_platillo.errors.required">
+                el nombre es requerido.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <h1 style="font-size: 30px; color: gray;">Descripcion</h1>
-            <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" />
+            <input type="text" formControlName="descripcion_platillo" [(ngModel)]="selectedMenu.descripcion" class="form-control" required/>
+            <div class="alert-danger" *ngIf="descripcion_platillo.invalid && (descripcion_platillo.dirty || descripcion_platillo.touched)">
+              <div class="container-error-message" *ngIf="descripcion_platillo.errors.required">
+                el descripcion es requerido.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <h1 style="font-size: 30px; color: gray;">Precio</h1>
-            <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" />
+            <input type="text" formControlName="precio_unitario" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" required/>
+            <div class="alert-danger" *ngIf="precio_unitario.invalid && (precio_unitario.dirty || precio_unitario.touched)">
+              <div class="container-error-message" *ngIf="precio_unitario.errors.required">
+                el precio es requerido.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <h1 style="font-size: 30px; color: gray;">Tipo</h1>
-            <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" />
+            <input type="text" formControlName="tipo_platillo" [(ngModel)]="selectedMenu.tipo" class="form-control" required/>
+            <div class="alert-danger" *ngIf="tipo_platillo.invalid && (tipo_platillo.dirty || tipo_platillo.touched)">
+              <div class="container-error-message" *ngIf="tipo_platillo.errors.required">
+                el tipo es requerido.
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <button class="btn-primary" (click)="editar()">
+            <button [disabled]="!(form.valid)" class="btn-primary" (click)="editar()">
               Enviar
             </button>
             <button class="btn-danger" (click)="nuevo()">
               Limpiar Formulario
             </button>
           </div>
+        </form>
         </div>
       </div>
       <hr>
@@ -144,27 +208,27 @@
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                               <div class="col-md-8">
-                                  <input id="fname" name="name" type="text" placeholder="Asuto del correo" class="form-control">
+                                  <input id="fname" name="name" type="text" placeholder="Asuto del correo" class="form-control" required>
                               </div>
                           </div>
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                               <div class="col-md-8">
-                                  <input id="lname" name="name" type="text" placeholder="Nombre" class="form-control">
+                                  <input id="lname" name="name" type="text" placeholder="Nombre" class="form-control" required>
                               </div>
                           </div>
 
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                               <div class="col-md-8">
-                                  <input id="email" name="email" type="text" placeholder="Correo" class="form-control">
+                                  <input id="email" name="email" type="text" placeholder="Correo" class="form-control" required>
                               </div>
                           </div>
 
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                               <div class="col-md-8">
-                                  <input id="phone" name="phone" type="text" placeholder="Telefono" class="form-control">
+                                  <input id="phone" name="phone" type="text" placeholder="Telefono" class="form-control" required>
                               </div>
                           </div>
 
@@ -177,7 +241,6 @@
 
                           <div class="form-group">
                               <div class="col-md-12 text-center">
-                                  <button type="submit" class="btn btn-primary btn-lg" (click) = "formContacto = false">Ocultar Fornulario</button>
                                   <button type="submit" class="btn btn-primary btn-lg" style="margin: 30px;">Enviar</button>
                               </div>
 

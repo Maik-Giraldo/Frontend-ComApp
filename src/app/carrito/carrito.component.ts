@@ -44,8 +44,8 @@ export class CarritoComponent implements OnInit {
     error =>console.log(error));
 
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      documento: ['', Validators.required],
+      nombre: ['', [Validators.required]],
+      documento: ['', [Validators.required]],
       telefono: ['', Validators.required],
       correo: ['', Validators.required],
     });
@@ -117,6 +117,7 @@ export class CarritoComponent implements OnInit {
       }).then((result) => {
         //Read more about isConfirmed, isDenied below
         if (result.isConfirmed) {
+          localStorage.removeItem('id_mesa');
           this.route.navigate( ['/'])
         }
       })
