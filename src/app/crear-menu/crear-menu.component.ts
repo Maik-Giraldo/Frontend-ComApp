@@ -47,7 +47,7 @@ export class CrearMenuComponent implements OnInit {
           },error => console.log(error));
           Swal.fire({
             icon: 'success',
-            title: 'Usuario agregado correctamente',
+            title: 'Platillo agregado correctamente',
             showConfirmButton: true,
             confirmButtonText: `Ok`
           })
@@ -58,7 +58,7 @@ export class CrearMenuComponent implements OnInit {
     else{
       Swal.fire({
         icon: 'error',
-        title: 'Ocurrio un error al agregar el usuario',
+        title: 'Ocurrio un error al agregar el platillo',
         confirmButtonText: `Ok`
       })
     }
@@ -75,7 +75,7 @@ export class CrearMenuComponent implements OnInit {
           },error => console.log(error));
           Swal.fire({
             icon: 'success',
-            title: 'Usuario editado correctamente',
+            title: 'platillo editado correctamente',
             showConfirmButton: true,
             confirmButtonText: `Ok`
           })
@@ -85,7 +85,7 @@ export class CrearMenuComponent implements OnInit {
     else{
       Swal.fire({
         icon: 'error',
-        title: 'Ocurrio un error al editar el usuario',
+        title: 'Ocurrio un error al editar el platillo',
         confirmButtonText: `Ok`
       })
     }
@@ -102,7 +102,7 @@ export class CrearMenuComponent implements OnInit {
           },error => console.log(error));
           Swal.fire({
             icon: 'success',
-            title: 'Usuario eliminado satisfactoriamente',
+            title: 'Platillo eliminado satisfactoriamente',
             showConfirmButton: true,
             confirmButtonText: `Ok`
           })
@@ -112,7 +112,7 @@ export class CrearMenuComponent implements OnInit {
     else{
       Swal.fire({
         icon: 'error',
-        title: 'Ocurrio un error al eliminar el usuario',
+        title: 'Ocurrio un error al eliminar el platillo',
         confirmButtonText: `Ok`
       })
     }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Menu } from '../models/menu';
+import { PersonalCocina } from '../models/personal-cocina';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,17 @@ export class MenuService {
   }
   getFaturas():Observable<any>{
     return this.http.get(`${environment.BASE_API}/menu/personalcocina`);
+  }
+
+  confirmarCocina(personalCocina:Object):Observable<any>{
+    return this.http.put(`${environment.BASE_API}/menu/confirmarCocina`, personalCocina);
+  }
+
+  finalizarCocina(personalCocina:Object):Observable<any>{
+    return this.http.put(`${environment.BASE_API}/menu/finalizarCocina`, personalCocina);
+  }
+
+  rechazarCocina(personalCocina:Object):Observable<any>{
+    return this.http.put(`${environment.BASE_API}/menu/rechazarCocina`, personalCocina);
   }
 }
