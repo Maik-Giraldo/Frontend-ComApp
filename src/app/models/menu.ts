@@ -25,6 +25,7 @@ export class Cliente {
   documento!: String;
   telefono!: String;
   correo!: String;
+
 }
 
 

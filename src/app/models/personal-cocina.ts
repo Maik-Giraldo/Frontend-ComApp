@@ -3,6 +3,7 @@ export class PersonalCocina {
   fechaHora!: Date;
   id_pedido!: number;
   id_mesa!: number;
+  estado!: string;
   detalle_pedido!: detalle_pedido[]
 }
 
@@ -12,7 +13,6 @@ export class detalle_pedido {
   id_platillo!: number;
   platillo_cantidad!: number;
   precio_total_platillo!: number;
-  estado!: string;
   detalle_platillo: detale_platillo[]
 
 }
@@ -27,5 +27,9 @@ export class detale_platillo {
   tipo!: number;
 }
 
-
+export class Pedido {
+  fechaHora!: Date;
+  id_pedido!: number;
+  id_mesa!: number;
+}
 
