@@ -1,6 +1,6 @@
 <app-navbar style="display: none;"></app-navbar>
 <div class="div_b_c">
-  <a href="/carrito"  style="text-decoration:none"><button mat-button matBadge="{{cont}}" matBadgeColor="accent" type="button" class="btn_carrito" >Carrito<a *ngIf="cont != 0"  style="text-decoration:none"></a><a *ngIf="cont == 0 || cont == null"  style="text-decoration:none"></a></button></a>
+  <a [routerLink]="['/carrito']"  style="text-decoration:none"><button mat-button matBadge="{{cont}}" matBadgeColor="accent" type="button" class="btn_carrito" >Carrito<a *ngIf="cont != 0"  style="text-decoration:none"></a><a *ngIf="cont == 0 || cont == null"  style="text-decoration:none"></a></button></a>
 </div>
 
 <div class="tab_cat">

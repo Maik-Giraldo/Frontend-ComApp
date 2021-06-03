@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lectura',
@@ -9,16 +10,18 @@ import { Router } from '@angular/router';
 export class LecturaComponent implements OnInit {
 
   constructor(
-    private router: Router,
+    private router: Router, private activatedRoute: ActivatedRoute,
   ) { }
 
-  private id_mesa = 0;
+  private id_mesa = '';
 
   ngOnInit(): void {
-    this.id_mesa = parseInt(window.location.href.slice(30));
-    localStorage.setItem('id_mesa', this.id_mesa.toString());
-    this.router.navigate(['/']);
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id_mesa = params.get('id_mesa');
+      localStorage.setItem('id_mesa', this.id_mesa.toString());
+      this.router.navigate(['/']);
 
+    });
   }
 
 }
