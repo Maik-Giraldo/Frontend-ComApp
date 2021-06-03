@@ -49,11 +49,13 @@ export class CrearMenuComponent implements OnInit {
   selectedMenu: Menu = new Menu();
   seleccionar(menu:Menu){
     this.selectedMenu = menu;
+    this.imgMostrar = null;
 
   }
 
   nuevo(){
     this.selectedMenu = new Menu();
+    this.imgMostrar = null;
   }
 
   guardar(){
@@ -179,6 +181,31 @@ export class CrearMenuComponent implements OnInit {
             title: 'Selecciona una imagen válida',
           }).then((result) => {
             this.imgMostrar = null;
+          })
+        }
+    } catch(error){
+      
+    }
+  }
+
+  log2(file){
+    try {
+      if (
+        file.target.files[0].type == 'image/jpeg' ||
+        file.target.files[0].type == 'image/png' ||
+        file.target.files[0].type == 'image/gif'
+        ) {
+          this.reader.readAsDataURL(file.target.files[0]);
+          this.reader.onload = () => {
+          this.selectedMenu.img = this.reader.result;
+          // this.imgMostrar = this.reader.result;
+        };
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Selecciona una imagen válida',
+          }).then((result) => {
+            this.selectedMenu.img = null;
           })
         }
     } catch(error){

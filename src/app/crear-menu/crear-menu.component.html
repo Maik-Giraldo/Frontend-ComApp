@@ -29,7 +29,8 @@
     </button>
   </div>
 
-  <img *ngIf="imgMostrar" [src]="imgMostrar" width="400px" height="300px">
+  <!-- <img *ngIf="imgMostrar" [src]="imgMostrar" width="400px" height="300px"> -->
+  <img *ngIf="imgMostrar||selectedMenu.img" [src]="imgMostrar||selectedMenu.img" width="400px" height="300px">
 
   <div class="form-group">
     <button class="btn-danger" style="margin-left: 2px; margin-right: 2px;" (click)="nuevo()">
