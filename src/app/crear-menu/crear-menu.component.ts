@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../services/menu.service';
 import { Menu } from '../models/menu';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-menu',
@@ -12,11 +13,31 @@ export class CrearMenuComponent implements OnInit {
 
   menuArray: Menu[] = [];
 
-  constructor(private menuService: MenuService) {
+  reader = new FileReader();
+  imgMostrar : any;
+  form: FormGroup;
+
+  constructor(private menuService: MenuService, private fb: FormBuilder) {
 
   }
+    get id_platillo() { return this.form.get('id_platillo'); }
+    get nombre_platillo() { return this.form.get('nombre_platillo')}
+    get descripcion_platillo() { return this.form.get('descripcion_platillo')}
+    get precio_unitario() { return this.form.get('precio_unitario')}
+    get tipo_platillo() { return this.form.get('tipo_platillo')}
 
   ngOnInit(): void {
+
+    this.form = this.fb.group({
+      id_platillo: ['', [Validators.required]],
+      nombre_platillo: ['', [Validators.required]],
+      descripcion_platillo:['', [Validators.required]],
+      precio_unitario : ['', [Validators.required]],
+      tipo_platillo : ['', [Validators.required]],
+
+  });
+
+    
     this.menuService.getMenu()
     .subscribe(data=>{
       console.log(data)
@@ -36,8 +57,15 @@ export class CrearMenuComponent implements OnInit {
   }
 
   guardar(){
-    if (this.selectedMenu._identificacion == null){
-      this.menuService.crearMenu(this.selectedMenu)
+    if (this.form.valid && this.imgMostrar.length > 1){
+      let infoMenu: Menu = {
+        id_platillo: this.form.value.id_platillo,
+        platillo: this.form.value.nombre_platillo,
+        descripcion: this.form.value.descripcion_platillo,
+        precio_unitario: this.form.value.precio_unitario,
+        tipo: this.form.value.tipo_platillo,
+        img:this.imgMostrar}
+      this.menuService.crearMenu(infoMenu)
       .subscribe(data=>{
         if(data.transaccion){
           this.menuService.getMenu()
@@ -65,8 +93,15 @@ export class CrearMenuComponent implements OnInit {
   }
 
   editar(){
-    if (this.selectedMenu._identificacion == null){
-      this.menuService.editarMenu(this.selectedMenu)
+    if (this.form.valid && this.imgMostrar.length > 1){
+      let infoMenu: Menu = {
+        id_platillo: this.form.value.id_platillo,
+        platillo: this.form.value.nombre_platillo,
+        descripcion: this.form.value.descripcion_platillo,
+        precio_unitario: this.form.value.precio_unitario,
+        tipo: this.form.value.tipo_platillo,
+        img:this.imgMostrar}
+      this.menuService.editarMenu(infoMenu)
       .subscribe(data=>{
         if(data.transaccion){
           this.menuService.getMenu()
@@ -92,8 +127,15 @@ export class CrearMenuComponent implements OnInit {
   }
 
   eliminar(){
-    if (this.selectedMenu._identificacion == null){
-      this.menuService.eliminarMenu(this.selectedMenu)
+    if (this.form.valid && this.imgMostrar.length > 1){
+      let infoMenu: Menu = {
+        id_platillo: this.form.value.id_platillo,
+        platillo: this.form.value.nombre_platillo,
+        descripcion: this.form.value.descripcion_platillo,
+        precio_unitario: this.form.value.precio_unitario,
+        tipo: this.form.value.tipo_platillo,
+        img:this.imgMostrar}
+      this.menuService.eliminarMenu(infoMenu)
       .subscribe(data=>{
         if(data.transaccion){
           this.menuService.getMenu()
@@ -117,6 +159,31 @@ export class CrearMenuComponent implements OnInit {
       })
     }
 
+  }
+
+  log(file){ 
+    try {
+      if (
+        file.target.files[0].type == 'image/jpeg' ||
+        file.target.files[0].type == 'image/png' ||
+        file.target.files[0].type == 'image/gif'
+        ) {
+          this.reader.readAsDataURL(file.target.files[0]);
+          this.reader.onload = () => {
+          this.imgMostrar = this.reader.result;
+          // this.imgMostrar = this.reader.result;
+        };
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Selecciona una imagen válida',
+          }).then((result) => {
+            this.imgMostrar = null;
+          })
+        }
+    } catch(error){
+      
+    }
   }
 
 

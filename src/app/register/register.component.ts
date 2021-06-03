@@ -93,11 +93,5 @@ export class RegisterComponent implements OnInit {
         text: 'Las contraseñas no coinciden',
       })
     }
-
-    
-
-
-
   }
-
 }

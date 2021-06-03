@@ -5,21 +5,32 @@
   <div class="card-title" style="font-size: x-large;">
     Formulario de accion
   </div>
+  <form [formGroup]="form" >
   <div class="form-group">
-    <input type="text" [(ngModel)]="selectedMenu.id_platillo" class="form-control" placeholder="Ingrese el id del platillo"/>
+    <input type="text" formControlName="id_platillo" [(ngModel)]="selectedMenu.id_platillo" class="form-control" placeholder="Ingrese el id del platillo"/>
   </div>
   <div class="form-group">
-    <input type="text" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo"/>
+    <input type="text" formControlName="nombre_platillo" [(ngModel)]="selectedMenu.platillo" class="form-control" placeholder="Ingrese el nombre del platillo"/>
   </div>
   <div class="form-group">
-    <input type="text" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo"/>
+    <input type="text" formControlName="descripcion_platillo" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripcion del platillo"/>
   </div>
   <div class="form-group">
-    <input type="text" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo"/>
+    <input type="text" formControlName="precio_unitario" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" placeholder="Ingrese el precio del platillo"/>
   </div>
   <div class="form-group">
-    <input type="text" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
+    <input type="text" formControlName="tipo_platillo" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
   </div>
+
+  <div class="form-group">
+    <input type="file" #seleccionar_imagen (change)="log($event)" style="visibility:hidden"/>
+    <button (click)="seleccionar_imagen.click()" type="button" class="btn btn-primary">
+      Seleccionar imagen
+    </button>
+  </div>
+
+  <img *ngIf="imgMostrar" [src]="imgMostrar" width="400px" height="300px">
+
   <div class="form-group">
     <button class="btn-danger" style="margin-left: 2px; margin-right: 2px;" (click)="nuevo()">
       Limpiar
@@ -34,6 +45,7 @@
       Eliminar
     </button>
   </div>
+</form>
 </div>
 
 
@@ -44,6 +56,7 @@
           <th scope="col">Descripcion</th>
           <th scope="col">Precio</th>
           <th scope="col">tipo</th>
+          <th scope="col">Imagen</th>
         </thead>
         <tbody>
           <tr *ngFor = "let menu of menuArray"
@@ -54,6 +67,7 @@
             <td>{{menu.descripcion}}</td>
             <td>{{menu.precio_unitario}}</td>
             <td>{{menu.tipo}}</td>
+            <td><img [src]="menu.img" width="40px" height="40px"></td>
           </tr>
         </tbody>
       </table>
