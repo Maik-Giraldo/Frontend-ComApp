@@ -17,6 +17,8 @@ export class CrearMenuComponent implements OnInit {
   imgMostrar : any;
   form: FormGroup;
 
+  caso : number = 1;
+
   constructor(private menuService: MenuService, private fb: FormBuilder) {
 
   }
@@ -48,6 +50,7 @@ export class CrearMenuComponent implements OnInit {
 
   selectedMenu: Menu = new Menu();
   seleccionar(menu:Menu){
+    this.caso = 2;
     this.selectedMenu = menu;
     this.imgMostrar = null;
 
@@ -56,6 +59,7 @@ export class CrearMenuComponent implements OnInit {
   nuevo(){
     this.selectedMenu = new Menu();
     this.imgMostrar = null;
+    this.caso = 1;
   }
 
   guardar(){
@@ -95,14 +99,14 @@ export class CrearMenuComponent implements OnInit {
   }
 
   editar(){
-    if (this.form.valid && this.imgMostrar.length > 1){
+    if (this.form.valid && this.selectedMenu.img.length > 1){
       let infoMenu: Menu = {
         id_platillo: this.form.value.id_platillo,
         platillo: this.form.value.nombre_platillo,
         descripcion: this.form.value.descripcion_platillo,
         precio_unitario: this.form.value.precio_unitario,
         tipo: this.form.value.tipo_platillo,
-        img:this.imgMostrar}
+        img:this.selectedMenu.img}
       this.menuService.editarMenu(infoMenu)
       .subscribe(data=>{
         if(data.transaccion){
@@ -129,7 +133,7 @@ export class CrearMenuComponent implements OnInit {
   }
 
   eliminar(){
-    if (this.form.valid && this.imgMostrar.length > 1){
+    if (this.form.valid){
       let infoMenu: Menu = {
         id_platillo: this.form.value.id_platillo,
         platillo: this.form.value.nombre_platillo,
@@ -172,7 +176,15 @@ export class CrearMenuComponent implements OnInit {
         ) {
           this.reader.readAsDataURL(file.target.files[0]);
           this.reader.onload = () => {
-          this.imgMostrar = this.reader.result;
+            if(this.caso == 1){
+              this.imgMostrar = this.reader.result;
+              this.selectedMenu.img = null;
+            }
+            if(this.caso == 2){
+              this.selectedMenu.img = this.reader.result;
+              this.imgMostrar = null;
+            }
+          
           // this.imgMostrar = this.reader.result;
         };
         }else{
@@ -181,30 +193,6 @@ export class CrearMenuComponent implements OnInit {
             title: 'Selecciona una imagen válida',
           }).then((result) => {
             this.imgMostrar = null;
-          })
-        }
-    } catch(error){
-      
-    }
-  }
-
-  log2(file){
-    try {
-      if (
-        file.target.files[0].type == 'image/jpeg' ||
-        file.target.files[0].type == 'image/png' ||
-        file.target.files[0].type == 'image/gif'
-        ) {
-          this.reader.readAsDataURL(file.target.files[0]);
-          this.reader.onload = () => {
-          this.selectedMenu.img = this.reader.result;
-          // this.imgMostrar = this.reader.result;
-        };
-        }else{
-          Swal.fire({
-            icon: 'error',
-            title: 'Selecciona una imagen válida',
-          }).then((result) => {
             this.selectedMenu.img = null;
           })
         }
@@ -212,6 +200,4 @@ export class CrearMenuComponent implements OnInit {
       
     }
   }
-
-
 }
