@@ -77,7 +77,7 @@ export class MandarMenuComponent implements OnInit {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Peticion enviada',
+          title: 'Peticion enviada correctamente',
           showConfirmButton: false,
           timer: 1500
         })
@@ -89,7 +89,13 @@ export class MandarMenuComponent implements OnInit {
     if (this.form.valid){
       this.menuService.peticionEditar(this.selectedMenu)
       .subscribe(data=>{
-
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Peticion enviada correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
     }
   }
@@ -98,7 +104,13 @@ export class MandarMenuComponent implements OnInit {
     this.menuService.peticionEliminar(lista)
       .subscribe(data=>{
         if(data.transaccion){
-
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Peticion enviada correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       })
   }

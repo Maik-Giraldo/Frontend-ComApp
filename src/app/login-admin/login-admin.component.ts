@@ -56,8 +56,6 @@ export class LoginAdminComponent implements OnInit {
 
           this.auth.login(response.token)
 
-
-
           this.auth.loginmanager(response.rol)
 
           this.auth.loginadmin(response.rol)
@@ -85,8 +83,7 @@ export class LoginAdminComponent implements OnInit {
 
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
-          footer: '<a href>Why do I have this issue?</a>'
+          text: 'Ha ocurrido un error',
 
         }).then((result) => {
           //Read more about isConfirmed, isDenied below

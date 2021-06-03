@@ -13,7 +13,6 @@ import { RegisterComponent } from './register/register.component';
 import { ListarMenuComponent } from './listar-menu/listar-menu.component';
 import { CrearMenuComponent } from './crear-menu/crear-menu.component';
 import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
-import { EditarMenuComponent } from './editar-menu/editar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
 import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
@@ -35,6 +34,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatTableModule } from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PuntoMilPipe } from './pipe/punto-mil.pipe';
 
 
 
@@ -52,12 +52,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ListarMenuComponent,
     CrearMenuComponent,
     MandarMenuComponent,
-    EditarMenuComponent,
     CarritoComponent,
     LecturaComponent,
     PersonalCocinaComponent,
     SidebarComponent,
     FilterPipe,
+    PuntoMilPipe,
 
   ],
   imports: [

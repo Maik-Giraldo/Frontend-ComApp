@@ -1,6 +1,6 @@
 
 <div class="container">
-  <h1 style="color: white;">Pedidos Pendientes</h1>
+  <h1 style="color: white;">Pedidos pendientes</h1>
   <div class="row">
     <div class="col">
       <table class="table table-dark">
@@ -10,12 +10,12 @@
             <th>Fecha/hora</th>
             <th>Mesa</th>
             <th>Estado del pedido</th>
-            <th style="margin: auto; text-align: center;">Informacion del pedido</th>
+            <th style="margin: auto; text-align: center;">Información del pedido</th>
             <th style="margin: auto; text-align: center;">Acciones</th>
           </tr>
         </thead>
         <tbody *ngFor="let date of pedidos ">
-          <tr *ngIf="date.estado == 'pendiente'">
+          <tr *ngIf="date.estado == 'Pendiente'">
             <td>{{date.id_pedido}}</td>
             <td>{{date.fechaHora}}</td>
             <td>{{date.id_mesa}}</td>
@@ -23,9 +23,9 @@
             <td>
               <table>
                 <thead>
-                  <th>id_platillo</th>
-                  <th>cantidad por unidad</th>
-                  <th style="margin: auto; text-align: center;">informacion Platillo</th>
+                  <th>Id del platillo</th>
+                  <th>Cantidad por unidad</th>
+                  <th style="margin: auto; text-align: center;">Información del platillo</th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let date2 of date.detalle_Pedido">
@@ -35,7 +35,7 @@
                       <table>
                         <thead>
                           <th>Platillo</th>
-                          <th>Descripcion</th>
+                          <th>Descripción</th>
                           <th>Tipo</th>
                         </thead>
                         <tbody>
@@ -69,7 +69,7 @@
 <!-- PEDIDOS CONFIRMADOS -->
 
 <div class="container">
-  <h1 style="color: white;">Pedidos Confirmados</h1>
+  <h1 style="color: white;">Pedidos confirmados</h1>
   <div class="row">
     <div class="col">
       <table class="table table-dark">
@@ -79,7 +79,7 @@
             <th>Fecha/hora</th>
             <th>Mesa</th>
             <th>Estado del pedido</th>
-            <th style="margin: auto; text-align: center;">Informacion del pedido</th>
+            <th style="margin: auto; text-align: center;">Información del pedido</th>
             <th style="margin: auto; text-align: center;">Acciones</th>
           </tr>
         </thead>
@@ -92,9 +92,9 @@
             <td>
               <table>
                 <thead>
-                  <th>id_platillo</th>
-                  <th>cantidad por unidad</th>
-                  <th style="margin: auto; text-align: center;">informacion Platillo</th>
+                  <th>Id platillo</th>
+                  <th>Cantidad por unidad</th>
+                  <th style="margin: auto; text-align: center;">Información del platillo</th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let date2 of date.detalle_Pedido">
@@ -104,7 +104,7 @@
                       <table>
                         <thead>
                           <th>Platillo</th>
-                          <th>Descripcion</th>
+                          <th>Descripción</th>
                           <th>Tipo</th>
                         </thead>
                         <tbody>
@@ -137,7 +137,7 @@
 <!-- PEDIDOS RECHAZADOS -->
 
 <div class="container">
-  <h1 style="color: white;">Pedidos Rechazados</h1>
+  <h1 style="color: white;">Pedidos rechazados</h1>
   <div class="row">
     <div class="col">
       <table class="table table-dark">
@@ -147,7 +147,7 @@
             <th>Fecha/hora</th>
             <th>Mesa</th>
             <th>Estado del pedido</th>
-            <th style="margin: auto; text-align: center;">Informacion del pedido</th>
+            <th style="margin: auto; text-align: center;">Información del pedido</th>
           </tr>
         </thead>
         <tbody *ngFor="let date of pedidos ">
@@ -159,9 +159,9 @@
             <td>
               <table>
                 <thead>
-                  <th>id_platillo</th>
-                  <th>cantidad por unidad</th>
-                  <th style="margin: auto; text-align: center;">informacion Platillo</th>
+                  <th>Id platillo</th>
+                  <th>Cantidad por unidad</th>
+                  <th style="margin: auto; text-align: center;">Información del platillo</th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let date2 of date.detalle_Pedido">
@@ -171,7 +171,7 @@
                       <table>
                         <thead>
                           <th>Platillo</th>
-                          <th>Descripcion</th>
+                          <th>Descripción</th>
                           <th>Tipo</th>
                         </thead>
                         <tbody>
@@ -198,7 +198,7 @@
 <!-- PEDIDOS FINALIZADOS -->
 
 <div class="container">
-  <h1 style="color: white;">Pedidos Finalizados</h1>
+  <h1 style="color: white;">Pedidos finalizados</h1>
   <div class="row">
     <div class="col">
       <table class="table table-dark">
@@ -208,7 +208,7 @@
             <th>Fecha/hora</th>
             <th>Mesa</th>
             <th>Estado del pedido</th>
-            <th style="margin: auto; text-align: center;">Informacion del pedido</th>
+            <th style="margin: auto; text-align: center;">Información del pedido</th>
           </tr>
         </thead>
         <tbody *ngFor="let date of pedidos ">
@@ -220,9 +220,9 @@
             <td>
               <table>
                 <thead>
-                  <th>id_platillo</th>
-                  <th>cantidad por unidad</th>
-                  <th style="margin: auto; text-align: center;">informacion Platillo</th>
+                  <th>Id platillo</th>
+                  <th>Cantidad por unidad</th>
+                  <th style="margin: auto; text-align: center;">Información del platillo</th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let date2 of date.detalle_Pedido">
@@ -232,7 +232,7 @@
                       <table>
                         <thead>
                           <th>Platillo</th>
-                          <th>Descripcion</th>
+                          <th>Descripción</th>
                           <th>Tipo</th>
                         </thead>
                         <tbody>

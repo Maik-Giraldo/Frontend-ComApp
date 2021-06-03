@@ -2,7 +2,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Hello_Game</title>
+    <title>ComApp</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Pangolin&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="login-wrap py-5">
               <div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/bg.jpg);"></div>
-              <h3 class="text-center mb-0">Agregar Roles</h3>
+              <h3 class="text-center mb-0">Agregar usuario</h3>
 
               <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
                 <div class="form-group">
@@ -32,7 +32,7 @@
                       el correo es requerido.
                     </div>
                   <div class="container-error-message" *ngIf="(correo.dirty || correo.touched) && correo.invalid && correo.errors.pattern">
-                    ingrese un correo valido.
+                    ingrese un correo válido.
                   </div>
                 </div>
                 </div>
@@ -46,7 +46,7 @@
                     la contraseña es requerida.
                   </div>
                   <div class="container-error-message" *ngIf="password.errors.minlength">
-                    la contraseña debete tener minimo 8 caracteres.
+                    la contraseña debe tener mínimo 8 caracteres.
                   </div>
                 </div>
                 <div class="form-group">
@@ -65,7 +65,7 @@
                   <label for="exampleInputPassword1" style="padding-right: 5px;">Rol </label>
                     <select formControlName="rol">
                       <option value="1">Gerente</option>
-                      <option value="2">Cocinero</option>
+                      <option value="2">Personal de cocina</option>
                     </select>
 
                 </div>
