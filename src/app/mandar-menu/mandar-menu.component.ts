@@ -19,6 +19,10 @@ export class MandarMenuComponent implements OnInit {
 
   form: FormGroup;
 
+  reader = new FileReader();
+
+  imgMostrar : any;
+
   constructor(
     private menuService: MenuService,
     private fb: FormBuilder
@@ -60,19 +64,38 @@ export class MandarMenuComponent implements OnInit {
   }
 
   guardar(){
-    if (this.selectedMenu._identificacion == null){
-      this.menuService.mandarMenu(this.selectedMenu)
+    if (this.form.valid && this.imgMostrar.length > 1){
+      let infoMenu: Menu = {
+        id_platillo: this.form.value.id_platillo,
+        platillo: this.form.value.nombre_platillo,
+        descripcion: this.form.value.descripcion_platillo,
+        precio_unitario: this.form.value.precio_unitario,
+        tipo: this.form.value.tipo_platillo,
+        img:this.imgMostrar}
+      this.menuService.mandarMenu(infoMenu)
       .subscribe(data=>{
-
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Peticion enviada correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
     }
   }
 
   editar(){
-    if (this.selectedMenu._identificacion == null){
+    if (this.form.valid){
       this.menuService.peticionEditar(this.selectedMenu)
       .subscribe(data=>{
-
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Peticion enviada correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
     }
   }
@@ -81,8 +104,65 @@ export class MandarMenuComponent implements OnInit {
     this.menuService.peticionEliminar(lista)
       .subscribe(data=>{
         if(data.transaccion){
-
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Peticion enviada correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       })
   }
+
+  log(file){ 
+    try {
+      if (
+        file.target.files[0].type == 'image/jpeg' ||
+        file.target.files[0].type == 'image/png' ||
+        file.target.files[0].type == 'image/gif'
+        ) {
+          this.reader.readAsDataURL(file.target.files[0]);
+          this.reader.onload = () => {
+          this.imgMostrar = this.reader.result;
+          // this.imgMostrar = this.reader.result;
+        };
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Selecciona una imagen válida',
+          }).then((result) => {
+            this.imgMostrar = null;
+          })
+        }
+    } catch(error){
+      
+    }
+  }
+
+  log2(file){
+    try {
+      if (
+        file.target.files[0].type == 'image/jpeg' ||
+        file.target.files[0].type == 'image/png' ||
+        file.target.files[0].type == 'image/gif'
+        ) {
+          this.reader.readAsDataURL(file.target.files[0]);
+          this.reader.onload = () => {
+          this.selectedMenu.img = this.reader.result;
+          // this.imgMostrar = this.reader.result;
+        };
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Selecciona una imagen válida',
+          }).then((result) => {
+            this.selectedMenu.img = null;
+          })
+        }
+    } catch(error){
+      
+    }
+  }
+
 }

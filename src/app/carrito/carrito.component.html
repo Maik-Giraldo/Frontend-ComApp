@@ -14,14 +14,14 @@
 
           <td>{{menu.platillo}}</td>
           <td>{{menu.descripcion}}</td>
-          <td>{{menu.precio_unitario}}</td>
+          <td>$ {{menu.precio_unitario | puntoMil}}</td>
           <td>{{menu.id_mesa}}</td>
           <td><button type="button" class="pedir btn btn-danger" style="float: center;" (click)="eliminar(menu)">Eliminar</button></td>
         </tr>
         <tr >
           <td></td>
           <td><H3>Precio Total:</H3> </td>
-          <td><H3>{{precio_total}}</H3></td>
+          <td><H3>$ {{precio_total | puntoMil}}</H3></td>
           <td></td>
           <td></td>
         </tr>

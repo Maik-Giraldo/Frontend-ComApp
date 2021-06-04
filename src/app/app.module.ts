@@ -13,7 +13,6 @@ import { RegisterComponent } from './register/register.component';
 import { ListarMenuComponent } from './listar-menu/listar-menu.component';
 import { CrearMenuComponent } from './crear-menu/crear-menu.component';
 import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
-import { EditarMenuComponent } from './editar-menu/editar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
 import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
@@ -37,7 +36,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchComponent } from './search/search.component';
 import { FilterIdPipe } from './pipe/filter-id.pipe';
-
+import { PuntoMilPipe } from './pipe/punto-mil.pipe';
+import { FacturasComponent } from './facturas/facturas.component';
 
 
 
@@ -55,7 +55,6 @@ import { FilterIdPipe } from './pipe/filter-id.pipe';
     ListarMenuComponent,
     CrearMenuComponent,
     MandarMenuComponent,
-    EditarMenuComponent,
     CarritoComponent,
     LecturaComponent,
     PersonalCocinaComponent,
@@ -63,6 +62,8 @@ import { FilterIdPipe } from './pipe/filter-id.pipe';
     FilterPipe,
     SearchComponent,
     FilterIdPipe,
+    PuntoMilPipe,
+    FacturasComponent,
 
   ],
   imports: [

@@ -33,3 +33,22 @@ export class Pedido {
   id_mesa!: number;
 }
 
+export class Cliente {
+  _id!: string;
+  nombre!: string;
+  documento!: string;
+  telefono!: string;
+  correo!: string;
+  id_pedido!: number;
+}
+
+export class Factura {
+  _identificacion!: string;
+  id_pedido!: number;
+  id_mesa!: number;
+  fechaHora!: Date;
+  precio_total!: number;
+  detalle_pedido!: detalle_pedido[]
+  cliente!: Cliente []
+}
+

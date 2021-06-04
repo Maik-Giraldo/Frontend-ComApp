@@ -11,6 +11,7 @@ import { MandarMenuComponent } from './mandar-menu/mandar-menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LecturaComponent } from './lectura/lectura.component';
 import { PersonalCocinaComponent } from './personal-cocina/personal-cocina.component';
+import { FacturasComponent } from './facturas/facturas.component';
 import { ManagerGuard } from './guardias/manager.guard';
 import { RegisterComponent } from './register/register.component';
 import { StaffGuard } from './guardias/staff.guard';
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'mandarMenu', component: MandarMenuComponent,  canActivate: [ManagerGuard]},
   {path: 'carrito', component: CarritoComponent},
   {path: 'facturas', component: PersonalCocinaComponent,canActivate: [StaffGuard]},
+  {path: 'facturasClientes', component: FacturasComponent,canActivate: [StaffGuard]},
   {path: 'lectura/:id_mesa', component: LecturaComponent}
 
 ];
