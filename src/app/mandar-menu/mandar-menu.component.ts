@@ -89,6 +89,7 @@ export class MandarMenuComponent implements OnInit {
     if (this.form.valid){
       this.menuService.peticionEditar(this.selectedMenu)
       .subscribe(data=>{
+        console.log(data)
         Swal.fire({
           position: 'center',
           icon: 'success',

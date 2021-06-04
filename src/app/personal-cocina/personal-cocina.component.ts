@@ -63,7 +63,7 @@ export class PersonalCocinaComponent implements OnInit {
       this.pedidos = data.data;
     },
     error =>console.log(error));
-    },60000)
+    },5000)
   }
 
   confirmar(lista: []) {
