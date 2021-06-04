@@ -34,6 +34,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatTableModule } from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SearchComponent } from './search/search.component';
+import { FilterIdPipe } from './pipe/filter-id.pipe';
 import { PuntoMilPipe } from './pipe/punto-mil.pipe';
 import { FacturasComponent } from './facturas/facturas.component';
 
@@ -58,6 +60,8 @@ import { FacturasComponent } from './facturas/facturas.component';
     PersonalCocinaComponent,
     SidebarComponent,
     FilterPipe,
+    SearchComponent,
+    FilterIdPipe,
     PuntoMilPipe,
     FacturasComponent,
 
