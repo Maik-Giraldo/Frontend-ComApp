@@ -4,15 +4,44 @@ import { CarritoService } from '../carrito.service';
 import { PersonalCocina, Pedido} from '../models/personal-cocina';
 import { MenuService } from '../services/menu.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import {FormControl} from '@angular/forms';
+
 @Component({
   selector: 'app-personal-cocina',
   templateUrl: './personal-cocina.component.html',
   styleUrls: ['./personal-cocina.component.css']
 })
+
+
+
 export class PersonalCocinaComponent implements OnInit {
   pedidos: PersonalCocina[] = []
   detalle: boolean = false;
-  filterPost = '';
+
+  handleSearch(value: string) {
+    console.log(value);
+    this.filtro_valor = value;
+    var dateDay = new Date().toString();
+    console.log(dateDay.slice(9,-50))
+
+  }
+  handleSearch2(value: string) {
+    console.log(value);
+    this.filtro_tipo = value;
+    if (this.filtro_tipo=="2") {
+    console.log("es la fecha")
+
+    }
+  }
+
+
+
+  tipo = new FormControl('')
+  search = new FormControl('')
+
+
+  filtro_valor = ''
+  filtro_tipo = ''
   constructor(
     private menuService: MenuService,
     private carritoService: CarritoService,
@@ -27,6 +56,7 @@ export class PersonalCocinaComponent implements OnInit {
     this.menuService.getFaturas()
     .subscribe(data=>{
       this.pedidos = data.data;
+      console.log(this.pedidos)
     },
     error =>console.log(error));
   }

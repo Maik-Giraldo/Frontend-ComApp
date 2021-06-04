@@ -35,6 +35,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatTableModule } from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SearchComponent } from './search/search.component';
+import { FilterIdPipe } from './pipe/filter-id.pipe';
+
 
 
 
@@ -58,6 +61,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     PersonalCocinaComponent,
     SidebarComponent,
     FilterPipe,
+    SearchComponent,
+    FilterIdPipe,
 
   ],
   imports: [

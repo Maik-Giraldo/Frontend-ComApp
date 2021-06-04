@@ -1,19 +1,26 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform ,Input} from '@angular/core';
+
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+
+
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any, arg: any): any {
-    if (arg === '' || arg.length < 1) return value;
-    const resultPosts = [];
-    for (const PersonalCocina of value) {
-      if (PersonalCocina.id_mesa.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
-        resultPosts.push(PersonalCocina);
-      };
-    };
-    return resultPosts;
+
+
+
+  transform(lista: any[], fecha: string): any[] {
+
+    var dateDay = new Date().toString();
+    console.log(dateDay.slice(9,-50))
+
+    var fecha=dateDay.slice(9,-50)
+
+    if(!fecha) return lista;
+    return lista.filter(pedido => pedido.fechaHora.toString().includes(fecha.toUpperCase()));
+
   }
 
 
