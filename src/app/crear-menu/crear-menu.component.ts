@@ -39,16 +39,16 @@ export class CrearMenuComponent implements OnInit {
 
   });
 
-    
+
     this.menuService.getMenu()
     .subscribe(data=>{
-      console.log(data)
       this.menuArray = data.data;
     },
     error =>console.log(error));
   }
 
   selectedMenu: Menu = new Menu();
+
   seleccionar(menu:Menu){
     this.caso = 2;
     this.selectedMenu = menu;
@@ -76,7 +76,6 @@ export class CrearMenuComponent implements OnInit {
         if(data.transaccion){
           this.menuService.getMenu()
           .subscribe(data=>{
-            console.log(data)
             this.menuArray = data.data;
           },error => console.log(error));
           Swal.fire({
@@ -86,15 +85,17 @@ export class CrearMenuComponent implements OnInit {
             confirmButtonText: `Ok`
           })
         }
+
+        else{
+          Swal.fire({
+            icon: 'error',
+            title: 'error al editar el platillo',
+            showConfirmButton: true,
+            confirmButtonText: `Ok`
+          })
+        }
       })
 
-    }
-    else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Ocurrio un error al agregar el platillo',
-        confirmButtonText: `Ok`
-      })
     }
   }
 
@@ -121,13 +122,14 @@ export class CrearMenuComponent implements OnInit {
             confirmButtonText: `Ok`
           })
         }
-      })
-    }
-    else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Ocurrio un error al editar el platillo',
-        confirmButtonText: `Ok`
+        else{
+          Swal.fire({
+            icon: 'error',
+            title: 'error al editar el platillo',
+            showConfirmButton: true,
+            confirmButtonText: `Ok`
+          })
+        }
       })
     }
   }
@@ -155,19 +157,19 @@ export class CrearMenuComponent implements OnInit {
             confirmButtonText: `Ok`
           })
         }
+        else{
+          Swal.fire({
+            icon: 'error',
+            title: 'error al editar el platillo',
+            showConfirmButton: true,
+            confirmButtonText: `Ok`
+          })
+        }
       })
     }
-    else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Ocurrio un error al eliminar el platillo',
-        confirmButtonText: `Ok`
-      })
-    }
-
   }
 
-  log(file){ 
+  log(file){
     try {
       if (
         file.target.files[0].type == 'image/jpeg' ||
@@ -184,7 +186,7 @@ export class CrearMenuComponent implements OnInit {
               this.selectedMenu.img = this.reader.result;
               this.imgMostrar = null;
             }
-          
+
           // this.imgMostrar = this.reader.result;
         };
         }else{
@@ -197,7 +199,7 @@ export class CrearMenuComponent implements OnInit {
           })
         }
     } catch(error){
-      
+
     }
   }
 }
