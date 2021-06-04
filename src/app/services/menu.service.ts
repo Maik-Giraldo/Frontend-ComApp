@@ -59,4 +59,8 @@ export class MenuService {
   rechazarCocina(personalCocina:Object):Observable<any>{
     return this.http.put(`${environment.BASE_API}/menu/rechazarCocina`, personalCocina);
   }
+
+  facturaCliente():Observable<any>{
+    return this.http.get(`${environment.BASE_API}/menu/facturaCliente`);
+  }
 }

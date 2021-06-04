@@ -35,6 +35,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PuntoMilPipe } from './pipe/punto-mil.pipe';
+import { FacturasComponent } from './facturas/facturas.component';
 
 
 
@@ -58,6 +59,7 @@ import { PuntoMilPipe } from './pipe/punto-mil.pipe';
     SidebarComponent,
     FilterPipe,
     PuntoMilPipe,
+    FacturasComponent,
 
   ],
   imports: [

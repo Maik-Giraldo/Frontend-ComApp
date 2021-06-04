@@ -7,6 +7,10 @@
     <button type="button" mat-button class="botonnav" [routerLink]= "['/facturas']">Pedidos</button>
     </div>
 <br>
+    <div  *ngIf="(auth.isstaff() | async)" class="nav-item">
+    <button type="button" mat-button class="botonnav" [routerLink]= "['/facturasClientes']">Facturas</button>
+    </div>
+<br>
     <div  *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
     <button type="button" mat-button  class="botonnav" [routerLink]= "['/login']">Iniciar Sesión </button>
     </div>

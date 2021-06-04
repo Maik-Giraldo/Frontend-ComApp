@@ -19,8 +19,6 @@ export class PersonalCocinaComponent implements OnInit {
     private route: Router,
   ) {
 
-
-
   }
 
   ngOnInit(): void {
