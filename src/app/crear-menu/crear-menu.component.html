@@ -45,6 +45,11 @@
       Eliminar
     </button>
   </div>
+
+  <div *ngIf="!load" class="spinner-border text-primary" role="status">
+    <span class="sr-only">Cargando...</span>
+  </div>
+
 </form>
 </div>
 
@@ -73,4 +78,5 @@
       </table>
 
 </body>
+
 

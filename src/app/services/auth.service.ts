@@ -94,6 +94,7 @@ export class AuthService {
     this.isLogin.next(false);
     this.checkmanager.next(false);
     this.checkstaff.next(false);
+    this.checkadmin.next(false);
   }
 
   isLoggedIn() : Observable<boolean> {

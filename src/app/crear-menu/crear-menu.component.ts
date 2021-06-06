@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CrearMenuComponent implements OnInit {
 
   menuArray: Menu[] = [];
-
+  load: boolean = true;
   reader = new FileReader();
   imgMostrar : any;
   form: FormGroup;
@@ -63,6 +63,7 @@ export class CrearMenuComponent implements OnInit {
   }
 
   guardar(){
+    this.load = false;
     if (this.form.valid && this.imgMostrar.length > 1){
       let infoMenu: Menu = {
         id_platillo: this.form.value.id_platillo,
@@ -73,6 +74,7 @@ export class CrearMenuComponent implements OnInit {
         img:this.imgMostrar}
       this.menuService.crearMenu(infoMenu)
       .subscribe(data=>{
+        this.load = true;
         if(data.transaccion){
           this.menuService.getMenu()
           .subscribe(data=>{
@@ -100,6 +102,7 @@ export class CrearMenuComponent implements OnInit {
   }
 
   editar(){
+    this.load = false;
     if (this.form.valid && this.selectedMenu.img.length > 1){
       let infoMenu: Menu = {
         id_platillo: this.form.value.id_platillo,
@@ -110,6 +113,7 @@ export class CrearMenuComponent implements OnInit {
         img:this.selectedMenu.img}
       this.menuService.editarMenu(infoMenu)
       .subscribe(data=>{
+        this.load = true;
         if(data.transaccion){
           this.menuService.getMenu()
           .subscribe(data=>{
@@ -135,6 +139,7 @@ export class CrearMenuComponent implements OnInit {
   }
 
   eliminar(){
+    this.load = false;
     if (this.form.valid){
       let infoMenu: Menu = {
         id_platillo: this.form.value.id_platillo,
@@ -145,6 +150,9 @@ export class CrearMenuComponent implements OnInit {
         img:this.imgMostrar}
       this.menuService.eliminarMenu(infoMenu)
       .subscribe(data=>{
+        this.selectedMenu = new Menu();
+        this.imgMostrar = null;
+        this.load = true;
         if(data.transaccion){
           this.menuService.getMenu()
           .subscribe(data=>{
