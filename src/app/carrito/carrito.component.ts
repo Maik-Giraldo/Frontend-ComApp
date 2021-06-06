@@ -66,6 +66,7 @@ export class CarritoComponent implements OnInit {
 
   rechazar(){
 
+    this.load = false;
     this.formCliente = false
 
     let sendid  : Sendid = {
@@ -74,11 +75,16 @@ export class CarritoComponent implements OnInit {
     };
 
     this.carritoService.rechazarPedido(sendid)
+
     .subscribe(data=>{
+
+
+
       if(data.transaccion){
+
       }
 
-
+      this.load = true;
       Swal.fire({
         icon: 'success',
         title: 'pedido rechazado correctamente',
@@ -97,6 +103,7 @@ export class CarritoComponent implements OnInit {
 
 
   aceptar(){
+    this.load = false;
 
     let sendid  : Sendid = {
 
@@ -108,6 +115,7 @@ export class CarritoComponent implements OnInit {
       data=>{
       if(data.transaccion){
       }
+      this.load = true;
 
       Swal.fire({
         icon: 'success',

@@ -71,7 +71,9 @@
     </div>
   </div>
 </div>
-
+<div *ngIf="!load" class="spinner-border text-primary" role="status">
+  <span class="sr-only">Cargando...</span>
+</div>
 <!-- PEDIDOS CONFIRMADOS -->
 
 <div class="container">

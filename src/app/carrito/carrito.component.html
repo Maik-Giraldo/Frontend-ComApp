@@ -72,3 +72,7 @@
   <button mat-button (click)="abrirForm()" type="button" class="btn btn-success" style="font-size: xx-large; padding: 1rem;">Aceptar</button>
   <button (click)="rechazar()" type="button" class="btn btn-danger" style="font-size: xx-large; padding: 1rem;">Rechazar</button>
 </div>
+
+<div *ngIf="!load" class="spinner-border text-primary" role="status">
+  <span class="sr-only">Cargando...</span>
+</div>

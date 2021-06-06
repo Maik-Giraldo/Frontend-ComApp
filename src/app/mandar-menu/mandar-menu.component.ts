@@ -16,7 +16,7 @@ export class MandarMenuComponent implements OnInit {
   formEditar: boolean = false;
   formEliminar: boolean = false;
   formContacto: boolean = false;
-
+  load: boolean = true;
   form: FormGroup;
 
   reader = new FileReader();
@@ -64,6 +64,7 @@ export class MandarMenuComponent implements OnInit {
   }
 
   guardar(){
+    this.load = false;
     if (this.form.valid && this.imgMostrar.length > 1){
       let infoMenu: Menu = {
         id_platillo: this.form.value.id_platillo,
@@ -74,6 +75,7 @@ export class MandarMenuComponent implements OnInit {
         img:this.imgMostrar}
       this.menuService.mandarMenu(infoMenu)
       .subscribe(data=>{
+        this.load = true;
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -86,9 +88,11 @@ export class MandarMenuComponent implements OnInit {
   }
 
   editar(){
+    this.load = false;
     if (this.form.valid){
       this.menuService.peticionEditar(this.selectedMenu)
       .subscribe(data=>{
+        this.load = true;
         console.log(data)
         Swal.fire({
           position: 'center',
@@ -102,8 +106,10 @@ export class MandarMenuComponent implements OnInit {
   }
 
   eliminar(lista: []){
+    this.load = false;
     this.menuService.peticionEliminar(lista)
       .subscribe(data=>{
+        this.load = true;
         if(data.transaccion){
           Swal.fire({
             position: 'center',
@@ -116,7 +122,7 @@ export class MandarMenuComponent implements OnInit {
       })
   }
 
-  log(file){ 
+  log(file){
     try {
       if (
         file.target.files[0].type == 'image/jpeg' ||
@@ -137,7 +143,7 @@ export class MandarMenuComponent implements OnInit {
           })
         }
     } catch(error){
-      
+
     }
   }
 
@@ -162,7 +168,7 @@ export class MandarMenuComponent implements OnInit {
           })
         }
     } catch(error){
-      
+
     }
   }
 

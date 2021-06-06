@@ -17,6 +17,7 @@ import {FormControl} from '@angular/forms';
 export class PersonalCocinaComponent implements OnInit {
   pedidos: PersonalCocina[] = []
   detalle: boolean = false;
+  load: boolean = true;
 
   handleSearch(value: string) {
     console.log(value);
@@ -68,8 +69,10 @@ export class PersonalCocinaComponent implements OnInit {
 
   confirmar(lista: []) {
 
+
     this.menuService.confirmarCocina(lista)
     .subscribe(data=>{
+
       Swal.fire({
         icon: 'success',
         title: 'Pedido confirmado correctamente',
@@ -90,8 +93,10 @@ export class PersonalCocinaComponent implements OnInit {
   }
 
   finalizar(lista: []){
+    this.load = false;
     this.menuService.finalizarCocina(lista)
     .subscribe(data=>{
+      this.load = true;
       Swal.fire({
         icon: 'success',
         title: 'Pedido Finalizado correctamente',
@@ -113,8 +118,10 @@ export class PersonalCocinaComponent implements OnInit {
 
   rechazar(lista: []){
 
+
     this.menuService.rechazarCocina(lista)
     .subscribe(data=>{
+
       Swal.fire({
         icon: 'success',
         title: 'Pedido Rechazado correctamente',

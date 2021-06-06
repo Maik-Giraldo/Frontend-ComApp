@@ -29,7 +29,7 @@
           </div>
           <div class="form-group">
             <input type="text" formControlName="descripcion_platillo" [(ngModel)]="selectedMenu.descripcion" class="form-control" placeholder="Ingrese la descripción del platillo" required/>
-            
+
             <div class="alert-danger" *ngIf="descripcion_platillo.invalid && (descripcion_platillo.dirty || descripcion_platillo.touched)">
               <div class="container-error-message" *ngIf="descripcion_platillo.errors.required">
                 la descripcion es requerida.
@@ -278,3 +278,7 @@
     </div>
   </mat-tab>
 </mat-tab-group>
+
+<div *ngIf="!load" class="spinner-border text-primary" role="status">
+  <span class="sr-only">Cargando...</span>
+</div>
