@@ -9,3 +9,15 @@ table {
   align-items: center;
   background-color: #1c1c1c;
 }
+
+.alert-danger {
+  color: red;
+  font-size: 20px;
+  background: transparent;
+  border-color: #f5c6cb;
+  margin-bottom: 5px;
+}
+
+.container-error-message {
+  padding: 3px;
+}

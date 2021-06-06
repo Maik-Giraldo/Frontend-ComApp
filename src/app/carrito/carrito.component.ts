@@ -25,6 +25,9 @@ export class CarritoComponent implements OnInit {
   load: boolean = true;
   form: FormGroup;
 
+  private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
   constructor(
     private menuService: MenuService,
     private carritoService: CarritoService,
@@ -32,6 +35,11 @@ export class CarritoComponent implements OnInit {
     public auth: AuthService,
     private fb: FormBuilder,
   ) { }
+
+  get nombre() { return this.form.get('nombre'); }
+  get documento() { return this.form.get('documento'); }
+  get telefono() { return this.form.get('telefono'); }
+  get correo() { return this.form.get('correo'); }
 
   ngOnInit(): void {
 
@@ -46,8 +54,8 @@ export class CarritoComponent implements OnInit {
     this.form = this.fb.group({
       nombre: ['', [Validators.required]],
       documento: ['', [Validators.required]],
-      telefono: ['', Validators.required],
-      correo: ['', Validators.required],
+      telefono: ['', [Validators.required]],
+      correo: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     });
   }
 
@@ -163,6 +171,10 @@ export class CarritoComponent implements OnInit {
 
   abrirForm(){
     this.formCliente = true
+  }
+
+  cerrarForm(){
+    this.formCliente = false
   }
 }
 
