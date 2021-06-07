@@ -161,7 +161,7 @@
         <tbody *ngFor="let date of pedidos  | filterId :filtro_valor ">
           <tr *ngIf="date.estado == 'rechazado'">
             <td>{{date.id_pedido}}</td>
-            <td>{{date.fechaHora}}</td>
+            <td>{{date.fechaHora | date:'medium'}}</td>
             <td>{{date.id_mesa}}</td>
             <td>{{date.estado}}</td>
             <td>
