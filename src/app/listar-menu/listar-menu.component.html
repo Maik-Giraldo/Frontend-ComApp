@@ -1,6 +1,9 @@
 <app-navbar style="display: none;"></app-navbar>
+
+<div style="background: inherit;">
+
 <div class="div_b_c">
-  <a [routerLink]="['/carrito']"  style="text-decoration:none"><button mat-button matBadge="{{cont}}" matBadgeColor="accent" type="button" class="btn_carrito" >Carrito<a *ngIf="cont != 0"  style="text-decoration:none"></a><a *ngIf="cont == 0 || cont == null"  style="text-decoration:none"></a></button></a>
+  <a [routerLink]="['/carrito']"  style="text-decoration:none"><button mat-raised-button color="primary" matBadge="{{cont}}" matBadgeColor="accent" type="button"  >Carrito<a *ngIf="cont != 0"  style="text-decoration:none"></a><a *ngIf="cont == 0 || cont == null"  style="text-decoration:none"></a></button></a>
 </div>
 
 <div class="tab_cat">
@@ -11,7 +14,7 @@
   <mat-tab mat label="Entradas" >
     <div class="div_listar">
       <div *ngFor = "let menu of menuArray" >
-        <mat-card class="example-card" *ngIf = "menu.tipo == 1">
+        <mat-card class="example-card" style="border-radius: 10px;" *ngIf = "menu.tipo == 1">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title><h5 class="card-title">{{menu.platillo}}</h5></mat-card-title>
@@ -211,8 +214,5 @@
     </div>
   </mat-tab>
 </mat-tab-group>
-
-
 </div>
-
-
+</div>

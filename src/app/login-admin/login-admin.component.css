@@ -1,17 +1,9 @@
-body{
-  top: 0px;
-  font-size: 25px;
-  font-weight: bold;
-  background-color: #1c1c1c;
-  color: white;
-  height: 95vh;
-}
+
 
 .link { color: #f3b324; }
 a{ color: #f3b324;}
 
 .example-form{
-  color: white;
   font-weight: bold;
 }
 

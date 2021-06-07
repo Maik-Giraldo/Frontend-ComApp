@@ -1,48 +1,4 @@
-/*
-#navbar{
-  background-color: rgb(24, 23, 23);
-  font-size: 30px;
-  font-weight: bold;
-  height: 100px;
-}
+
 .botonnav{
-
-    background-color:#f3b324;
-    border-radius:10px;
-    border:1px solid #f3b324;
-    width: 200px;
-    display:inline-block;
-    cursor:pointer;
-    color:#000000;
-    font-family:Arial;
-    font-size:17px;
-    padding:7px ;
-    text-decoration:none;
-
-
-}
-.botonnav:hover {
-	background:linear-gradient(to bottom, #c5901d 5%, #f3b324 100%);
-	background-color:#f3b324;
-}
-.botonnav:active {
-	position:relative;
-	top:1px;
-}
-
-.navbar-nav{
-  margin-left: 18%;
-  margin-right: auto;
-  text-align:center;
-  padding: 0px;
-  width: 60%;
-
-
-
-}
- #endregion */
-.botonnav{
-  background-color: #1c1c1c;
-  color: #f3b324;
   font-size: 20px;
 }

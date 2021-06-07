@@ -1,33 +1,24 @@
-
-
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="login-wrap py-5">
 <!-- <div *ngIf="load" class="divdatos"> -->
-
-  <div class="card text-center" style=" background-color: #1c1c1c;font-size: 35px;">
-    <div class="card-header">
-      Codigo QR
-    </div>
-    <div class="card-body" style="background-color: #1c1c1c; color: aliceblue;">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()" >
-
-        <div class="form-group">
-            <label for="exampleInputEmail1">N° de mesa</label>
-            <input formControlName="id_mesa" type="text" class="form-control">
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Nombre</label>
-            <input formControlName="nombre" type="text" class="form-control" >
-        </div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+  <div class="form-group">
+      <label for="exampleInputEmail1">N° de mesa</label>
+      <input formControlName="id_mesa" type="text" class="form-control">
+  </div>
   <br>
-        <button type="submit" class="btn btn-warning" style="font-weight: bold;">Generar Código</button>
-    </form>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Nombre</label>
+    <input formControlName="nombre" type="text" class="form-control" >
+  </div>
+  <br>
+    <button type="submit" class="btn btn-warning" style="font-weight: bold;">Generar Código</button>
+</form>
     <br>
     <img [src]="image">
-    </div>
-    <div class="card-footer text-muted" style="height: 50px;">
-      <!-- </div> -->
-
-    </div>
-  </div>
+</div>
+</div>
+</div>
 
   <h5 *ngIf="cargando">Cargando...</h5>

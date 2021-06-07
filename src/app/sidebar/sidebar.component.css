@@ -1,6 +1,5 @@
 .example-container {
   min-height: 100vh;
-  background-color: #1c1c1c;
 }
 
 .example-sidenav-content {
@@ -11,13 +10,7 @@
 }
 
 .example-sidenav {
-  background-color: #1c1c1c;
   padding: 20px;
-
-}
-
-.boton_sidebar{
-  background-color: #f3b324;
 }
 
 .div_listar{
