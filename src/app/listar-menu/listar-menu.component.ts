@@ -36,7 +36,6 @@ export class ListarMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMenu()
-    this.carrito.isIdmesa().subscribe(status => !status ? this.getMenu() : true)
   }
 
   getMenu(){

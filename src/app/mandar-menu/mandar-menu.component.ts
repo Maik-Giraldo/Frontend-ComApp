@@ -97,16 +97,6 @@ export class MandarMenuComponent implements OnInit {
           })
         }
       })
-    }
-    else{
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'La peticion no fue enviada',
-        footer: 'rectifique los datos del formulario',
-        showConfirmButton: false,
-        timer: 2000
-      })
     }else if(!this.imgMostrar){
       Swal.fire({
         position: 'center',
