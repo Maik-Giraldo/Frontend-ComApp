@@ -64,8 +64,7 @@ export class MandarMenuComponent implements OnInit {
   }
 
   guardar(){
-    this.load = false;
-    if (this.form.valid && this.imgMostrar.length > 1){
+    if (this.form.valid && this.imgMostrar){
       let infoMenu: Menu = {
         id_platillo: this.form.value.id_platillo,
         platillo: this.form.value.nombre_platillo,
@@ -73,6 +72,7 @@ export class MandarMenuComponent implements OnInit {
         precio_unitario: this.form.value.precio_unitario,
         tipo: this.form.value.tipo_platillo,
         img:this.imgMostrar}
+        this.load = false;
       this.menuService.mandarMenu(infoMenu)
       .subscribe(data=>{
         this.load = true;
@@ -83,6 +83,14 @@ export class MandarMenuComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
+      })
+    }else if(!this.imgMostrar){
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'La imagen es requerida',
+        showConfirmButton: false,
+        timer: 1500
       })
     }
   }

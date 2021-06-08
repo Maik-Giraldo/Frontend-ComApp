@@ -50,6 +50,13 @@ export class CarritoComponent implements OnInit {
       this.carritoArray.forEach(carrito => this.precio_total += Number(carrito.precio_unitario))
     },
     error =>console.log(error));
+    setInterval(() => { 
+      this.menuService.getCarrito()
+    .subscribe(data=>{
+      this.carritoArray = data.data;
+    },
+    error =>console.log(error));
+    },5000)
 
     this.form = this.fb.group({
       nombre: ['', [Validators.required]],

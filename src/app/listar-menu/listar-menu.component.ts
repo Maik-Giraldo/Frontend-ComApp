@@ -6,6 +6,7 @@ import { MenuService } from '../services/menu.service';
 import { CarritoService } from '../services/carrito.service';
 import { Menu, Send, Contador } from '../models/menu';
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { CarritoGuardService } from '../services/carrito-guard.service';
 
 
 
@@ -30,11 +31,15 @@ export class ListarMenuComponent implements OnInit {
     private carritoService: CarritoService,
     private route: Router,
     public snackBar: MatSnackBar,
-
+    private carrito : CarritoGuardService
   ) { }
 
   ngOnInit(): void {
+    this.getMenu()
+    this.carrito.isIdmesa().subscribe(status => !status ? this.getMenu() : true)
+  }
 
+  getMenu(){
     this.menuService.getMenu()
     .subscribe(data=>{
       this.menuArray = data.data;
