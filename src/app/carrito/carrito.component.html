@@ -16,7 +16,7 @@
           <td>{{menu.descripcion}}</td>
           <td>$ {{menu.precio_unitario | puntoMil}}</td>
           <td>{{menu.id_mesa}}</td>
-          <td><button type="button" class="pedir btn btn-danger" style="float: center;" (click)="eliminar(menu)">Eliminar</button></td>
+          <td><button [disabled]="validacion" type="button" class="pedir btn btn-danger" style="float: center;" (click)="eliminar(menu)">Eliminar</button></td>
         </tr>
         <tr >
           <td></td>
@@ -28,7 +28,9 @@
       </tbody>
     </table>
 
-
+    <div *ngIf="!load " class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+    </div>
 
 
 <div *ngIf="formCliente" class="card text-center">
@@ -75,7 +77,7 @@
               el correo es requerido.
             </div>
           <div class="container-error-message" *ngIf="(correo.dirty || correo.touched) && correo.invalid && correo.errors.pattern">
-            ingrese un correo válido. 
+            ingrese un correo válido.
           </div>
         </div>
         </div>
@@ -91,10 +93,8 @@
 </div>
 
 <div *ngIf="!formCliente" class="btn-group" role="group" aria-label="Basic mixed styles example" style="display: flex;">
-  <button mat-button (click)="abrirForm()" type="button" class="btn btn-success" style="font-size: xx-large; padding: 1rem;">Aceptar</button>
-  <button (click)="rechazar()" [disabled]="!load" type="button" class="btn btn-danger" style="font-size: xx-large; padding: 1rem;">Rechazar</button>
+  <button mat-button (click)="abrirForm()" [disabled]="validacion"  type="button" class="btn btn-success" style="font-size: xx-large; padding: 1rem;">Aceptar</button>
+  <button (click)="rechazar()" [disabled]="validacion" type="button" class="btn btn-danger" style="font-size: xx-large; padding: 1rem;">Rechazar</button>
 </div>
 
-<div *ngIf="!load" class="spinner-border text-primary" role="status">
-  <span class="sr-only">Cargando...</span>
-</div>
+

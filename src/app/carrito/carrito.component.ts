@@ -23,7 +23,9 @@ export class CarritoComponent implements OnInit {
   formCliente: boolean = false;
   id_mesa:number
   load: boolean = true;
+  validacion: boolean = true;
   form: FormGroup;
+
 
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -47,6 +49,14 @@ export class CarritoComponent implements OnInit {
     .subscribe(data=>{
 
       this.carritoArray = data.data;
+
+
+
+      if (this.carritoArray.length !=0){
+
+        this.validacion = false;
+        }
+
       this.carritoArray.forEach(carrito => this.precio_total += Number(carrito.precio_unitario))
     },
     error =>console.log(error));
@@ -82,6 +92,7 @@ export class CarritoComponent implements OnInit {
   rechazar(){
 
     this.load = false;
+    this.validacion = true;
     this.formCliente = false
 
     let sendid  : Sendid = {
@@ -98,9 +109,11 @@ export class CarritoComponent implements OnInit {
       if(data.transaccion){
 
       }
-
       this.load = true;
+
+
       Swal.fire({
+        toast: true,
         icon: 'success',
         title: 'pedido rechazado correctamente',
         showConfirmButton: true,
@@ -108,6 +121,7 @@ export class CarritoComponent implements OnInit {
       }).then((result) => {
         //Read more about isConfirmed, isDenied below
         if (result.isConfirmed) {
+
           this.route.navigate( ['/'])
         }
       })
@@ -119,6 +133,7 @@ export class CarritoComponent implements OnInit {
 
   aceptar(){
     this.load = false;
+    this.validacion = true;
 
     let sendid  : Sendid = {
 
@@ -133,6 +148,7 @@ export class CarritoComponent implements OnInit {
       this.load = true;
 
       Swal.fire({
+        toast: true,
         icon: 'success',
         title: 'pedido aceptado correctamente',
         showConfirmButton: true,
@@ -141,6 +157,7 @@ export class CarritoComponent implements OnInit {
         //Read more about isConfirmed, isDenied below
         if (result.isConfirmed) {
           localStorage.removeItem('id_mesa');
+
           this.route.navigate( ['/'])
         }
       })
