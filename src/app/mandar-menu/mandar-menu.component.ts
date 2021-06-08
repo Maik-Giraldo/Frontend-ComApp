@@ -76,13 +76,36 @@ export class MandarMenuComponent implements OnInit {
       this.menuService.mandarMenu(infoMenu)
       .subscribe(data=>{
         this.load = true;
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Peticion enviada correctamente',
-          showConfirmButton: false,
-          timer: 1500
-        })
+        if(data.transaccion == true){
+          console.log("entre")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Peticion enviada correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else{
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'La peticion no fue enviada',
+            footer: 'rectifique los datos del formulario',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+      })
+    }
+    else{
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'La peticion no fue enviada',
+        footer: 'rectifique los datos del formulario',
+        showConfirmButton: false,
+        timer: 2000
       })
     }
   }
@@ -93,14 +116,26 @@ export class MandarMenuComponent implements OnInit {
       this.menuService.peticionEditar(this.selectedMenu)
       .subscribe(data=>{
         this.load = true;
-        console.log(data)
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Peticion enviada correctamente',
-          showConfirmButton: false,
-          timer: 1500
-        })
+        if(data.transaccion == true){
+          console.log("entre")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Peticion enviada correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else{
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'La peticion no fue enviada',
+            footer: 'rectifique los datos del formulario',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
       })
     }
   }
@@ -110,13 +145,24 @@ export class MandarMenuComponent implements OnInit {
     this.menuService.peticionEliminar(lista)
       .subscribe(data=>{
         this.load = true;
-        if(data.transaccion){
+        if(data.transaccion == true){
+          console.log("entre")
           Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'Peticion enviada correctamente',
             showConfirmButton: false,
             timer: 1500
+          })
+        }
+        else{
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'La peticion no fue enviada',
+            footer: 'rectifique los datos del formulario',
+            showConfirmButton: false,
+            timer: 2000
           })
         }
       })
