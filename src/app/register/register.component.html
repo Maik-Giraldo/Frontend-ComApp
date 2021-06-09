@@ -1,86 +1,82 @@
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>ComApp</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Pangolin&display=swap" rel="stylesheet">
 
-</head>
-<body>
+<br>
+<div style="font-size: large;">
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="login-wrap py-5">
+          <h3 class="text-center mb-0">Agregar usuario</h3>
+          <br>
 
-    <br>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form">
 
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-6 col-lg-4">
-            <div class="login-wrap py-5">
-              <div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/bg.jpg);"></div>
-              <h3 class="text-center mb-0">Agregar usuario</h3>
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label for="correo" >Correo</mat-label>
+                <input matInput formControlName="correo" type="email" placeholder="User@gmail.com" >
+              </mat-form-field>
 
-              <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
-                <div class="form-group">
-                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                  <label for="correo">Correo</label>
-                  <input formControlName="correo" type="email" class="form-control" placeholder="User@gmail.com" required>
-                  <div class="alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
-                    <div class="container-error-message" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
-                      el correo es requerido.
-                    </div>
-                  <div class="container-error-message" *ngIf="(correo.dirty || correo.touched) && correo.invalid && correo.errors.pattern">
-                    ingrese un correo válido.
-                  </div>
+              <div class="alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                <div class="container-error-message" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                  el correo es requerido.
                 </div>
-                </div>
-                <div class="form-group">
-                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                  <label for="exampleInputPassword1">Contraseña</label>
-                  <input formControlName="password" type="password" class="form-control" placeholder="**********" required>
-                </div>
-                <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
-                  <div class="container-error-message" *ngIf="password.errors.required">
-                    la contraseña es requerida.
-                  </div>
-                  <div class="container-error-message" *ngIf="password.errors.minlength">
-                    la contraseña debe tener mínimo 8 caracteres.
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
-                  <label for="exampleInputPassword1">Confirmar contraseña</label>
-                  <input formControlName="password2" type="password" class="form-control" placeholder="**********" required>
-                  <div class="alert-danger" *ngIf="(password2.dirty || password2.touched)">
-                    <div class="container-error-message" *ngIf="form.value.password2 != form.value.password">
-                      las contraseñas no coinciden.
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1" style="padding-right: 5px;">Rol </label>
-                    <select formControlName="rol">
-                      <option value="1">Gerente</option>
-                      <option value="2">Personal de cocina</option>
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-                  <button type="submit" [disabled]="!(form.valid && (form.value.password == form.value.password2))" class="btn form-control btn-warning rounded submit px-3" id="diniciar" style="font-size: 25px;" >Registrar</button>
-                </div>
-              </form>
+              <div class="container-error-message" *ngIf="(correo.dirty || correo.touched) && correo.invalid && correo.errors.pattern">
+                ingrese un correo válido.
+              </div>
             </div>
-          </div>
+            </div>
+<hr>
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label for="exampleInputPassword1">Contraseña</mat-label>
+                <input matInput formControlName="password" type="password" placeholder="**********" >
+              </mat-form-field>
+
+              <div class="alert-danger"  *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div class="container-error-message"  *ngIf="password.errors.required">
+                  la contraseña es requerida.
+                </div>
+                <div class="container-error-message"  *ngIf="password.errors.minlength">
+                  la contraseña debe tener mínimo 8 caracteres.
+                </div>
+              </div>
+            </div>
+<hr>
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-full-width" >
+                <mat-label for="exampleInputPassword1">Confirmar contraseña</mat-label>
+                <input matInput formControlName="password2" type="password" placeholder="**********" >
+              </mat-form-field>
+              <div class="alert-danger" *ngIf="(password2.dirty || password2.touched)">
+                <div class="container-error-message" *ngIf="form.value.password2 != form.value.password">
+                  las contraseñas no coinciden.
+                </div>
+              </div>
+            </div>
+
+              <div class="form-group">
+                <label for="exampleInputPassword1" style="padding: 10px;">Rol </label>
+                <select formControlName="rol">
+                  <option value="1">Gerente</option>
+                  <option value="2">Personal de cocina</option>
+                </select>
+              </div>
+
+            <div class="form-group">
+              <button type="submit" [disabled]="!(form.valid && (form.value.password == form.value.password2))" class="btn form-control btn-warning rounded submit px-3" id="diniciar" style="font-size: 25px;" >Registrar</button>
+            </div>
+          </form>
+
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+</div>
+
     <div *ngIf="!load" class="spinner-border text-primary" role="status">
       <span class="sr-only">Cargando...</span>
   </div>
-</body>
+

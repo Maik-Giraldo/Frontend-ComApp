@@ -1,9 +1,28 @@
+<div style="font-size: large;">
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="login-wrap py-5">
+        <h3 class="text-center mb-0">Bienvenido</h3>
+        <h5 class="text-center">Inicia sesión con tu correo y contraseña</h5>
+        <br>
 
-<body>
-<br>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form">
+          <div class="form-group">
+
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label for="exampleInputEmail1" >Correo</mat-label>
+              <input matInput formControlName="correo" type="email" placeholder="User@user.com" >
+            </mat-form-field>
+
+            <div class="alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+              <div class="container-error-message" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                el correo es requerido.
+              </div>
+            <div class="container-error-message" *ngIf="(correo.dirty || correo.touched) && correo.invalid && correo.errors.pattern">
+              ingrese un correo válido.
+            </div>
+          </div>
+          </div>
 
         </div>
         <div class="row justify-content-center">
@@ -47,10 +66,16 @@
               </form>
             </div>
           </div>
-        </div>
+<br>
+          <div class="form-group">
+            <button type="submit" [disabled]="!(form.valid)" class="btn form-control btn-warning rounded submit px-3" id="diniciar" style="font-size: 25px;" >Entrar</button>
+          </div>
+        </form>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
     <div *ngIf="!load" class="spinner-border text-primary" role="status">
       <span class="sr-only">Cargando...</span>
     </div>
-</body>
+

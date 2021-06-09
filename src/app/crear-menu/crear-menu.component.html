@@ -1,7 +1,9 @@
 
-<body>
 
-<div class="example-container" >
+
+    <div class="container" style="width: 100%; padding: 15px; text-align: center;">
+      <div class="row">
+          <div class="col-md-12">
   <div class="card-title" style="font-size: x-large;">
     Formulario de acción
   </div>
@@ -22,27 +24,27 @@
     <input type="text" formControlName="tipo_platillo" [(ngModel)]="selectedMenu.tipo" class="form-control" placeholder="Ingrese el tipo de platillo"/>
   </div>
 
-  <div class="form-group">
-    <input type="file" #seleccionar_imagen (change)="log($event)" style="visibility:hidden"/>
-    <button (click)="seleccionar_imagen.click()" type="button" class="btn btn-primary">
-      Seleccionar imagen
-    </button>
-  </div>
-
   <img *ngIf="imgMostrar||selectedMenu.img" [src]="imgMostrar||selectedMenu.img" width="400px" height="300px">
+  <hr>
 
-  <div class="form-group">
-    <button class="btn-danger" style="margin-left: 2px; margin-right: 2px;" (click)="nuevo()">
+  <div class="botones" >
+
+    <button mat-raised-button style=" background-color: gray; width: 150px;" (click)="nuevo()" >
       Limpiar
     </button>
-    <button class="btn-primary" style="margin-left: 2px; margin-right: 2px;" (click)="guardar()">
+    <button mat-raised-button color="warn" style="background-color: green; width: 150px;" (click)="guardar()">
       Guardar
     </button>
-    <button class="btn-info" style="margin-left: 2px; margin-right: 2px;" (click)="editar()">
+    <button mat-raised-button color="warn" style="background-color: blue; width: 150px;" (click)="editar()">
       Editar
     </button>
-    <button class="btn-dark" style="margin-left: 2px; margin-right: 2px;" (click)="eliminar()">
+    <button mat-raised-button color="warn" style="width: 150px;" (click)="eliminar()">
       Eliminar
+    </button>
+
+    <input type="file" #seleccionar_imagen (change)="log($event)" style="visibility:hidden"/>
+    <button mat-raised-button  style="background-color: rgb(0, 184, 184); width: 150px; " (click)="seleccionar_imagen.click()" type="button">
+      Seleccionar imagen
     </button>
   </div>
 
@@ -52,9 +54,11 @@
 
 </form>
 </div>
-
-
-      <table class="table table-light">
+</div>
+</div>
+<br>
+<!-- tabla antigua -->
+      <table >
         <thead>
           <th scope="col">Id</th>
           <th scope="col">Platillo</th>
@@ -63,6 +67,7 @@
           <th scope="col">Tipo</th>
           <th scope="col">Imagen</th>
         </thead>
+
         <tbody>
           <tr *ngFor = "let menu of menuArray"
           (click)="seleccionar(menu)"
@@ -73,10 +78,84 @@
             <td>$ {{menu.precio_unitario | puntoMil}}</td>
             <td>{{menu.tipo}}</td>
             <td><img [src]="menu.img" width="40px" height="40px"></td>
+            <hr>
           </tr>
         </tbody>
       </table>
 
-</body>
+
+      <!-- #nueva tabla -->
+<div class="example-container mat-elevation-z8">
+  <table mat-table [dataSource]="menuArray">
+
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef > ID. </th>
+      <td mat-cell *matCellDef="let menu"> {{menu.id_platillo}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="platillo">
+      <th mat-header-cell *matHeaderCellDef> Platillo </th>
+      <td mat-cell *matCellDef="let menu"> {{menu.platillo}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+      <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let menu">$ {{menu.precio_unitario | puntoMil}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef> Tipo </th>
+      <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="imagen">
+      <th mat-header-cell *matHeaderCellDef> Imagen </th>
+      <td mat-cell *matCellDef="let menu"><img [src]="menu.img" width="40px" height="40px"></td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> edit </th>
+      <td mat-cell *matCellDef="let menu"></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+    <tr mat-row
+
+    (click)="clickedRows.add(row)"
+    [class.demo-row-is-clicked]="clickedRows.has(row)"
+
+    *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+<div>
+  <h3>
+    Click Log
+  </h3>
+</div>
+
+<div *ngIf="!clickedRows.size">
+  Clicked rows will be logged here
+</div>
+
+<ul>
+  <li *ngFor="let clickedRow of clickedRows">
+    Clicked on {{clickedRow.name}}
+  </li>
+</ul>
 
 

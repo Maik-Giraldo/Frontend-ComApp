@@ -1,41 +1,40 @@
 <br>
-  <div  *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
-  <button type="button" mat-button class="" class="botonnav" [routerLink]= "['/']">Menú</button>
+  <div  *ngIf="!(auth.isLoggedIn() | async)" >
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/']">Menú</button>
   </div>
 <br>
-    <div  *ngIf="(auth.isstaff() | async)" class="nav-item">
-    <button type="button" mat-button class="botonnav" [routerLink]= "['/facturas']">Pedidos</button>
-    </div>
+  <div  *ngIf="(auth.isstaff() | async)">
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/facturas']">Pedidos</button>
+  </div>
 <br>
-    <div  *ngIf="(auth.isstaff() | async)" class="nav-item">
-    <button type="button" mat-button class="botonnav" [routerLink]= "['/facturasClientes']">Facturas</button>
-    </div>
+  <div  *ngIf="(auth.isstaff() | async)">
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/facturasClientes']">Facturas</button>
+  </div>
 <br>
-    <div  *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
-    <button type="button" mat-button  class="botonnav" [routerLink]= "['/login']">Iniciar Sesión </button>
-    </div>
+  <div  *ngIf="!(auth.isLoggedIn() | async)">
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/login']">Iniciar Sesión </button>
+  </div>
 <br>
-    <div  *ngIf="(auth.isadmin() | async)" class="nav-item">
-    <button type="button" mat-button class="botonnav" [routerLink]= "['/register']">Registrar Roles </button>
-    </div>
+  <div  *ngIf="(auth.isadmin() | async)">
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/register']">Registrar Roles </button>
+  </div>
 <br>
   <!-- <div  *ngIf="!(auth.isLoggedIn() | async)" class="nav-item">
   <button type="button" mat-button class="botonnav" [routerLink]= "['/carrito']">Carrito</button>
   </div> -->
 <br>
-    <div  *ngIf="(auth.isadmin() | async)" class="nav-item">
-    <button type="button" mat-button class="botonnav" [routerLink]= "['/crearMenu']">Crud Menú</button>
-    </div>
+  <div  *ngIf="(auth.isadmin() | async)">
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/crearMenu']">Crud Menú</button>
+  </div>
 <br>
-    <div  *ngIf="(auth.ismanage() | async)" class="nav-item">
-    <button type="button" mat-button class="botonnav" [routerLink]= "['/mandarMenu']">Solicitud de cambio</button>
-    </div>
+  <div  *ngIf="(auth.ismanage() | async)">
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/mandarMenu']">Solicitud de cambio</button>
+  </div>
 <br>
-      <div  *ngIf="(auth.isadmin() | async)" class="nav-item">
-      <button type="button" mat-button class="botonnav" [routerLink]= "['/qrcode']">Generar QR</button>
-      </div>
+  <div  *ngIf="(auth.isadmin() | async)">
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/qrcode']">Generar QR</button>
+  </div>
 <br>
-      <div *ngIf="auth.isLoggedIn() | async" class="nav-item">
-      <button type="button" mat-button class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</button>
-      </div>
-
+  <div *ngIf="auth.isLoggedIn() | async">
+    <button type="button" mat-button color="primary" class="botonnav" [routerLink]= "['/login']" (click)="auth.logout()">Salir</button>
+  </div>

@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
-import * as $ from 'jquery';
+import { Component, HostBinding } from '@angular/core';
+import { OverlayContainer } from '@angular/cdk/overlay';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angularbootstrap';
-  ngOnInit() {
+  title = 'material-switcher'
 
-                //Toggle Click Function
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
+  @HostBinding('class') componentCssClass: any;
+
+  constructor(
+    public overlayContainer: OverlayContainer
+  ) { }
+
+  public onSetTheme(e: string) {
+    this.overlayContainer.getContainerElement().classList.add(e);
+    this.componentCssClass = e;
+  }
+
+  ngOnInit() {
   }
 
 }

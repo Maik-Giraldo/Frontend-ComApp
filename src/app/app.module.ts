@@ -38,6 +38,7 @@ import { SearchComponent } from './search/search.component';
 import { FilterIdPipe } from './pipe/filter-id.pipe';
 import { PuntoMilPipe } from './pipe/punto-mil.pipe';
 import { FacturasComponent } from './facturas/facturas.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -83,6 +84,7 @@ import { FacturasComponent } from './facturas/facturas.component';
     MatTableModule,
     MatTabsModule,
     MatSnackBarModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

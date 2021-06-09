@@ -38,8 +38,10 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+
+
   async onSubmit() {
-    
+
     if(this.form.value.password === this.form.value.password2){
       if (this.form.valid) {
 
@@ -48,13 +50,13 @@ export class RegisterComponent implements OnInit {
           correo: this.form.value.correo,
           password: this.form.value.password,
           rol: this.form.value.rol,
-  
+
         }).subscribe(
-  
+
           (response: any) => {
             console.log(response);
-  
-  
+
+
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -63,9 +65,9 @@ export class RegisterComponent implements OnInit {
               timer: 8000
             })
             window.location.reload();
-  
-  
-  
+
+
+
         },
         (error) => {
           this.load = true;
@@ -77,8 +79,8 @@ export class RegisterComponent implements OnInit {
             footer: ''
           })
         })
-  
-  
+
+
       } else {
         Swal.fire({
           icon: 'error',

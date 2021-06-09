@@ -1,17 +1,9 @@
-body{
-  top: 0px;
-  font-size: 25px;
-  font-weight: bold;
-  background-color: #1c1c1c;
-  color: white;
-  height: 95vh;
-}
+
 
 .link { color: #f3b324; }
 a{ color: #f3b324;}
 
 .example-form{
-  color: white;
   font-weight: bold;
 }
 
@@ -25,4 +17,18 @@ a{ color: #f3b324;}
 
 .container-error-message {
   padding: 3px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-label{
+  font-weight: 500;
 }

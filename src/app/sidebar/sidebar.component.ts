@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  title = 'material-switcher'
   showFiller = false;
 
-  constructor() { }
+  @HostBinding('class') componentCssClass: any;
+
+  constructor(
+    public overlayContainer: OverlayContainer
+  ) { }
+
+  public onSetTheme(e: string) {
+    this.overlayContainer.getContainerElement().classList.add(e);
+    this.componentCssClass = e;
+  }
 
   ngOnInit(): void {
   }
