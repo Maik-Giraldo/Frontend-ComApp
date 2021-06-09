@@ -15,6 +15,7 @@ import {FormControl} from '@angular/forms';
 
 
 export class PersonalCocinaComponent implements OnInit {
+  panelOpenState = false;
   pedidos: PersonalCocina[] = []
   detalle: boolean = false;
   load: boolean = true;
