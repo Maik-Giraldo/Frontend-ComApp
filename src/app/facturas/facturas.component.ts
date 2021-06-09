@@ -4,6 +4,7 @@ import { CarritoService } from '../carrito.service';
 import { PersonalCocina, Pedido, Factura} from '../models/personal-cocina';
 import { MenuService } from '../services/menu.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-facturas',
@@ -11,6 +12,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./facturas.component.css']
 })
 export class FacturasComponent implements OnInit {
+  displayedColumns: string[] = ['id_pedido', 'id_mesa', 'fechaHora', 'precio_total'];
+  panelOpenState = false;
 
   constructor(
     private menuService: MenuService,
@@ -20,6 +23,7 @@ export class FacturasComponent implements OnInit {
 
   factura: Factura[] = []
   ngOnInit(): void {
+
     this.menuService.facturaCliente()
     .subscribe(data=>{
       this.factura = data.data;

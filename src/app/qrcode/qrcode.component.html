@@ -1,19 +1,27 @@
 <div class="container">
   <div class="row justify-content-center">
       <div class="login-wrap py-5">
+        <h3 class="text-center mb-0">Generar codigo Qr</h3>
+        <br>
 <!-- <div *ngIf="load" class="divdatos"> -->
 <form [formGroup]="form" (ngSubmit)="onSubmit()" >
   <div class="form-group">
-      <label for="exampleInputEmail1">N° de mesa</label>
-      <input formControlName="id_mesa" type="text" class="form-control">
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label for="exampleInputEmail1">N° de mesa</mat-label>
+        <input matInput formControlName="id_mesa" type="text" >
+      </mat-form-field>
   </div>
-  <br>
+
   <div class="form-group">
-    <label for="exampleInputPassword1">Nombre</label>
-    <input formControlName="nombre" type="text" class="form-control" >
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label for="exampleInputPassword1">Nombre</mat-label>
+      <input matInput formControlName="nombre" type="text" >
+    </mat-form-field>
   </div>
-  <br>
-    <button type="submit" class="btn btn-warning" style="font-weight: bold;">Generar Código</button>
+
+    <button mat-raised-button color="primary" type="submit" style="width: 100%; font-weight: bold;">Generar Código</button>
+
 </form>
     <br>
     <img [src]="image">

@@ -1,8 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MenuService } from '../services/menu.service';
 import { Menu } from '../models/menu';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+export interface PeriodicElement {
+  id: string;
+  platillo: number;
+  descripcion: number;
+  precio: string;
+  tipo: string;
+  imagen: any;
+  edit: any;
+}
 
 @Component({
   selector: 'app-crear-menu',
@@ -10,6 +20,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./crear-menu.component.css']
 })
 export class CrearMenuComponent implements OnInit {
+
+  displayedColumns: string[] = ['id', 'platillo', 'descripcion', 'precio', 'tipo', 'imagen', 'edit'];
+  clickedRows = new Set<PeriodicElement>();
 
   menuArray: Menu[] = [];
   load: boolean = true;
@@ -46,6 +59,8 @@ export class CrearMenuComponent implements OnInit {
     },
     error =>console.log(error));
   }
+
+
 
   selectedMenu: Menu = new Menu();
 

@@ -1,32 +1,50 @@
 
 <div class="container">
-  <h1 style="color: white;">Pedidos pendientes</h1>
-  <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <app-search (search)="handleSearch($event)"      (tipo)="handleSearch2($event)"            ></app-search>
 
+  <div class="row" *ngFor="let date of pedidos | filterId :filtro_valor ">
+    <div class="col">
+
+      <div class="form-group">
+        <app-search (search)="handleSearch($event)" (tipo)="handleSearch2($event)" ></app-search>
       </div>
+
+      <h1>Pedidos pendientes</h1>
+
       <table class="table table-dark">
 
         <thead>
           <tr>
-            <th>Pedido</th>
-            <th>Fecha/hora</th>
-            <th>Mesa</th>
-            <th>Estado del pedido</th>
+            <th style="margin: auto; text-align: center;">Datos</th>
             <th style="margin: auto; text-align: center;">Información del pedido</th>
             <th style="margin: auto; text-align: center;">Acciones</th>
           </tr>
         </thead>
         <tbody *ngFor="let date of pedidos | filterId :filtro_valor ">
           <tr *ngIf="date.estado == 'pendiente'">
-            <td>{{date.id_pedido}}</td>
-            <td>{{date.fechaHora | date:'medium'}}</td>
-            <td>{{date.id_mesa}}</td>
-            <td>{{date.estado}}</td>
-
             <td>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pedido</th>
+                    <th>Fecha/hora</th>
+                    <th>Mesa</th>
+                    <th>Estado del pedido</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{date.id_pedido}}</td>
+                    <td>{{date.fechaHora | date:'medium'}}</td>
+                    <td>{{date.id_mesa}}</td>
+                    <td>{{date.estado}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </td>
+            <td>
+
               <table>
                 <thead>
                   <th>Id del platillo</th>
@@ -56,6 +74,7 @@
                   </tr>
                 </tbody>
               </table>
+
             </td>
             <td>
               <div class="row">
@@ -68,36 +87,55 @@
           </tr>
         </tbody>
       </table>
+
     </div>
   </div>
 </div>
+
 <div *ngIf="!load" class="spinner-border text-primary" role="status">
   <span class="sr-only">Cargando...</span>
 </div>
+
 <!-- PEDIDOS CONFIRMADOS -->
 
 <div class="container">
-  <h1 style="color: white;">Pedidos confirmados</h1>
+  <h1 >Pedidos confirmados</h1>
   <div class="row">
     <div class="col">
       <table class="table table-dark">
         <thead>
           <tr>
-            <th>Pedido</th>
-            <th>Fecha/hora</th>
-            <th>Mesa</th>
-            <th>Estado del pedido</th>
+            <th style="margin: auto; text-align: center;">Datos</th>
             <th style="margin: auto; text-align: center;">Información del pedido</th>
             <th style="margin: auto; text-align: center;">Acciones</th>
           </tr>
         </thead>
         <tbody *ngFor="let date of pedidos  | filterId :filtro_valor ">
           <tr *ngIf="date.estado == 'confirmado'">
-            <td>{{date.id_pedido}}</td>
-            <td>{{date.fechaHora|date:'medium'}}</td>
-            <td>{{date.id_mesa}}</td>
-            <td>{{date.estado}}</td>
             <td>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pedido</th>
+                    <th>Fecha/hora</th>
+                    <th>Mesa</th>
+                    <th>Estado del pedido</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{date.id_pedido}}</td>
+                    <td>{{date.fechaHora|date:'medium'}}</td>
+                    <td>{{date.id_mesa}}</td>
+                    <td>{{date.estado}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </td>
+            <td>
+
               <table>
                 <thead>
                   <th>Id platillo</th>
@@ -151,19 +189,31 @@
       <table class="table table-dark">
         <thead>
           <tr>
-            <th>Pedido</th>
-            <th>Fecha/hora</th>
-            <th>Mesa</th>
-            <th>Estado del pedido</th>
+            <th style="margin: auto; text-align: center;">Datos</th>
             <th style="margin: auto; text-align: center;">Información del pedido</th>
           </tr>
         </thead>
         <tbody *ngFor="let date of pedidos  | filterId :filtro_valor ">
           <tr *ngIf="date.estado == 'rechazado'">
-            <td>{{date.id_pedido}}</td>
-            <td>{{date.fechaHora}}</td>
-            <td>{{date.id_mesa}}</td>
-            <td>{{date.estado}}</td>
+
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pedido</th>
+                    <th>Fecha/hora</th>
+                    <th>Mesa</th>
+                    <th>Estado del pedido</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <td>{{date.id_pedido}}</td>
+                  <td>{{date.fechaHora}}</td>
+                  <td>{{date.id_mesa}}</td>
+                  <td>{{date.estado}}</td>
+                </tbody>
+              </table>
+            </td>
             <td>
               <table>
                 <thead>
@@ -206,25 +256,39 @@
 <!-- PEDIDOS FINALIZADOS -->
 
 <div class="container">
-  <h1 style="color: white;">Pedidos finalizados</h1>
+  <h1>Pedidos finalizados</h1>
   <div class="row">
     <div class="col">
       <table class="table table-dark">
         <thead>
           <tr>
-            <th>Pedido</th>
-            <th>Fecha/hora</th>
-            <th>Mesa</th>
-            <th>Estado del pedido</th>
+            <th style="margin: auto; text-align: center;">Datos</th>
             <th style="margin: auto; text-align: center;">Información del pedido</th>
           </tr>
         </thead>
         <tbody *ngFor="let date of pedidos | filter:filtro_valor | filterId :filtro_valor">
           <tr *ngIf="date.estado == 'finalizado'">
-            <td>{{date.id_pedido}}</td>
-            <td>{{date.fechaHora  | date:'medium'}}</td>
-            <td>{{date.id_mesa}}</td>
-            <td>{{date.estado}}</td>
+
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pedido</th>
+                    <th>Fecha/hora</th>
+                    <th>Mesa</th>
+                    <th>Estado del pedido</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{date.id_pedido}}</td>
+                    <td>{{date.fechaHora  | date:'medium'}}</td>
+                    <td>{{date.id_mesa}}</td>
+                    <td>{{date.estado}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
             <td>
               <table>
                 <thead>
