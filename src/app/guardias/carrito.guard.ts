@@ -17,7 +17,7 @@ export class CarritoGuard implements CanActivate {
       
     return new Promise<boolean> ((resolve, reject) => {
       this.carrito.isIdmesa().subscribe(
-        status => resolve(status)
+        status => resolve(status) 
       )
     });
   } 

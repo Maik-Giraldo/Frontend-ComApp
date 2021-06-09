@@ -10,6 +10,7 @@ import { ClientService } from '../services/client.service';
 import { MenuService } from '../services/menu.service';
 import { AuthService } from '../Services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service';
 
 @Component({
   selector: 'app-carrito',
@@ -21,10 +22,10 @@ export class CarritoComponent implements OnInit {
   carritoArray: Carrito[] = [];
   public precio_total: number = 0;
   formCliente: boolean = false;
-  id_mesa:number
   load: boolean = true;
   validacion: boolean = true;
   form: FormGroup;
+  reload : any;
 
 
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -36,6 +37,7 @@ export class CarritoComponent implements OnInit {
     private route: Router,
     public auth: AuthService,
     private fb: FormBuilder,
+    private id_mesa : ExpiracionIdMesaService
   ) { }
 
   get nombre() { return this.form.get('nombre'); }
@@ -44,28 +46,33 @@ export class CarritoComponent implements OnInit {
   get correo() { return this.form.get('correo'); }
 
   ngOnInit(): void {
-
+    
     this.menuService.getCarrito()
     .subscribe(data=>{
 
       this.carritoArray = data.data;
 
-
-
       if (this.carritoArray.length !=0){
-
         this.validacion = false;
         }
 
       this.carritoArray.forEach(carrito => this.precio_total += Number(carrito.precio_unitario))
     },
     error =>console.log(error));
-    setInterval(() => { 
-      this.menuService.getCarrito()
-    .subscribe(data=>{
-      this.carritoArray = data.data;
+    this.reload = setInterval(() => { 
+      try {
+        this.menuService.getCarrito() 
+        .subscribe(data=>{
+        this.carritoArray = data.data;
+        if (this.carritoArray.length !=0){
+        this.validacion = false;
+        }
     },
     error =>console.log(error));
+      }catch (e) {
+
+      }
+      
     },5000)
 
     this.form = this.fb.group({
@@ -77,9 +84,11 @@ export class CarritoComponent implements OnInit {
   }
 
   eliminar(lista: []){
+    const id_mesa = this.id_mesa.detectar();
+    if(id_mesa == -1) return;
     let send : Send = {
       menu : lista,
-      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+      id_mesa
     };
     this.carritoService.eliminarCarrito(send)
       .subscribe(data=>{
@@ -90,6 +99,8 @@ export class CarritoComponent implements OnInit {
   }
 
   rechazar(){
+    const id_mesa = this.id_mesa.detectar();
+    if(id_mesa == -1) return;
 
     this.load = false;
     this.validacion = true;
@@ -97,7 +108,7 @@ export class CarritoComponent implements OnInit {
 
     let sendid  : Sendid = {
 
-      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+      id_mesa
     };
 
     this.carritoService.rechazarPedido(sendid)
@@ -107,7 +118,7 @@ export class CarritoComponent implements OnInit {
 
 
       if(data.transaccion){
-
+        
       }
       this.load = true;
 
@@ -132,12 +143,15 @@ export class CarritoComponent implements OnInit {
 
 
   aceptar(){
+    const id_mesa = this.id_mesa.detectar();
+    if(id_mesa == -1) return;
+    
     this.load = false;
     this.validacion = true;
 
     let sendid  : Sendid = {
 
-      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+      id_mesa
     };
 
     this.carritoService.aceptarPedido(sendid)
@@ -156,6 +170,7 @@ export class CarritoComponent implements OnInit {
       }).then((result) => {
         //Read more about isConfirmed, isDenied below
         if (result.isConfirmed) {
+          clearInterval(this.reload)
           localStorage.removeItem('id_mesa');
 
           this.route.navigate( ['/'])
