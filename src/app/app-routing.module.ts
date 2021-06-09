@@ -15,6 +15,7 @@ import { FacturasComponent } from './facturas/facturas.component';
 import { ManagerGuard } from './guardias/manager.guard';
 import { RegisterComponent } from './register/register.component';
 import { StaffGuard } from './guardias/staff.guard';
+import { CarritoGuard } from './guardias/carrito.guard';
 
 
 
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path: 'editarMenu', component: CrearMenuComponent, canActivate: [AllGuard] },
   {path: 'eliminarMenu', component: CrearMenuComponent, canActivate: [AllGuard]},
   {path: 'mandarMenu', component: MandarMenuComponent,  canActivate: [ManagerGuard]},
-  {path: 'carrito', component: CarritoComponent},
+  {path: 'carrito', component: CarritoComponent, canActivate: [CarritoGuard]},
   {path: 'facturas', component: PersonalCocinaComponent,canActivate: [StaffGuard]},
   {path: 'facturasClientes', component: FacturasComponent,canActivate: [StaffGuard]},
   {path: 'lectura/:id_mesa', component: LecturaComponent}

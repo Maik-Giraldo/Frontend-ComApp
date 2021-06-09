@@ -27,7 +27,7 @@ export class LoginAdminComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private client: ClientService,
-    public auth: AuthService) { }
+    public auth: AuthService) { } 
 
     get correo() { return this.form.get('correo'); }
     get password() { return this.form.get('password'); }

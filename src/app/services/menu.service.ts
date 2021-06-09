@@ -4,17 +4,19 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Menu } from '../models/menu';
 import { PersonalCocina } from '../models/personal-cocina';
+import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private id_mesa : ExpiracionIdMesaService) {
 
   }
   getCarrito():Observable<any>{
-    let id_mesa : number = parseInt(localStorage.getItem('id_mesa'));
+    const id_mesa = this.id_mesa.detectar();
+    if(id_mesa == -1) return;
     let config: any = {
       responseType: "json"
     }

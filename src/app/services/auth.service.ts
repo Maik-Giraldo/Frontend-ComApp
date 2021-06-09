@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { RouterLinkActive } from '@angular/router';
 import { BehaviorSubject, Observable } from "rxjs";
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -10,15 +10,11 @@ export class AuthService {
 
   isLogin = new BehaviorSubject<boolean>(this.checkToken());
 
-
-
   checkmanager = new BehaviorSubject<boolean>(this.checkrol())
 
   checkadmin= new BehaviorSubject<boolean>(this.checkrol())
 
   checkstaff= new BehaviorSubject<boolean>(this.checkrol())
-
-
 
   valida:string
 
@@ -30,7 +26,7 @@ export class AuthService {
     return !!localStorage.getItem('rol')
   }
 
-
+  constructor(private router: Router){}
 
 
   login(token:string) : void {
@@ -56,10 +52,6 @@ export class AuthService {
     localStorage.setItem('rol', rol);
     this.checkstaff.next(true);
   }
-
-
-
-
 
   validate(): void {
     this.valida = (localStorage.getItem('rol'));

@@ -59,7 +59,7 @@ export class PersonalCocinaComponent implements OnInit {
       console.log(this.pedidos)
     },
     error =>console.log(error));
-    setInterval(() => {
+    setInterval(() => { 
       this.menuService.getFaturas()
     .subscribe(data=>{
       this.pedidos = data.data;
