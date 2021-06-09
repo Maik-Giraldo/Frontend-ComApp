@@ -7,6 +7,15 @@ import { Router } from '@angular/router';
 })
 export class CarritoGuardService {
 
+  public checkCont() : boolean {
+    return !!localStorage.getItem('cont');
+  }
+
+  changeCont(contador: string): void {
+    localStorage.setItem('cont', JSON.stringify(contador))
+  }
+
+
   private checkmesa() : boolean {
     return !!localStorage.getItem('id_mesa');
   }
@@ -26,7 +35,7 @@ export class CarritoGuardService {
       minute: obtener_fecha.getMinutes()
     }
     const expiracion = new Date(fechaActual.year, fechaActual.month, fechaActual.day, fechaActual.hour, fechaActual.minute + 30)
-    
+
     const mesaTiempo = {
       id_mesa,
       expiracion
