@@ -6,6 +6,8 @@ import { MenuService } from '../services/menu.service';
 import { CarritoService } from '../services/carrito.service';
 import { Menu, Send, Contador } from '../models/menu';
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { CarritoGuardService } from '../services/carrito-guard.service';
+import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service';
 
 
 
@@ -30,11 +32,15 @@ export class ListarMenuComponent implements OnInit {
     private carritoService: CarritoService,
     private route: Router,
     public snackBar: MatSnackBar,
-
+    private carrito : CarritoGuardService,
+    private id_mesa: ExpiracionIdMesaService
   ) { }
 
   ngOnInit(): void {
+    this.getMenu()
+  }
 
+  getMenu(){
     this.menuService.getMenu()
     .subscribe(data=>{
       this.menuArray = data.data;
@@ -49,10 +55,12 @@ export class ListarMenuComponent implements OnInit {
   }
 
   guardar(lista: []){
+    const id_mesa = this.id_mesa.detectar();
+    if(id_mesa == -1) return;
     var contador1;
     let send : Send = {
       menu : lista,
-      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+      id_mesa
     };
 
     this.carritoService.agregarCarrito(send)
@@ -65,9 +73,11 @@ export class ListarMenuComponent implements OnInit {
   }
 
   eliminar(lista: []){
+    const id_mesa = this.id_mesa.detectar();
+    if(id_mesa == -1) return;
     let send : Send = {
       menu : lista,
-      id_mesa : parseInt(localStorage.getItem('id_mesa')),
+      id_mesa
     };
     this.carritoService.eliminarCarrito(send)
       .subscribe(data=>{

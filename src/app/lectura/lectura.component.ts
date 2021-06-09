@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { CarritoGuardService } from '../services/carrito-guard.service';
 
 @Component({
   selector: 'app-lectura',
@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class LecturaComponent implements OnInit {
 
   constructor(
-    private router: Router, private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute, 
+    private carrito1 : CarritoGuardService
   ) { }
 
   private id_mesa = '';
@@ -18,9 +19,7 @@ export class LecturaComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id_mesa = params.get('id_mesa');
-      localStorage.setItem('id_mesa', this.id_mesa.toString());
-      this.router.navigate(['/']);
-
+      this.carrito1.changeIdmesa( this.id_mesa.toString())
     });
   }
 
