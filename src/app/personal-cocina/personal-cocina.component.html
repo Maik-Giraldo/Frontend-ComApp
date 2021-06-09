@@ -1,17 +1,12 @@
 
 <div class="container">
-
-  <div class="row" *ngFor="let date of pedidos | filterId :filtro_valor ">
+  <div class="form-group">
+    <app-search (search)="handleSearch($event)" (tipo)="handleSearch2($event)" ></app-search>
+  </div>
+  <h1 >Pedidos pendientes</h1>
+  <div class="row">
     <div class="col">
-
-      <div class="form-group">
-        <app-search (search)="handleSearch($event)" (tipo)="handleSearch2($event)" ></app-search>
-      </div>
-
-      <h1>Pedidos pendientes</h1>
-
       <table class="table table-dark">
-
         <thead>
           <tr>
             <th style="margin: auto; text-align: center;">Datos</th>
@@ -19,7 +14,7 @@
             <th style="margin: auto; text-align: center;">Acciones</th>
           </tr>
         </thead>
-        <tbody *ngFor="let date of pedidos | filterId :filtro_valor ">
+        <tbody *ngFor="let date of pedidos  | filterId :filtro_valor ">
           <tr *ngIf="date.estado == 'pendiente'">
             <td>
 
@@ -35,19 +30,17 @@
                 <tbody>
                   <tr>
                     <td>{{date.id_pedido}}</td>
-                    <td>{{date.fechaHora | date:'medium'}}</td>
+                    <td>{{date.fechaHora|date:'medium'}}</td>
                     <td>{{date.id_mesa}}</td>
                     <td>{{date.estado}}</td>
                   </tr>
                 </tbody>
               </table>
-
             </td>
             <td>
-
               <table>
                 <thead>
-                  <th>Id del platillo</th>
+                  <th>Id platillo</th>
                   <th>Cantidad por unidad</th>
                   <th style="margin: auto; text-align: center;">Información del platillo</th>
                 </thead>
@@ -74,7 +67,6 @@
                   </tr>
                 </tbody>
               </table>
-
             </td>
             <td>
               <div class="row">
@@ -87,11 +79,9 @@
           </tr>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>
-
 <div *ngIf="!load" class="spinner-border text-primary" role="status">
   <span class="sr-only">Cargando...</span>
 </div>
