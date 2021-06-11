@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
 
 
             Swal.fire({
-              position: 'top-end',
+              position: 'center',
               icon: 'success',
               title: 'Registro correcto',
               showConfirmButton: false,
@@ -71,7 +71,6 @@ export class RegisterComponent implements OnInit {
         },
         (error) => {
           this.load = true;
-          console.log("error del usuario", error.status);
           Swal.fire({
             icon: 'error',
             title: 'Oops...',

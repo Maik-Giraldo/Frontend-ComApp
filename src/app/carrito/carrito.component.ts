@@ -124,7 +124,7 @@ export class CarritoComponent implements OnInit {
       Swal.fire({
         toast: true,
         icon: 'success',
-        title: 'pedido rechazado correctamente',
+        title: 'Has cancelado tu pedido correctamente',
         showConfirmButton: true,
         confirmButtonText: `Ok`
       }).then((result) => {
@@ -163,7 +163,8 @@ export class CarritoComponent implements OnInit {
       Swal.fire({
         toast: true,
         icon: 'success',
-        title: 'pedido aceptado correctamente',
+        title: 'Pedido aceptado correctamemte, por favor, estar atento al correo para visualizar el estado de su pedido',
+        footer: 'Si desea realizar otro pedido, escanee el código nuevamente',
         showConfirmButton: true,
         confirmButtonText: `Ok`
       }).then((result) => {
@@ -182,9 +183,7 @@ export class CarritoComponent implements OnInit {
   }
 
   aceptarForm(){
-
-
-
+    
     let cliente  : Cliente = {
 
       nombre : this.form.value.nombre,
@@ -208,6 +207,13 @@ export class CarritoComponent implements OnInit {
   }
 
   abrirForm(){
+    Swal.fire({
+      toast: true,
+      icon: 'warning',
+      title: 'Por favor solo una persona aceptar el pedido',
+      showConfirmButton: true,
+      confirmButtonText: `Ok`
+    })
     this.formCliente = true
   }
 

@@ -77,11 +77,10 @@ export class MandarMenuComponent implements OnInit {
       .subscribe(data=>{
         this.load = true;
         if(data.transaccion == true){
-          console.log("entre")
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Peticion enviada correctamente',
+            title: 'Petición enviada correctamente',
             showConfirmButton: false,
             timer: 1500
           })
@@ -90,8 +89,8 @@ export class MandarMenuComponent implements OnInit {
           Swal.fire({
             position: 'center',
             icon: 'error',
-            title: 'La peticion no fue enviada',
-            footer: 'rectifique los datos del formulario',
+            title: 'La petición no fue enviada',
+            footer: 'Rectifique los datos del formulario',
             showConfirmButton: false,
             timer: 2000
           })
@@ -119,7 +118,7 @@ export class MandarMenuComponent implements OnInit {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Peticion enviada correctamente',
+            title: 'Petición enviada correctamente',
             showConfirmButton: false,
             timer: 1500
           })
@@ -128,8 +127,8 @@ export class MandarMenuComponent implements OnInit {
           Swal.fire({
             position: 'center',
             icon: 'error',
-            title: 'La peticion no fue enviada',
-            footer: 'rectifique los datos del formulario',
+            title: 'La petición no fue enviada',
+            footer: 'Rectifique los datos del formulario',
             showConfirmButton: false,
             timer: 2000
           })
@@ -144,11 +143,10 @@ export class MandarMenuComponent implements OnInit {
       .subscribe(data=>{
         this.load = true;
         if(data.transaccion == true){
-          console.log("entre")
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Peticion enviada correctamente',
+            title: 'Petición enviada correctamente',
             showConfirmButton: false,
             timer: 1500
           })
@@ -157,8 +155,8 @@ export class MandarMenuComponent implements OnInit {
           Swal.fire({
             position: 'center',
             icon: 'error',
-            title: 'La peticion no fue enviada',
-            footer: 'rectifique los datos del formulario',
+            title: 'La petición no fue enviada',
+            footer: 'Rectifique los datos del formulario',
             showConfirmButton: false,
             timer: 2000
           })
@@ -176,7 +174,6 @@ export class MandarMenuComponent implements OnInit {
           this.reader.readAsDataURL(file.target.files[0]);
           this.reader.onload = () => {
           this.imgMostrar = this.reader.result;
-          // this.imgMostrar = this.reader.result;
         };
         }else{
           Swal.fire({
