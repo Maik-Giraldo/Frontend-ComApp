@@ -14,12 +14,12 @@
           <td>{{menu.platillo}}</td>
           <td>{{menu.descripcion}}</td>
           <td>$ {{menu.precio_unitario | puntoMil}}</td>
-          <td><button mat-button color="warn" [disabled]="validacion" type="button" (click)="eliminar(menu)">Eliminar</button></td>
+          <td><button mat-raised-button color="primary" [disabled]="validacion" type="button" (click)="eliminar(menu)">Eliminar</button></td>
         </tr>
         <tr >
           <td></td>
-          <td><H3>Precio Total:</H3> </td>
-          <td>$ {{precio_total | puntoMil}}</td>
+          <td>Precio Total:</td>
+          <td>${{precio_total | puntoMil}}</td>
           <td></td>
           <td></td>
         </tr>
@@ -51,10 +51,6 @@
         <label for="basic-url" class="form-label">N° Documento</label>
         <div class="input-group mb-3">
           <input type="text" formControlName="documento" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          <!-- <div class="alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
-            <div class="container-error-message" *ngIf="documento.errors.required">
-              el N° de documento es requerido.
-            </div> -->
         </div>
 
       </div>
@@ -62,11 +58,6 @@
         <label for="basic-url" class="form-label">Teléfono</label>
         <div class="input-group mb-3">
           <input type="text" formControlName="telefono" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          <!-- <div class="alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
-            <div class="container-error-message" *ngIf="telefono.errors.required">
-              el numero de telefono es requerido.
-            </div>
-          </div> -->
         </div>
 
         <label for="basic-url" class="form-label">Correo</label>

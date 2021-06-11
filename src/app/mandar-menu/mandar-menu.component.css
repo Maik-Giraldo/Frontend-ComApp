@@ -9,3 +9,9 @@
 .container-error-message {
   padding: 3px;
 }
+
+.example-container {
+  height: 400px;
+  overflow: auto;
+  width: 100%;
+}

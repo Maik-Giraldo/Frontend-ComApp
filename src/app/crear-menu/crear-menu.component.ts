@@ -89,7 +89,7 @@ export class CrearMenuComponent implements OnInit {
         img:this.imgMostrar}
       this.menuService.crearMenu(infoMenu)
       .subscribe(data=>{
-        this.load = true;
+        this.load = true; 
         if(data.transaccion){
           this.menuService.getMenu()
           .subscribe(data=>{

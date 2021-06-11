@@ -57,7 +57,7 @@
 </div>
 <br>
 <!-- tabla antigua -->
-      <table style="border: solid 5px; padding: 20px; width: 100%; text-align: center;">
+      <!-- <table style="border: solid 5px; padding: 20px; width: 100%; text-align: center;">
         <thead>
           <th scope="col">Id</th>
           <th scope="col">Platillo</th>
@@ -80,7 +80,7 @@
             <hr>
           </tr>
         </tbody>
-      </table>
+      </table> -->
 
 
       <!-- #nueva tabla -->
@@ -131,30 +131,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
     <tr mat-row
 
-    (click)="clickedRows.add(row)"
-    [class.demo-row-is-clicked]="clickedRows.has(row)"
-
     *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
-
-
-<div>
-  <h3>
-    Click Log
-  </h3>
-</div>
-
-<div *ngIf="!clickedRows.size">
-  Clicked rows will be logged here
-</div>
-
-<ul>
-  <li *ngFor="let clickedRow of clickedRows">
-    Clicked on {{clickedRow.name}}
-  </li>
-</ul>
-
 

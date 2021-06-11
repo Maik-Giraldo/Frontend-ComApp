@@ -86,7 +86,7 @@
   </mat-tab>
 
   <mat-tab label="Formulario de petición para editar">
-    <div class="container" style="width: 100%;  padding: 15px; text-align: center;">
+    <div class="container" style="width: 100%;  padding: 15px;">
       <div class="row">
           <div class="col-md-12">
             <mat-card-title>Seleccione un platillo del menú y edite sus campos, oprima enviar cuando ya esté listo</mat-card-title>
@@ -155,66 +155,111 @@
         </div>
       </div>
       <hr>
-      <div class="div card">
-          <table class="table table-light">
-            <thead>
-              <th scope="col">Id</th>
-              <th scope="col">Platillo</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Precio</th>
-              <th scope="col">tipo</th>
-              <th scope="col">Imagen</th>
-            </thead>
-            <tbody>
-              <tr *ngFor = "let menu of menuArray"
-              (click)="seleccionar(menu)"
-              [class.active] = "menu == selectedMenu">
-                <td>{{menu.id_platillo}}</td>
-                <td>{{menu.platillo}}</td>
-                <td>{{menu.descripcion}}</td>
-                <td>$ {{menu.precio_unitario | puntoMil}}</td>
-                <td>{{menu.tipo}}</td>
-                <td><img [src]="menu.img" width="40px" height="40px"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      
+      <div class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="menuArray">
+      
+      
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef > ID. </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.id_platillo}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="platillo">
+            <th mat-header-cell *matHeaderCellDef> Platillo </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.platillo}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let menu">$ {{menu.precio_unitario | puntoMil}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="imagen">
+            <th mat-header-cell *matHeaderCellDef> Imagen </th>
+            <td mat-cell *matCellDef="let menu"><img [src]="menu.img" width="40px" height="40px"></td>
+          </ng-container>
+      
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> edit </th>
+            <td mat-cell *matCellDef="let menu"></td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+          <tr mat-row
+      
+          *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
       </div>
-
-  </mat-tab>
 
   <mat-tab label="Formulario de petición para eliminar">
-    <div  >
-      <div class="div card" style=" text-align:center; margin: auto;">
-          <table class="table table-light" >
-            <thead>
-              <th scope="col">Id</th>
-              <th scope="col">Platillo</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Precio</th>
-              <th scope="col">Tipo</th>
-              <th scope="col">Imagen</th>
-              <th scope="col">Acciones</th>
-            </thead>
-            <tbody>
-              <tr *ngFor = "let menu of menuArray"
-              (click)="seleccionar(menu)"
-              [class.active] = "menu == selectedMenu">
-                <td>{{menu.id_platillo}}</td>
-                <td>{{menu.platillo}}</td>
-                <td>{{menu.descripcion}}</td>
-                <td>$ {{menu.precio_unitario | puntoMil}}</td>
-                <td>{{menu.tipo}}</td>
-                <td><img [src]="menu.img" width="40px" height="40px"></td>
-                <td><button mat-button color="warn" type="button" (click)="eliminar(menu)"  >Eliminar</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div style="width: 190vh;  padding: 15px; align-items:center;">
+      <div class="example-container">
+        <table mat-table [dataSource]="menuArray" style="position: relative; left: 150px;">
+      
+      
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef > ID. </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.id_platillo}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="platillo">
+            <th mat-header-cell *matHeaderCellDef> Platillo </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.platillo}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let menu">$ {{menu.precio_unitario | puntoMil}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="imagen">
+            <th mat-header-cell *matHeaderCellDef> Imagen </th>
+            <td mat-cell *matCellDef="let menu"><img [src]="menu.img" width="40px" height="40px"></td>
+          </ng-container>
+      
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let menu"><button mat-button color="warn" type="button" (click)="eliminar(menu)">Eliminar</button></td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+          <tr mat-row
+      
+          *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+   
       </div>
-
-  </mat-tab>
-
   <mat-tab label="Formulario de contacto">
     <div class="container" style="width: 100%; padding: 15px;">
       <div class="row">
@@ -272,7 +317,6 @@
       </div>
     </div>
   </mat-tab>
-</mat-tab-group>
 
 <div *ngIf="!load" class="spinner-border text-primary" role="status">
   <span class="sr-only">Cargando...</span>

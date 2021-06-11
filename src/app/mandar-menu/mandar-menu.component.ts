@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 export class MandarMenuComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'platillo', 'descripcion', 'precio', 'tipo', 'imagen', 'acciones'];
   menuArray: Menu[] = [];
   formAgregar: boolean = false;
   formEditar: boolean = false;
