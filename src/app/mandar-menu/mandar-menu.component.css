@@ -1,21 +1,3 @@
-/* Styles for tab labels */
-.mat-tab-label {
-  min-width: 25px !important;
-  padding: 5px;
-  background-color: transparent;
-  color: white;
-  font-weight: 500;
-}
-
-/* Styles for the active tab label */
-.mat-tab-label.mat-tab-label-active {
-  min-width: 25px !important;
-  padding: 5px;
-  background-color: transparent;
-  color: white;
-  font-weight: 500;
-}
-
 .alert-danger {
   color: red;
   font-size: 20px;

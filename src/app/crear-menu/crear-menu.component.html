@@ -4,9 +4,8 @@
     <div class="container" style="width: 100%; padding: 15px; text-align: center;">
       <div class="row">
           <div class="col-md-12">
-  <div class="card-title" style="font-size: x-large;">
-    Formulario de acción
-  </div>
+  <mat-card-title>Formulario de acción</mat-card-title>
+  <hr>
   <form [formGroup]="form" >
   <div class="form-group">
     <input type="text" formControlName="id_platillo" [(ngModel)]="selectedMenu.id_platillo" class="form-control" placeholder="Ingrese el id del platillo"/>
@@ -58,7 +57,7 @@
 </div>
 <br>
 <!-- tabla antigua -->
-      <table >
+      <table style="border: solid 5px; padding: 20px; width: 100%; text-align: center;">
         <thead>
           <th scope="col">Id</th>
           <th scope="col">Platillo</th>

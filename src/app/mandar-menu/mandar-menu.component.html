@@ -1,11 +1,10 @@
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms" style="width: 100%;">
   <mat-tab label="Formulario de petición para agregar" >
-    <div class="container" style="width: 100%; background-color: #ffffff; padding: 15px; text-align: center;">
+    <div class="container" style="width: 100%; padding: 15px; text-align: center;">
       <div class="row">
           <div class="col-md-12">
-          <div class="card-title">
-            Ingrese un nuevo platillo para enviar la peticion de agregar
-          </div>
+            <mat-card-title>Ingrese un nuevo platillo para enviar la peticion de agregar</mat-card-title>
+<hr>
           <form [formGroup]="form" >
           <div class="form-group" style="width: 100%;">
             <input type="number" formControlName="id_platillo" [(ngModel)]="selectedMenu.id_platillo " class="form-control" placeholder="Ingrese el id del platillo" required />
@@ -55,22 +54,23 @@
                 el tipo es requerido.
               </div>
             </div>
-
+<br>
             <div class="form-group">
               <input type="file" #seleccionar_imagen (change)="log($event)" style="visibility:hidden"/>
-              <button (click)="seleccionar_imagen.click()" type="button" class="btn btn-primary">
+              <button mat-raised-button color="warn" style="background-color: rgb(0, 194, 194); font-size: large; padding: 0.5rem; position: relative; left: 25%;" (click)="seleccionar_imagen.click()" type="button">
                 Seleccionar imagen
               </button>
             </div>
 
-            <img *ngIf="imgMostrar" [src]="imgMostrar" width="400px" height="300px">
+            <img *ngIf="imgMostrar" [src]="imgMostrar" width="400px" height="400px">
 
           </div>
           <div class="form-group">
-            <button [disabled]="!(form.valid)" class="btn-primary" (click)="guardar()">
+            <button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1rem;" [disabled]="!(form.valid)" (click)="guardar()">
               Enviar
             </button>
-            <button class="btn-danger" (click)="nuevo()">
+            <button mat-raised-button></button>
+            <button mat-raised-button color="warn" style="font-size: x-large; padding: 1rem;" (click)="nuevo()">
               Limpiar Formulario
             </button>
           </div>
@@ -86,16 +86,14 @@
   </mat-tab>
 
   <mat-tab label="Formulario de petición para editar">
-    <div class="container" style="width: 100%; background-color: #ffffff; padding: 15px; text-align: center;">
+    <div class="container" style="width: 100%;  padding: 15px; text-align: center;">
       <div class="row">
           <div class="col-md-12">
-          <div class="card-title">
-            Seleccione un platillo del menú y edite sus campos, oprima enviar cuando ya esté listo
-          </div>
+            <mat-card-title>Seleccione un platillo del menú y edite sus campos, oprima enviar cuando ya esté listo</mat-card-title>
+<hr>
           <form [formGroup]="form" >
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Id platillo</h1>
-            <input type="number" formControlName="id_platillo" *ngIf = "formEditar == false" [(ngModel)]="selectedMenu.id_platillo" class="form-control" required/>
+            <input placeholder="Id platillo" type="number" formControlName="id_platillo" *ngIf = "formEditar == false" [(ngModel)]="selectedMenu.id_platillo" class="form-control" required/>
             <div class="alert-danger" *ngIf="id_platillo.invalid && (id_platillo.dirty || id_platillo.touched)">
               <div class="container-error-message" *ngIf="id_platillo.errors.required">
                 el id es requerido.
@@ -103,8 +101,7 @@
             </div>
           </div>
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Platillo</h1>
-            <input type="text" formControlName="nombre_platillo" [(ngModel)]="selectedMenu.platillo" class="form-control" required/>
+            <input placeholder="Platillo" type="text" formControlName="nombre_platillo" [(ngModel)]="selectedMenu.platillo" class="form-control" required/>
             <div class="alert-danger" *ngIf="nombre_platillo.invalid && (nombre_platillo.dirty || nombre_platillo.touched)">
               <div class="container-error-message" *ngIf="nombre_platillo.errors.required">
                 el nombre es requerido.
@@ -112,8 +109,7 @@
             </div>
           </div>
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Descripción</h1>
-            <input type="text" formControlName="descripcion_platillo" [(ngModel)]="selectedMenu.descripcion" class="form-control" required/>
+            <input placeholder="Descripción" type="text" formControlName="descripcion_platillo" [(ngModel)]="selectedMenu.descripcion" class="form-control" required/>
             <div class="alert-danger" *ngIf="descripcion_platillo.invalid && (descripcion_platillo.dirty || descripcion_platillo.touched)">
               <div class="container-error-message" *ngIf="descripcion_platillo.errors.required">
                 el descripcion es requerido.
@@ -121,8 +117,7 @@
             </div>
           </div>
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Precio</h1>
-            <input type="text" formControlName="precio_unitario" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" required/>
+            <input placeholder="Precio" type="text" formControlName="precio_unitario" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" required/>
             <div class="alert-danger" *ngIf="precio_unitario.invalid && (precio_unitario.dirty || precio_unitario.touched)">
               <div class="container-error-message" *ngIf="precio_unitario.errors.required">
                 el precio es requerido.
@@ -130,8 +125,7 @@
             </div>
           </div>
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Tipo</h1>
-            <input type="text" formControlName="tipo_platillo" [(ngModel)]="selectedMenu.tipo" class="form-control" required/>
+            <input placeholder="Tipo" type="text" formControlName="tipo_platillo" [(ngModel)]="selectedMenu.tipo" class="form-control" required/>
             <div class="alert-danger" *ngIf="tipo_platillo.invalid && (tipo_platillo.dirty || tipo_platillo.touched)">
               <div class="container-error-message" *ngIf="tipo_platillo.errors.required">
                 el tipo es requerido.
@@ -141,7 +135,7 @@
 
           <div class="form-group">
             <input type="file" #seleccionar_imagen2 (change)="log2($event)" style="visibility:hidden"/>
-              <button (click)="seleccionar_imagen2.click()" type="button" class="btn btn-primary">
+              <button mat-raised-button color="warn" style="background-color: rgb(0, 194, 194); font-size: large; padding: 0.5rem; position: relative; left: 25%;" (click)="seleccionar_imagen2.click()" type="button" >
                 Seleccionar imagen
               </button>
           </div>
@@ -149,10 +143,11 @@
           <img *ngIf="selectedMenu.img" [src]="selectedMenu.img" width="400" height="300">
 
           <div class="form-group">
-            <button [disabled]="!(form.valid)" class="btn-primary" (click)="editar()">
+            <button mat-raised-button color="warn" style="background-color: blue; font-size: x-large; padding: 1rem;" [disabled]="!(form.valid)" (click)="editar()">
               Enviar
             </button>
-            <button class="btn-danger" (click)="nuevo()">
+            <button mat-raised-button></button>
+            <button mat-raised-button color="warn" style="font-size: x-large; padding: 1rem;" (click)="nuevo()">
               Limpiar Formulario
             </button>
           </div>
@@ -160,7 +155,7 @@
         </div>
       </div>
       <hr>
-      <div class="div card" style=" background-color: #1c1c1c; ">
+      <div class="div card">
           <table class="table table-light">
             <thead>
               <th scope="col">Id</th>
@@ -189,9 +184,9 @@
   </mat-tab>
 
   <mat-tab label="Formulario de petición para eliminar">
-    <div style=" background-color: #1c1c1c; " >
+    <div  >
       <div class="div card" style=" text-align:center; margin: auto;">
-          <table class=" table-light" >
+          <table class="table table-light" >
             <thead>
               <th scope="col">Id</th>
               <th scope="col">Platillo</th>
@@ -211,7 +206,7 @@
                 <td>$ {{menu.precio_unitario | puntoMil}}</td>
                 <td>{{menu.tipo}}</td>
                 <td><img [src]="menu.img" width="40px" height="40px"></td>
-                <td><button type="button" (click)="eliminar(menu)" class="pedir btn btn-primary"  >Eliminar</button></td>
+                <td><button mat-button color="warn" type="button" (click)="eliminar(menu)"  >Eliminar</button></td>
               </tr>
             </tbody>
           </table>
@@ -221,13 +216,13 @@
   </mat-tab>
 
   <mat-tab label="Formulario de contacto">
-    <div class="container" style="width: 100%; background-color: #ffffff; padding: 15px;">
+    <div class="container" style="width: 100%; padding: 15px;">
       <div class="row">
           <div class="col-md-12">
-              <div class="well well-sm">
+              <div class="well well-sm" style="text-align: center;">
                   <form class="form-horizontal" method="post">
                       <fieldset>
-                          <legend class="text-center header">Contáctanos</legend>
+                          <mat-card-title>Contáctanos</mat-card-title>
 
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
@@ -265,7 +260,7 @@
 
                           <div class="form-group">
                               <div class="col-md-12 text-center">
-                                  <button type="submit" class="btn btn-primary btn-lg" style="margin: 30px;">Enviar</button>
+                                  <button mat-raised-button color="primary" style=" font-size: x-large; padding: 1rem;" type="submit" >Enviar</button>
                               </div>
 
                           </div>
