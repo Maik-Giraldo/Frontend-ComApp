@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CarritoService } from '../carrito.service';
 import { PersonalCocina, Pedido, Factura} from '../models/personal-cocina';
 import { MenuService } from '../services/menu.service';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
@@ -17,8 +14,6 @@ export class FacturasComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
-    private carritoService: CarritoService,
-    private route: Router,
   ) { }
 
   factura: Factura[] = []

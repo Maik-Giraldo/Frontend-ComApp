@@ -96,6 +96,7 @@ export class CrearMenuComponent implements OnInit {
             this.menuArray = data.data;
           },error => console.log(error));
           Swal.fire({
+            toast: true,
             icon: 'success',
             title: 'Platillo agregado correctamente',
             showConfirmButton: true,
@@ -105,8 +106,9 @@ export class CrearMenuComponent implements OnInit {
 
         else{
           Swal.fire({
+            toast: true,
             icon: 'error',
-            title: 'error al editar el platillo',
+            title: 'Error al agregar el platillo',
             showConfirmButton: true,
             confirmButtonText: `Ok`
           })
@@ -135,16 +137,18 @@ export class CrearMenuComponent implements OnInit {
             this.menuArray = data.data;
           },error => console.log(error));
           Swal.fire({
+            toast: true,
             icon: 'success',
-            title: 'platillo editado correctamente',
+            title: 'Platillo editado correctamente',
             showConfirmButton: true,
             confirmButtonText: `Ok`
           })
         }
         else{
           Swal.fire({
+            toast: true,
             icon: 'error',
-            title: 'error al editar el platillo',
+            title: 'Error al editar el platillo',
             showConfirmButton: true,
             confirmButtonText: `Ok`
           })
@@ -174,6 +178,7 @@ export class CrearMenuComponent implements OnInit {
             this.menuArray = data.data;
           },error => console.log(error));
           Swal.fire({
+            toast: true,
             icon: 'success',
             title: 'Platillo eliminado satisfactoriamente',
             showConfirmButton: true,
@@ -182,8 +187,9 @@ export class CrearMenuComponent implements OnInit {
         }
         else{
           Swal.fire({
+            toast: true,
             icon: 'error',
-            title: 'error al editar el platillo',
+            title: 'Error al eliminar el platillo',
             showConfirmButton: true,
             confirmButtonText: `Ok`
           })

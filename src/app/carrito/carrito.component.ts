@@ -11,6 +11,7 @@ import { MenuService } from '../services/menu.service';
 import { AuthService } from '../Services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service';
+import { CarritoGuardService } from '../services/carrito-guard.service';
 
 @Component({
   selector: 'app-carrito',
@@ -37,6 +38,7 @@ export class CarritoComponent implements OnInit {
     private route: Router,
     public auth: AuthService,
     private fb: FormBuilder,
+    private carrito : CarritoGuardService,
     private id_mesa : ExpiracionIdMesaService
   ) { }
 
@@ -46,7 +48,7 @@ export class CarritoComponent implements OnInit {
   get correo() { return this.form.get('correo'); }
 
   ngOnInit(): void {
-    
+
     this.menuService.getCarrito()
     .subscribe(data=>{
 
@@ -59,9 +61,9 @@ export class CarritoComponent implements OnInit {
       this.carritoArray.forEach(carrito => this.precio_total += Number(carrito.precio_unitario))
     },
     error =>console.log(error));
-    this.reload = setInterval(() => { 
+    this.reload = setInterval(() => {
       try {
-        this.menuService.getCarrito() 
+        this.menuService.getCarrito()
         .subscribe(data=>{
         this.carritoArray = data.data;
         if (this.carritoArray.length !=0){
@@ -72,7 +74,7 @@ export class CarritoComponent implements OnInit {
       }catch (e) {
 
       }
-      
+
     },5000)
 
     this.form = this.fb.group({
@@ -93,6 +95,8 @@ export class CarritoComponent implements OnInit {
     this.carritoService.eliminarCarrito(send)
       .subscribe(data=>{
         if(data.transaccion){
+          var contador = data.resultados_count;
+          this.carrito.changeCont(contador.toString())
           window.location.reload();
         }
       })
@@ -110,23 +114,17 @@ export class CarritoComponent implements OnInit {
 
       id_mesa
     };
-
     this.carritoService.rechazarPedido(sendid)
-
     .subscribe(data=>{
-
-
-
       if(data.transaccion){
-        
+        var contador = 0
+        this.carrito.changeCont(contador.toString())
       }
       this.load = true;
-
-
       Swal.fire({
         toast: true,
         icon: 'success',
-        title: 'pedido rechazado correctamente',
+        title: 'Has cancelado tu pedido correctamente',
         showConfirmButton: true,
         confirmButtonText: `Ok`
       }).then((result) => {
@@ -145,7 +143,7 @@ export class CarritoComponent implements OnInit {
   aceptar(){
     const id_mesa = this.id_mesa.detectar();
     if(id_mesa == -1) return;
-    
+
     this.load = false;
     this.validacion = true;
 
@@ -158,13 +156,15 @@ export class CarritoComponent implements OnInit {
     .subscribe(
       data=>{
       if(data.transaccion){
+        var contador = 0
+        this.carrito.changeCont(contador.toString())
       }
       this.load = true;
-
       Swal.fire({
         toast: true,
         icon: 'success',
-        title: 'pedido aceptado correctamente',
+        title: 'Pedido aceptado correctamemte, por favor, estar atento al correo para visualizar el estado de su pedido',
+        footer: 'Si desea realizar otro pedido, escanee el código nuevamente',
         showConfirmButton: true,
         confirmButtonText: `Ok`
       }).then((result) => {
@@ -183,9 +183,7 @@ export class CarritoComponent implements OnInit {
   }
 
   aceptarForm(){
-
-
-
+    
     let cliente  : Cliente = {
 
       nombre : this.form.value.nombre,
@@ -209,6 +207,13 @@ export class CarritoComponent implements OnInit {
   }
 
   abrirForm(){
+    Swal.fire({
+      toast: true,
+      icon: 'warning',
+      title: 'Por favor solo una persona aceptar el pedido',
+      showConfirmButton: true,
+      confirmButtonText: `Ok`
+    })
     this.formCliente = true
   }
 

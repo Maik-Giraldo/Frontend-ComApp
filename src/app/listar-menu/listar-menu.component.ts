@@ -11,6 +11,8 @@ import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service'
 
 
 
+
+
 @Component({
   selector: 'app-listar-menu',
   templateUrl: './listar-menu.component.html',
@@ -19,9 +21,9 @@ import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service'
 })
 
 
-
 export class ListarMenuComponent implements OnInit {
-  cont: Number = 0;
+
+  cont: any = JSON.parse(localStorage.getItem('cont'));
   menuArray: Menu[] = [];
   contadorArray: Contador[] = [];
 
@@ -38,6 +40,7 @@ export class ListarMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMenu()
+
   }
 
   getMenu(){
@@ -67,7 +70,10 @@ export class ListarMenuComponent implements OnInit {
       .subscribe(data=>{
         if(data.transaccion){
 
-          this.cont = data.resultados_count;
+          var contador = data.resultados_count;
+          this.carrito.changeCont(contador.toString());
+          this.cont = contador
+
         }
       })
   }
@@ -83,7 +89,9 @@ export class ListarMenuComponent implements OnInit {
       .subscribe(data=>{
         if(data.transaccion){
 
-          this.cont = data.resultados_count;
+          var contador = data.resultados_count;
+          this.carrito.changeCont(contador.toString())
+          this.cont = contador
 
         }
       })
