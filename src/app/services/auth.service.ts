@@ -55,7 +55,6 @@ export class AuthService {
 
   validate(): void {
     this.valida = (localStorage.getItem('rol'));
-    console.log(this.valida);
 
     if(this.valida == '1'){
       this.checkmanager.next(true)

@@ -17,6 +17,7 @@ export class PersonalCocinaComponent implements OnInit {
   pedidos: PersonalCocina[] = []
   detalle: boolean = false;
   load: boolean = true;
+  contador : number = 0;
 
   handleSearch(value: string) {
     console.log(value);
@@ -53,6 +54,12 @@ export class PersonalCocinaComponent implements OnInit {
       this.menuService.getFaturas()
     .subscribe(data=>{
       this.pedidos = data.data;
+      this.contador = this.pedidos.reduce((acc, pedido) => {
+        if(pedido.estado == "pendiente"){
+          acc++;
+        }
+        return acc
+      },0)
     },
     error =>console.log(error));
     },5000)

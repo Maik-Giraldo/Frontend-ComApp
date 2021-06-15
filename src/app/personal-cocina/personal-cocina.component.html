@@ -3,11 +3,11 @@
   <div class="form-group">
     <app-search (search)="handleSearch($event)" (tipo)="handleSearch2($event)" ></app-search>
   </div>
-  <h1 >Pedidos pendientes</h1>
+  <h1 >Pedidos pendientes {{ contador }}</h1>
   <div class="row">
     <div class="col">
       <div *ngFor="let date of pedidos  | filterId :filtro_valor " >
-        <div class="dipc" *ngIf="date.estado == 'pendiente'" >
+        <div class="dipc" *ngIf="date.estado == 'pendiente'" > 
           <mat-list>
             <mat-list-item>
               <div>

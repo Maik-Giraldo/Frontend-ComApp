@@ -5,6 +5,12 @@ export class Carrito {
   descripcion!: string;
   precio_unitario!: number;
   tipo!: number;
-  id_mesa!: number
+  id_mesa!: number;
+  cantidad? : number;
+}
+
+export interface respuestaCarrito {
+  transaccion : boolean,
+  data : Carrito[]
 }
 
