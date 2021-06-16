@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-sidebar',
