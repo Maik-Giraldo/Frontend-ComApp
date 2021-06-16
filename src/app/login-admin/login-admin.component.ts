@@ -8,9 +8,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { AuthService } from '../Services/auth.service';
 import { ClientService } from '../services/client.service';
 
-
-
-
 @Component({
   selector: 'app-login-admin',
   templateUrl: './login-admin.component.html',
@@ -27,7 +24,7 @@ export class LoginAdminComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private client: ClientService,
-    public auth: AuthService) { } 
+    public auth: AuthService) { }
 
     get correo() { return this.form.get('correo'); }
     get password() { return this.form.get('password'); }

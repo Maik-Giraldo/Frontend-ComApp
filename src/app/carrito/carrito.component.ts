@@ -20,6 +20,7 @@ import { CarritoGuardService } from '../services/carrito-guard.service';
 })
 export class CarritoComponent implements OnInit {
 
+  displayedColumns: string[] = ['platillo', 'descripcion', 'precio', 'eliminar'];
   carritoArray: Carrito[] = [];
   cantidad : any;
   public precio_total: number = 0;
@@ -77,7 +78,7 @@ export class CarritoComponent implements OnInit {
           const contador = data.resultados_count;
           this.carrito.changeCont(contador.toString())
           this.obtenerCarrito();
-          
+
         }
       })
   }
@@ -163,7 +164,7 @@ export class CarritoComponent implements OnInit {
   }
 
   aceptarForm(){
-    
+
     let cliente  : Cliente = {
 
       nombre : this.form.value.nombre,
