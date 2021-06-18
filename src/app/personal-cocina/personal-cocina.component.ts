@@ -75,7 +75,7 @@ export class PersonalCocinaComponent implements OnInit {
         toast : true,
         icon: 'success',
         title: 'Pedido confirmado correctamente',
-        text: 'El pedido empezará a ser realiazado en cocina, se le notificará al comensal',
+        text: 'El pedido empezará a ser realizado en cocina, se le notificará al comensal',
         footer: 'Culminada la preparación del pedido, finalízalo en la aplicación!',
         showConfirmButton: true,
         confirmButtonText: `Ok`

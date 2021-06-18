@@ -53,10 +53,6 @@ export class CarritoComponent implements OnInit {
 
     this.obtenerCarrito();
 
-    // this.reload = setInterval(() => {
-    //   this.obtenerCarrito();
-    // },5000)
-
     this.form = this.fb.group({
       nombre: ['', [Validators.required]],
       documento: ['', [Validators.required]],
@@ -77,9 +73,9 @@ export class CarritoComponent implements OnInit {
         if(data.transaccion){
           const contador = data.resultados_count;
           this.carrito.changeCont(contador.toString())
-          this.obtenerCarrito();
-
+          
         }
+        this.obtenerCarrito();
       })
   }
 
@@ -206,10 +202,10 @@ export class CarritoComponent implements OnInit {
     try {
       this.menuService.getCarrito()
       .subscribe((data : respuestaCarrito)=>{
+        this.precio_total = 0;
+        this.carritoArray=[]
         if (data.data.length !=0){
           this.validacion = false;
-          this.precio_total = 0;
-          this.carritoArray=[]
           data.data.forEach((producto)=>{
             data.data.forEach((producto2)=>{
               if(producto == producto2){
