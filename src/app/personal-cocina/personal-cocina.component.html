@@ -6,8 +6,8 @@
   <h1 >Pedidos pendientes {{ contador }}</h1>
   <div class="row">
     <div class="col">
-      <div *ngFor="let date of pedidos  | filterId :filtro_valor " >
-        <div class="dipc" *ngIf="date.estado == 'pendiente'" > 
+      <div *ngFor="let date of pedidos  | filter :filtro_valor | filterId :filtro_valor  " >
+        <div class="dipc" *ngIf="date.estado == 'pendiente'" >
           <mat-list>
             <mat-list-item>
               <div>
@@ -90,7 +90,7 @@
   <h1 >Pedidos confirmados</h1>
   <div class="row">
     <div class="col">
-      <div *ngFor="let date of pedidos  | filterId :filtro_valor ">
+      <div *ngFor="let date of pedidos  | filter :filtro_valor | filterId :filtro_valor ">
         <div class="dipc" *ngIf="date.estado == 'confirmado'">
           <mat-list>
             <mat-list-item>
@@ -168,7 +168,7 @@
   <h1 >Pedidos rechazados</h1>
   <div class="row">
     <div class="col">
-      <div *ngFor="let date of pedidos  | filterId :filtro_valor ">
+      <div *ngFor="let date of pedidos  | filter :filtro_valor | filterId :filtro_valor  ">
         <div class="dipc" *ngIf="date.estado == 'rechazado'">
           <mat-list>
             <mat-list-item>
@@ -267,7 +267,7 @@
   <h1 >Pedidos finalizados</h1>
   <div class="row">
     <div class="col">
-      <div *ngFor="let date of pedidos  | filterId :filtro_valor ">
+      <div *ngFor="let date of pedidos  | filter :filtro_valor | filterId :filtro_valor  ">
         <div class="dipc" *ngIf="date.estado == 'finalizado'">
           <mat-list>
             <mat-list-item>
@@ -284,7 +284,7 @@
                   </thead>
                   <tbody>
                     <td>{{date.id_pedido}}</td>
-                    <td>{{date.fechaHora}}</td>
+                    <td>{{date.fechaHora | date:'medium'}}</td>
                     <td>{{date.id_mesa}}</td>
                     <td>{{date.estado}}</td>
                   </tbody>

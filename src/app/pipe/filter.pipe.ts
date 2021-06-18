@@ -14,7 +14,7 @@ export class FilterPipe implements PipeTransform {
   transform(lista: any[], fecha: string): any[] {
 
     var dateDay = new Date().toString();
-    console.log(dateDay.slice(9,-50))
+
 
     var fecha=dateDay.slice(9,-50)
 
