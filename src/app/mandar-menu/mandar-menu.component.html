@@ -1,11 +1,10 @@
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms" style="width: 100%;">
   <mat-tab label="Formulario de petición para agregar" >
-    <div class="container" style="width: 100%; background-color: #ffffff; padding: 15px; text-align: center;">
+    <div class="container" style="width: 100%; padding: 15px; text-align: center;">
       <div class="row">
           <div class="col-md-12">
-          <div class="card-title">
-            Ingrese un nuevo platillo para enviar la peticion de agregar
-          </div>
+            <mat-card-title>Ingrese un nuevo platillo para enviar la peticion de agregar</mat-card-title>
+<hr>
           <form [formGroup]="form" >
           <div class="form-group" style="width: 100%;">
             <input type="number" formControlName="id_platillo" [(ngModel)]="selectedMenu.id_platillo " class="form-control" placeholder="Ingrese el id del platillo" required />
@@ -55,22 +54,23 @@
                 el tipo es requerido.
               </div>
             </div>
-
+<br>
             <div class="form-group">
               <input type="file" #seleccionar_imagen (change)="log($event)" style="visibility:hidden"/>
-              <button (click)="seleccionar_imagen.click()" type="button" class="btn btn-primary">
+              <button mat-raised-button color="warn" style="background-color: rgb(0, 194, 194); font-size: large; padding: 0.5rem; position: relative; left: 25%;" (click)="seleccionar_imagen.click()" type="button">
                 Seleccionar imagen
               </button>
             </div>
 
-            <img *ngIf="imgMostrar" [src]="imgMostrar" width="400px" height="300px">
+            <img *ngIf="imgMostrar" [src]="imgMostrar" width="400px" height="400px">
 
           </div>
           <div class="form-group">
-            <button [disabled]="!(form.valid)" class="btn-primary" (click)="guardar()">
+            <button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1rem;" [disabled]="!(form.valid)" (click)="guardar()">
               Enviar
             </button>
-            <button class="btn-danger" (click)="nuevo()">
+            <button mat-raised-button></button>
+            <button mat-raised-button color="warn" style="font-size: x-large; padding: 1rem;" (click)="nuevo()">
               Limpiar Formulario
             </button>
           </div>
@@ -86,16 +86,14 @@
   </mat-tab>
 
   <mat-tab label="Formulario de petición para editar">
-    <div class="container" style="width: 100%; background-color: #ffffff; padding: 15px; text-align: center;">
+    <div class="container" style="width: 100%;  padding: 15px;">
       <div class="row">
           <div class="col-md-12">
-          <div class="card-title">
-            Seleccione un platillo del menú y edite sus campos, oprima enviar cuando ya esté listo
-          </div>
+            <mat-card-title>Seleccione un platillo del menú y edite sus campos, oprima enviar cuando ya esté listo</mat-card-title>
+<hr>
           <form [formGroup]="form" >
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Id platillo</h1>
-            <input type="number" formControlName="id_platillo" *ngIf = "formEditar == false" [(ngModel)]="selectedMenu.id_platillo" class="form-control" required/>
+            <input placeholder="Id platillo" type="number" formControlName="id_platillo" *ngIf = "formEditar == false" [(ngModel)]="selectedMenu.id_platillo" class="form-control" required/>
             <div class="alert-danger" *ngIf="id_platillo.invalid && (id_platillo.dirty || id_platillo.touched)">
               <div class="container-error-message" *ngIf="id_platillo.errors.required">
                 el id es requerido.
@@ -103,8 +101,7 @@
             </div>
           </div>
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Platillo</h1>
-            <input type="text" formControlName="nombre_platillo" [(ngModel)]="selectedMenu.platillo" class="form-control" required/>
+            <input placeholder="Platillo" type="text" formControlName="nombre_platillo" [(ngModel)]="selectedMenu.platillo" class="form-control" required/>
             <div class="alert-danger" *ngIf="nombre_platillo.invalid && (nombre_platillo.dirty || nombre_platillo.touched)">
               <div class="container-error-message" *ngIf="nombre_platillo.errors.required">
                 el nombre es requerido.
@@ -112,8 +109,7 @@
             </div>
           </div>
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Descripción</h1>
-            <input type="text" formControlName="descripcion_platillo" [(ngModel)]="selectedMenu.descripcion" class="form-control" required/>
+            <input placeholder="Descripción" type="text" formControlName="descripcion_platillo" [(ngModel)]="selectedMenu.descripcion" class="form-control" required/>
             <div class="alert-danger" *ngIf="descripcion_platillo.invalid && (descripcion_platillo.dirty || descripcion_platillo.touched)">
               <div class="container-error-message" *ngIf="descripcion_platillo.errors.required">
                 el descripcion es requerido.
@@ -121,8 +117,7 @@
             </div>
           </div>
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Precio</h1>
-            <input type="text" formControlName="precio_unitario" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" required/>
+            <input placeholder="Precio" type="text" formControlName="precio_unitario" [(ngModel)]="selectedMenu.precio_unitario" class="form-control" required/>
             <div class="alert-danger" *ngIf="precio_unitario.invalid && (precio_unitario.dirty || precio_unitario.touched)">
               <div class="container-error-message" *ngIf="precio_unitario.errors.required">
                 el precio es requerido.
@@ -130,8 +125,7 @@
             </div>
           </div>
           <div class="form-group">
-            <h1 style="font-size: 30px; color: gray;">Tipo</h1>
-            <input type="text" formControlName="tipo_platillo" [(ngModel)]="selectedMenu.tipo" class="form-control" required/>
+            <input placeholder="Tipo" type="text" formControlName="tipo_platillo" [(ngModel)]="selectedMenu.tipo" class="form-control" required/>
             <div class="alert-danger" *ngIf="tipo_platillo.invalid && (tipo_platillo.dirty || tipo_platillo.touched)">
               <div class="container-error-message" *ngIf="tipo_platillo.errors.required">
                 el tipo es requerido.
@@ -141,7 +135,7 @@
 
           <div class="form-group">
             <input type="file" #seleccionar_imagen2 (change)="log2($event)" style="visibility:hidden"/>
-              <button (click)="seleccionar_imagen2.click()" type="button" class="btn btn-primary">
+              <button mat-raised-button color="warn" style="background-color: rgb(0, 194, 194); font-size: large; padding: 0.5rem; position: relative; left: 25%;" (click)="seleccionar_imagen2.click()" type="button" >
                 Seleccionar imagen
               </button>
           </div>
@@ -149,10 +143,11 @@
           <img *ngIf="selectedMenu.img" [src]="selectedMenu.img" width="400" height="300">
 
           <div class="form-group">
-            <button [disabled]="!(form.valid)" class="btn-primary" (click)="editar()">
+            <button mat-raised-button color="warn" style="background-color: blue; font-size: x-large; padding: 1rem;" [disabled]="!(form.valid)" (click)="editar()">
               Enviar
             </button>
-            <button class="btn-danger" (click)="nuevo()">
+            <button mat-raised-button></button>
+            <button mat-raised-button color="warn" style="font-size: x-large; padding: 1rem;" (click)="nuevo()">
               Limpiar Formulario
             </button>
           </div>
@@ -160,113 +155,159 @@
         </div>
       </div>
       <hr>
-      <div class="div card" style=" background-color: #1c1c1c; ">
-          <table class="table table-light">
-            <thead>
-              <th scope="col">Id</th>
-              <th scope="col">Platillo</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Precio</th>
-              <th scope="col">tipo</th>
-              <th scope="col">Imagen</th>
-            </thead>
-            <tbody>
-              <tr *ngFor = "let menu of menuArray"
-              (click)="seleccionar(menu)"
-              [class.active] = "menu == selectedMenu">
-                <td>{{menu.id_platillo}}</td>
-                <td>{{menu.platillo}}</td>
-                <td>{{menu.descripcion}}</td>
-                <td>$ {{menu.precio_unitario | puntoMil}}</td>
-                <td>{{menu.tipo}}</td>
-                <td><img [src]="menu.img" width="40px" height="40px"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
 
-  </mat-tab>
+      <div class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="menuArray">
+
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef > ID. </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.id_platillo}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="platillo">
+            <th mat-header-cell *matHeaderCellDef> Platillo </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.platillo}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let menu">$ {{menu.precio_unitario | puntoMil}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="imagen">
+            <th mat-header-cell *matHeaderCellDef> Imagen </th>
+            <td mat-cell *matCellDef="let menu"><img [src]="menu.img" width="40px" height="40px"></td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> edit </th>
+            <td mat-cell *matCellDef="let menu"><button class="btn-light" style="width: 15px; height: 20px;" (click)= "seleccionar(menu)"></button></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+          <tr mat-row
+
+          *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
 
   <mat-tab label="Formulario de petición para eliminar">
-    <div style=" background-color: #1c1c1c; " >
-      <div class="div card" style=" text-align:center; margin: auto;">
-          <table class=" table-light" >
-            <thead>
-              <th scope="col">Id</th>
-              <th scope="col">Platillo</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Precio</th>
-              <th scope="col">Tipo</th>
-              <th scope="col">Imagen</th>
-              <th scope="col">Acciones</th>
-            </thead>
-            <tbody>
-              <tr *ngFor = "let menu of menuArray"
-              (click)="seleccionar(menu)"
-              [class.active] = "menu == selectedMenu">
-                <td>{{menu.id_platillo}}</td>
-                <td>{{menu.platillo}}</td>
-                <td>{{menu.descripcion}}</td>
-                <td>$ {{menu.precio_unitario | puntoMil}}</td>
-                <td>{{menu.tipo}}</td>
-                <td><img [src]="menu.img" width="40px" height="40px"></td>
-                <td><button type="button" (click)="eliminar(menu)" class="pedir btn btn-primary"  >Eliminar</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div style="width: 190vh;  padding: 15px; align-items:center;">
+      <div class="example-container">
+        <table mat-table [dataSource]="menuArray" style="position: relative; left: 150px;">
+
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef > ID. </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.id_platillo}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="platillo">
+            <th mat-header-cell *matHeaderCellDef> Platillo </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.platillo}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let menu">$ {{menu.precio_unitario | puntoMil}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="imagen">
+            <th mat-header-cell *matHeaderCellDef> Imagen </th>
+            <td mat-cell *matCellDef="let menu"><img [src]="menu.img" width="40px" height="40px"></td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let menu"><button mat-button color="warn" type="button" (click)="eliminar(menu)">Eliminar</button></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+          <tr mat-row
+
+          *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
       </div>
-
-  </mat-tab>
-
   <mat-tab label="Formulario de contacto">
-    <div class="container" style="width: 100%; background-color: #ffffff; padding: 15px;">
+    <div class="container" style="width: 100%; padding: 15px;">
       <div class="row">
           <div class="col-md-12">
-              <div class="well well-sm">
-                  <form class="form-horizontal" method="post">
+              <div class="well well-sm" style="text-align: center;">
+                  <form class="form-horizontal" method="post" [formGroup]="fromContacto" >
                       <fieldset>
-                          <legend class="text-center header">Contáctanos</legend>
+                          <mat-card-title>Contáctanos</mat-card-title>
 
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                               <div class="col-md-8">
-                                  <input id="fname" name="name" type="text" placeholder="Asunto del correo" class="form-control" required>
+                                  <input id="fname" name="name" type="text" formControlName="asunto" placeholder="Asunto del correo" class="form-control" required>
                               </div>
                           </div>
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                               <div class="col-md-8">
-                                  <input id="lname" name="name" type="text" placeholder="Nombre" class="form-control" required>
+                                  <input id="lname" name="name" type="text" formControlName="nombre" placeholder="Nombre" class="form-control" required>
                               </div>
                           </div>
 
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                               <div class="col-md-8">
-                                  <input id="email" name="email" type="text" placeholder="Correo" class="form-control" required>
+                                  <input id="email" name="email" type="text" formControlName="correo" placeholder="Correo" class="form-control" required>
                               </div>
                           </div>
 
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                               <div class="col-md-8">
-                                  <input id="phone" name="phone" type="text" placeholder="Teléfono" class="form-control" required>
+                                  <input id="phone" name="phone" type="text" formControlName="telefono" placeholder="Teléfono" class="form-control" required>
                               </div>
                           </div>
 
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                               <div class="col-md-8">
-                                  <textarea class="form-control" id="message" name="message" placeholder="Escribe detalladamente que solicitud requieres y nos pondremos en contacto contigo para darte solución" rows="7"></textarea>
+                                  <textarea class="form-control" id="message" name="message" formControlName="descripcion" placeholder="Escribe detalladamente que solicitud requieres y nos pondremos en contacto contigo para darte solución" rows="7"></textarea>
                               </div>
                           </div>
 
                           <div class="form-group">
-                              <div class="col-md-12 text-center">
-                                  <button type="submit" class="btn btn-primary btn-lg" style="margin: 30px;">Enviar</button>
-                              </div>
+                            <button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1rem;" [disabled]="!(fromContacto.valid)" (click)="contacto()">
+                              Enviar
+                            </button>
+                            <button mat-raised-button></button>
 
                           </div>
 
@@ -277,7 +318,6 @@
       </div>
     </div>
   </mat-tab>
-</mat-tab-group>
 
 <div *ngIf="!load" class="spinner-border text-primary" role="status">
   <span class="sr-only">Cargando...</span>

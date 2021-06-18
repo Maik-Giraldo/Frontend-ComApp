@@ -39,8 +39,9 @@ import { FilterIdPipe } from './pipe/filter-id.pipe';
 import { PuntoMilPipe } from './pipe/punto-mil.pipe';
 import { FacturasComponent } from './facturas/facturas.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -85,6 +86,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatTabsModule,
     MatSnackBarModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

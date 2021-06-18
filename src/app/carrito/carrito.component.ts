@@ -1,10 +1,11 @@
+// Importacion de librerias necesarias
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { CarritoService } from '../services/carrito.service';
-import { Carrito } from '../models/carrito';
+import { Carrito, respuestaCarrito } from '../models/carrito';
 import { Menu, Send, Sendid, Cliente } from '../models/menu';
 import { ClientService } from '../services/client.service';
 import { MenuService } from '../services/menu.service';
@@ -13,6 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service';
 import { CarritoGuardService } from '../services/carrito-guard.service';
 
+
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -20,7 +22,9 @@ import { CarritoGuardService } from '../services/carrito-guard.service';
 })
 export class CarritoComponent implements OnInit {
 
+  displayedColumns: string[] = ['platillo', 'descripcion', 'precio', 'eliminar'];
   carritoArray: Carrito[] = [];
+  cantidad : any;
   public precio_total: number = 0;
   formCliente: boolean = false;
   load: boolean = true;
@@ -49,33 +53,11 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.menuService.getCarrito()
-    .subscribe(data=>{
+    this.obtenerCarrito();
 
-      this.carritoArray = data.data;
-
-      if (this.carritoArray.length !=0){
-        this.validacion = false;
-        }
-
-      this.carritoArray.forEach(carrito => this.precio_total += Number(carrito.precio_unitario))
-    },
-    error =>console.log(error));
-    this.reload = setInterval(() => {
-      try {
-        this.menuService.getCarrito()
-        .subscribe(data=>{
-        this.carritoArray = data.data;
-        if (this.carritoArray.length !=0){
-        this.validacion = false;
-        }
-    },
-    error =>console.log(error));
-      }catch (e) {
-
-      }
-
-    },5000)
+    // this.reload = setInterval(() => {
+    //   this.obtenerCarrito();
+    // },5000)
 
     this.form = this.fb.group({
       nombre: ['', [Validators.required]],
@@ -95,9 +77,10 @@ export class CarritoComponent implements OnInit {
     this.carritoService.eliminarCarrito(send)
       .subscribe(data=>{
         if(data.transaccion){
-          var contador = data.resultados_count;
+          const contador = data.resultados_count;
           this.carrito.changeCont(contador.toString())
-          window.location.reload();
+          this.obtenerCarrito();
+
         }
       })
   }
@@ -124,7 +107,7 @@ export class CarritoComponent implements OnInit {
       Swal.fire({
         toast: true,
         icon: 'success',
-        title: 'pedido rechazado correctamente',
+        title: 'Has cancelado tu pedido correctamente',
         showConfirmButton: true,
         confirmButtonText: `Ok`
       }).then((result) => {
@@ -163,7 +146,8 @@ export class CarritoComponent implements OnInit {
       Swal.fire({
         toast: true,
         icon: 'success',
-        title: 'pedido aceptado correctamente',
+        title: 'Pedido aceptado correctamemte, por favor, estar atento al correo para visualizar el estado de su pedido',
+        footer: 'Si desea realizar otro pedido, escanee el código nuevamente',
         showConfirmButton: true,
         confirmButtonText: `Ok`
       }).then((result) => {
@@ -182,8 +166,6 @@ export class CarritoComponent implements OnInit {
   }
 
   aceptarForm(){
-
-
 
     let cliente  : Cliente = {
 
@@ -208,12 +190,61 @@ export class CarritoComponent implements OnInit {
   }
 
   abrirForm(){
+    Swal.fire({
+      toast: true,
+      icon: 'warning',
+      title: 'Por favor solo una persona aceptar el pedido',
+      showConfirmButton: true,
+      confirmButtonText: `Ok`
+    })
     this.formCliente = true
   }
 
   cerrarForm(){
     this.formCliente = false
   }
+
+  obtenerCarrito() : Carrito[]{
+    try {
+      this.menuService.getCarrito()
+      .subscribe((data : respuestaCarrito)=>{
+        if (data.data.length !=0){
+          this.validacion = false;
+          this.precio_total = 0;
+          this.carritoArray=[]
+          data.data.forEach((producto)=>{
+            data.data.forEach((producto2)=>{
+              if(producto == producto2){
+                const producto3 : Carrito = {
+                  _identificacion!: producto2._identificacion,
+                  id_platillo!: producto2.id_platillo,
+                  platillo!: producto2.platillo,
+                  descripcion!: producto2.descripcion,
+                  precio_unitario!: producto2.precio_unitario,
+                  tipo!: producto2.tipo,
+                  id_mesa!: producto2.id_mesa,
+                  cantidad : 0,
+                }
+                if(this.carritoArray.findIndex(data=>{if(data.id_platillo == producto3.id_platillo) return data}) == -1 ){
+                  this.carritoArray.push(producto3);
+                };
+                this.carritoArray[this.carritoArray.findIndex(data=>{if(data.id_platillo == producto3.id_platillo) return data })].cantidad++;
+              }
+            })
+          })
+          this.carritoArray.forEach(producto => {
+            this.precio_total += producto.cantidad * producto.precio_unitario
+          });
+        }
+      return data.data;
+  },
+  error =>console.log(error));
+    }catch (e) {
+      this.precio_total = 0;
+      return []
+    }
+  }
+
 }
 
 

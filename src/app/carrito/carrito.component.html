@@ -1,38 +1,56 @@
 <app-listar-menu style="display: none;"></app-listar-menu>
 
-
-    <table class="table table-dark" >
-      <thead>
-        <th scope="col">Platillo</th>
-        <th scope="col">Descripcion</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Eliminar</th>
-      </thead>
-      <tbody>
-        <tr *ngFor = "let menu of carritoArray">
-
-          <td>{{menu.platillo}}</td>
-          <td>{{menu.descripcion}}</td>
-          <td>$  {{menu.precio_unitario | puntoMil}}</td>
-          <td><button [disabled]="validacion" type="button" class="pedir btn btn-danger" style="float: center;" (click)="eliminar(menu)">Eliminar</button></td>
-        </tr>
-        <tr >
-          <td></td>
-          <td><H3>Precio Total:</H3> </td>
-          <td><H3>$ {{precio_total | puntoMil}}</H3></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-
+<div class="container">
+  <div class="row justify-content-center">
     <div *ngIf="!load " class="spinner-border text-primary" role="status">
       <span class="sr-only">Cargando...</span>
     </div>
+    </div>
+    </div>
+<br>
+<div class="example-container mat-elevation-z8">
+  <table mat-table [dataSource]="carritoArray">
 
 
-<div *ngIf="formCliente" class="card text-center">
-  <div class="card-body">
+    <ng-container matColumnDef="platillo">
+      <th mat-header-cell *matHeaderCellDef > <h6 style="font-weight: bold;">Platillo</h6></th>
+      <td mat-cell *matCellDef="let menu">  <span matBadge="{{menu.cantidad}}" matBadgePosition="before" matBadgeOverlap="false">{{menu.platillo}}</span> </td>
+      <td mat-footer-cell *matFooterCellDef><button mat-raised-button></button></td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> <h6 style="font-weight: bold;">Descripción</h6> </th>
+      <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
+      <td mat-footer-cell *matFooterCellDef>Total:</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> <h6 style="font-weight: bold;">Precio</h6> </th>
+      <td mat-cell *matCellDef="let menu">${{menu.precio_unitario | puntoMil}} </td>
+      <td mat-footer-cell *matFooterCellDef>${{precio_total | puntoMil}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let menu"> <button mat-icon-button color="warn" [disabled]="validacion" style="width: 2px;" type="button" (click)="eliminar(menu)"><mat-icon>delete_forever</mat-icon></button> </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+  </table>
+</div>
+
+<br>
+<div *ngIf="formCliente">
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="login-wrap py-5">
     <h5 class="card-title">Ingresa tus datos para la factura</h5>
     <div class="row" [formGroup]="form">
       <div class="col">
@@ -49,10 +67,6 @@
         <label for="basic-url" class="form-label">N° Documento</label>
         <div class="input-group mb-3">
           <input type="text" formControlName="documento" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          <!-- <div class="alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
-            <div class="container-error-message" *ngIf="documento.errors.required">
-              el N° de documento es requerido.
-            </div> -->
         </div>
 
       </div>
@@ -60,11 +74,6 @@
         <label for="basic-url" class="form-label">Teléfono</label>
         <div class="input-group mb-3">
           <input type="text" formControlName="telefono" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          <!-- <div class="alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
-            <div class="container-error-message" *ngIf="telefono.errors.required">
-              el numero de telefono es requerido.
-            </div>
-          </div> -->
         </div>
 
         <label for="basic-url" class="form-label">Correo</label>
@@ -82,17 +91,23 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
-        <button (click)="aceptarForm()" [disabled]="!(form.valid)" class="btn btn-success">Aceptar</button>
-        <button (click)="cerrarForm()" class="btn btn-danger ml-4">Cancelar</button>
+      <div class="col-12" style="text-align: center;">
+        <button mat-raised-button color="warn" style="background-color: green; font-size: large; padding: 0.5rem;" (click)="aceptarForm()" [disabled]="!(form.valid)" >Aceptar</button>
+        <button mat-raised-button></button>
+        <button mat-raised-button color="warn" style="font-size: large; padding: 0.5rem;" (click)="cerrarForm()" >Cancelar</button>
       </div>
+
     </div>
   </div>
 </div>
-
-<div *ngIf="!formCliente" class="btn-group" role="group" aria-label="Basic mixed styles example" style="display: flex;">
-  <button mat-button (click)="abrirForm()" [disabled]="validacion"  type="button" class="btn btn-success" style="font-size: xx-large; padding: 1rem;">Aceptar</button>
-  <button (click)="rechazar()" [disabled]="validacion" type="button" class="btn btn-danger" style="font-size: xx-large; padding: 1rem;">Rechazar</button>
 </div>
+</div>
+
+<div *ngIf="!formCliente"  role="group" aria-label="Basic mixed styles example" style="text-align: center;">
+  <button button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1rem;" (click)="abrirForm()" [disabled]="validacion"  type="button">Aceptar</button>
+  <button mat-raised-button></button>
+  <button mat-raised-button color="warn" style="font-size: x-large; padding: 1rem;" (click)="rechazar()" [disabled]="validacion" type="button" >Cancelar</button>
+</div>
+
 
 

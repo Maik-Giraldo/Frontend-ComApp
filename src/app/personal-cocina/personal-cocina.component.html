@@ -1,320 +1,352 @@
 
-<div class="container">
+<div class="container" style="text-align: center;">
   <div class="form-group">
     <app-search (search)="handleSearch($event)" (tipo)="handleSearch2($event)" ></app-search>
   </div>
-  <h1 >Pedidos pendientes</h1>
+  <h1 >Pedidos pendientes {{ contador }}</h1>
   <div class="row">
     <div class="col">
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th style="margin: auto; text-align: center;">Datos</th>
-            <th style="margin: auto; text-align: center;">Información del pedido</th>
-            <th style="margin: auto; text-align: center;">Acciones</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let date of pedidos  | filterId :filtro_valor ">
-          <tr *ngIf="date.estado == 'pendiente'">
-            <td>
+      <div *ngFor="let date of pedidos  | filterId :filtro_valor " >
+        <div class="dipc" *ngIf="date.estado == 'pendiente'" > 
+          <mat-list>
+            <mat-list-item>
+              <div>
+                <mat-card-title>Datos</mat-card-title>
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th>Pedido</th>
+                      <th>Fecha/hora</th>
+                      <th>Mesa</th>
+                      <th>Estado del pedido</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{date.id_pedido}}</td>
+                      <td>{{date.fechaHora|date:'medium'}}</td>
+                      <td>{{date.id_mesa}}</td>
+                      <td>{{date.estado}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <mat-card-title>Información del pedido</mat-card-title>
+                <table class="table table-dark">
+                  <thead>
+                    <th>Id platillo</th>
+                    <th>Cantidad por unidad</th>
+                    <th style="margin: auto; text-align: center;">Información del platillo</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let date2 of date.detalle_Pedido">
+                      <td>{{date2.id_platillo}}</td>
+                      <td>{{date2.platillo_cantidad}}</td>
+                      <td>
+                        <table class="table table-dark">
+                          <thead>
+                            <th>Platillo</th>
+                            <th>Descripción</th>
+                            <th>Tipo</th>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let date3 of date2.detalle_platillo">
+                              <td>{{date3.platillo}}</td>
+                              <td>{{date3.descripcion}}</td>
+                              <td>{{date3.tipo}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
 
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pedido</th>
-                    <th>Fecha/hora</th>
-                    <th>Mesa</th>
-                    <th>Estado del pedido</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{{date.id_pedido}}</td>
-                    <td>{{date.fechaHora|date:'medium'}}</td>
-                    <td>{{date.id_mesa}}</td>
-                    <td>{{date.estado}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-            <td>
-              <table>
-                <thead>
-                  <th>Id platillo</th>
-                  <th>Cantidad por unidad</th>
-                  <th style="margin: auto; text-align: center;">Información del platillo</th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let date2 of date.detalle_Pedido">
-                    <td>{{date2.id_platillo}}</td>
-                    <td>{{date2.platillo_cantidad}}</td>
-                    <td>
-                      <table>
-                        <thead>
-                          <th>Platillo</th>
-                          <th>Descripción</th>
-                          <th>Tipo</th>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let date3 of date2.detalle_platillo">
-                            <td>{{date3.platillo}}</td>
-                            <td>{{date3.descripcion}}</td>
-                            <td>{{date3.tipo}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-            <td>
-              <div class="row">
                 <div class="col-12">
-                  <button  class="btn btn-success ml-4" style="float: left;" (click)="confirmar(date)">Confirmar</button>
-                  <button class="btn btn-danger ml-4" style="float: left;" (click)="rechazar(date)">Rechazar</button>
+                  <button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1vh;" (click)="confirmar(date)">Confirmar</button>
+                  <button mat-raised-button></button>
+                  <button mat-raised-button color="warn" style="font-size: x-large; padding: 1vh;"  (click)="rechazar(date)">Rechazar</button>
                 </div>
               </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<br>
+<br>
 <div *ngIf="!load" class="spinner-border text-primary" role="status">
   <span class="sr-only">Cargando...</span>
 </div>
 
 <!-- PEDIDOS CONFIRMADOS -->
 
-<div class="container">
+<div class="container" style="text-align: center;">
   <h1 >Pedidos confirmados</h1>
   <div class="row">
     <div class="col">
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th style="margin: auto; text-align: center;">Datos</th>
-            <th style="margin: auto; text-align: center;">Información del pedido</th>
-            <th style="margin: auto; text-align: center;">Acciones</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let date of pedidos  | filterId :filtro_valor ">
-          <tr *ngIf="date.estado == 'confirmado'">
-            <td>
-
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pedido</th>
-                    <th>Fecha/hora</th>
-                    <th>Mesa</th>
-                    <th>Estado del pedido</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{{date.id_pedido}}</td>
-                    <td>{{date.fechaHora|date:'medium'}}</td>
-                    <td>{{date.id_mesa}}</td>
-                    <td>{{date.estado}}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-            </td>
-            <td>
-
-              <table>
-                <thead>
-                  <th>Id platillo</th>
-                  <th>Cantidad por unidad</th>
-                  <th style="margin: auto; text-align: center;">Información del platillo</th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let date2 of date.detalle_Pedido">
-                    <td>{{date2.id_platillo}}</td>
-                    <td>{{date2.platillo_cantidad}}</td>
-                    <td>
-                      <table>
-                        <thead>
-                          <th>Platillo</th>
-                          <th>Descripción</th>
-                          <th>Tipo</th>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let date3 of date2.detalle_platillo">
-                            <td>{{date3.platillo}}</td>
-                            <td>{{date3.descripcion}}</td>
-                            <td>{{date3.tipo}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-            <td>
-              <div class="row">
+      <div *ngFor="let date of pedidos  | filterId :filtro_valor ">
+        <div class="dipc" *ngIf="date.estado == 'confirmado'">
+          <mat-list>
+            <mat-list-item>
+              <div>
+                <mat-card-title>Datos</mat-card-title>
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th>Pedido</th>
+                      <th>Fecha/hora</th>
+                      <th>Mesa</th>
+                      <th>Estado del pedido</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{date.id_pedido}}</td>
+                      <td>{{date.fechaHora|date:'medium'}}</td>
+                      <td>{{date.id_mesa}}</td>
+                      <td>{{date.estado}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <mat-card-title>Información del pedido</mat-card-title>
+                <table class="table table-dark">
+                  <thead>
+                    <th>Id platillo</th>
+                    <th>Cantidad por unidad</th>
+                    <th style="margin: auto; text-align: center;">Información del platillo</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let date2 of date.detalle_Pedido">
+                      <td>{{date2.id_platillo}}</td>
+                      <td>{{date2.platillo_cantidad}}</td>
+                      <td>
+                        <table class="table table-dark">
+                          <thead>
+                            <th>Platillo</th>
+                            <th>Descripción</th>
+                            <th>Tipo</th>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let date3 of date2.detalle_platillo">
+                              <td>{{date3.platillo}}</td>
+                              <td>{{date3.descripcion}}</td>
+                              <td>{{date3.tipo}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
                 <div class="col-12">
-                  <button  class="btn btn-success ml-4" style="float: left;" (click)= "finalizar(date)">Finalizar</button>
+                  <button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1vh;" (click)= "finalizar(date)">Finalizar</button>
                 </div>
               </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
-
+<br>
+<br>
 <!-- PEDIDOS RECHAZADOS -->
 
-<div class="container">
-  <h1 style="color: white;">Pedidos rechazados</h1>
+<div class="container" style="text-align: center;">
+  <h1 >Pedidos rechazados</h1>
   <div class="row">
     <div class="col">
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th style="margin: auto; text-align: center;">Datos</th>
-            <th style="margin: auto; text-align: center;">Información del pedido</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let date of pedidos  | filterId :filtro_valor ">
-          <tr *ngIf="date.estado == 'rechazado'">
-            <td>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pedido</th>
-                    <th>Fecha/hora</th>
-                    <th>Mesa</th>
-                    <th>Estado del pedido</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <td>{{date.id_pedido}}</td>
-                  <td>{{date.fechaHora}}</td>
-                  <td>{{date.id_mesa}}</td>
-                  <td>{{date.estado}}</td>
-                </tbody>
-              </table>
-            </td>
-            <td>{{date.id_pedido}}</td>
-            <td>{{date.fechaHora | date:'medium'}}</td>
-            <td>{{date.id_mesa}}</td>
-            <td>{{date.estado}}</td>
-            <td>
-              <table>
-                <thead>
-                  <th>Id platillo</th>
-                  <th>Cantidad por unidad</th>
-                  <th style="margin: auto; text-align: center;">Información del platillo</th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let date2 of date.detalle_Pedido">
-                    <td>{{date2.id_platillo}}</td>
-                    <td>{{date2.platillo_cantidad}}</td>
-                    <td>
-                      <table>
-                        <thead>
-                          <th>Platillo</th>
-                          <th>Descripción</th>
-                          <th>Tipo</th>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let date3 of date2.detalle_platillo">
-                            <td>{{date3.platillo}}</td>
-                            <td>{{date3.descripcion}}</td>
-                            <td>{{date3.tipo}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div *ngFor="let date of pedidos  | filterId :filtro_valor ">
+        <div class="dipc" *ngIf="date.estado == 'rechazado'">
+          <mat-list>
+            <mat-list-item>
+              <div>
+                <mat-card-title>Datos</mat-card-title>
+
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th>Pedido</th>
+                      <th>Fecha/hora</th>
+                      <th>Mesa</th>
+                      <th>Estado del pedido</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <td>{{date.id_pedido}}</td>
+                    <td>{{date.fechaHora}}</td>
+                    <td>{{date.id_mesa}}</td>
+                    <td>{{date.estado}}</td>
+                  </tbody>
+                </table>
+
+              </div>
+              <div>
+                <mat-card-title>Información del pedido</mat-card-title>
+
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th>ID pedido</th>
+                      <th> Fecha/Hora</th>
+                      <th>ID Mesa</th>
+                      <th>Estado</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{date.id_pedido}}</td>
+                      <td>{{date.fechaHora | date:'medium'}}</td>
+                      <td>{{date.id_mesa}}</td>
+                      <td>{{date.estado}}</td>
+                      <td>
+
+                        <table class="table table-dark">
+                          <thead>
+                            <th>Id platillo</th>
+                            <th>Cantidad por unidad</th>
+                            <th style="margin: auto; text-align: center;">Información del platillo</th>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let date2 of date.detalle_Pedido">
+                              <td>{{date2.id_platillo}}</td>
+                              <td>{{date2.platillo_cantidad}}</td>
+                              <td>
+                                <table>
+                                  <thead>
+                                    <th>Platillo</th>
+                                    <th>Descripción</th>
+                                    <th>Tipo</th>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let date3 of date2.detalle_platillo">
+                                      <td>{{date3.platillo}}</td>
+                                      <td>{{date3.descripcion}}</td>
+                                      <td>{{date3.tipo}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
+<br>
+<br>
 
-<div class="container">
-  <h1 style="color: white;">Pedidos finalizados</h1>
+<!-- Pedidos Finalizados -->
+<div class="container" style="text-align: center;">
+  <h1 >Pedidos finalizados</h1>
   <div class="row">
     <div class="col">
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th style="margin: auto; text-align: center;">Datos</th>
-            <th style="margin: auto; text-align: center;">Información del pedido</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let date of pedidos  | filterId :filtro_valor ">
-          <tr *ngIf="date.estado == 'finalizado'">
-            <td>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pedido</th>
-                    <th>Fecha/hora</th>
-                    <th>Mesa</th>
-                    <th>Estado del pedido</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <td>{{date.id_pedido}}</td>
-                  <td>{{date.fechaHora}}</td>
-                  <td>{{date.id_mesa}}</td>
-                  <td>{{date.estado}}</td>
-                </tbody>
-              </table>
-            </td>
-            <td>{{date.id_pedido}}</td>
-            <td>{{date.fechaHora | date:'medium'}}</td>
-            <td>{{date.id_mesa}}</td>
-            <td>{{date.estado}}</td>
-            <td>
-              <table>
-                <thead>
-                  <th>Id platillo</th>
-                  <th>Cantidad por unidad</th>
-                  <th style="margin: auto; text-align: center;">Información del platillo</th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let date2 of date.detalle_Pedido">
-                    <td>{{date2.id_platillo}}</td>
-                    <td>{{date2.platillo_cantidad}}</td>
-                    <td>
-                      <table>
-                        <thead>
-                          <th>Platillo</th>
-                          <th>Descripción</th>
-                          <th>Tipo</th>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let date3 of date2.detalle_platillo">
-                            <td>{{date3.platillo}}</td>
-                            <td>{{date3.descripcion}}</td>
-                            <td>{{date3.tipo}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
+      <div *ngFor="let date of pedidos  | filterId :filtro_valor ">
+        <div class="dipc" *ngIf="date.estado == 'finalizado'">
+          <mat-list>
+            <mat-list-item>
+              <div>
+                <mat-card-title>Datos</mat-card-title>
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th>Pedido</th>
+                      <th>Fecha/hora</th>
+                      <th>Mesa</th>
+                      <th>Estado del pedido</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <td>{{date.id_pedido}}</td>
+                    <td>{{date.fechaHora}}</td>
+                    <td>{{date.id_mesa}}</td>
+                    <td>{{date.estado}}</td>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <mat-card-title>Informacion del pedido</mat-card-title>
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th>ID Pedido</th>
+                      <th>Fecha/Hora</th>
+                      <th>ID Mesa</th>
+                      <th>Estado</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{date.id_pedido}}</td>
+                      <td>{{date.fechaHora | date:'medium'}}</td>
+                      <td>{{date.id_mesa}}</td>
+                      <td>{{date.estado}}</td>
+                      <td>
+                        <table class="table table-dark">
+                          <thead>
+                            <th>Id platillo</th>
+                            <th>Cantidad por unidad</th>
+                            <th style="margin: auto; text-align: center;">Información del platillo</th>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let date2 of date.detalle_Pedido">
+                              <td>{{date2.id_platillo}}</td>
+                              <td>{{date2.platillo_cantidad}}</td>
+                              <td>
+                                <table>
+                                  <thead>
+                                    <th>Platillo</th>
+                                    <th>Descripción</th>
+                                    <th>Tipo</th>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let date3 of date2.detalle_platillo">
+                                      <td>{{date3.platillo}}</td>
+                                      <td>{{date3.descripcion}}</td>
+                                      <td>{{date3.tipo}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <mat-card-title></mat-card-title>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>

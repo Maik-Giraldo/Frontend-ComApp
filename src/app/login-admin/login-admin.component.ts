@@ -8,9 +8,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { AuthService } from '../Services/auth.service';
 import { ClientService } from '../services/client.service';
 
-
-
-
 @Component({
   selector: 'app-login-admin',
   templateUrl: './login-admin.component.html',
@@ -27,7 +24,7 @@ export class LoginAdminComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private client: ClientService,
-    public auth: AuthService) { } 
+    public auth: AuthService) { }
 
     get correo() { return this.form.get('correo'); }
     get password() { return this.form.get('password'); }
@@ -63,8 +60,9 @@ export class LoginAdminComponent implements OnInit {
 
 
           Swal.fire({
+            toast: true,
             icon: 'success',
-            title: 'Has iniciado sesion correctamente',
+            title: 'Has iniciado sesión correctamente',
             showConfirmButton: true,
             confirmButtonText: `Ok`
           }).then((result) => {
@@ -80,11 +78,9 @@ export class LoginAdminComponent implements OnInit {
         this.load = true;
         console.log(error.status);
         Swal.fire({
-
           icon: 'error',
           title: 'Oops...',
-          text: 'Ha ocurrido un error',
-
+          text: 'Correo o contraseña incorrecta',
         }).then((result) => {
           //Read more about isConfirmed, isDenied below
           if (result.isConfirmed) {
