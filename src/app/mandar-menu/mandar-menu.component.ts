@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MenuService } from '../services/menu.service';
-import { Menu } from '../models/menu';
+import { Menu, contacto } from '../models/menu';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-mandar-menu',
@@ -19,6 +20,7 @@ export class MandarMenuComponent implements OnInit {
   formContacto: boolean = false;
   load: boolean = true;
   form: FormGroup;
+  fromContacto: FormGroup;
 
   reader = new FileReader();
 
@@ -35,6 +37,7 @@ export class MandarMenuComponent implements OnInit {
     get precio_unitario() { return this.form.get('precio_unitario')}
     get tipo_platillo() { return this.form.get('tipo_platillo')}
 
+
   ngOnInit(): void {
 
     this.form = this.fb.group({
@@ -43,6 +46,15 @@ export class MandarMenuComponent implements OnInit {
       descripcion_platillo:['', [Validators.required]],
       precio_unitario : ['', [Validators.required]],
       tipo_platillo : ['', [Validators.required]],
+
+    });
+
+    this.fromContacto= this.fb.group({
+      asunto: ['', [Validators.required]],
+      nombre: ['', [Validators.required]],
+      correo:['', [Validators.required]],
+      telefono : ['', [Validators.required]],
+      descripcion : ['', [Validators.required]],
 
     });
 
@@ -163,6 +175,43 @@ export class MandarMenuComponent implements OnInit {
           })
         }
       })
+  }
+
+  contacto(){
+    console.log("entre");
+    if (this.fromContacto.valid){
+      let contacto: contacto = {
+        asunto: this.fromContacto.value.asunto,
+        nombre: this.fromContacto.value.nombre,
+        correo: this.fromContacto.value.correo,
+        telefono: this.fromContacto.value.telefono,
+        descripcion: this.fromContacto.value.descripcion,
+        }
+        this.load = false;
+      this.menuService.peticionContacto(contacto)
+      .subscribe(data=>{
+        this.load = true;
+        if(data.transaccion == true){
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Petición enviada correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        else{
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'La petición no fue enviada',
+            footer: 'Rectifique los datos del formulario',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+      })
+    }
   }
 
   log(file){

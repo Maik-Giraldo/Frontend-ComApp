@@ -29,4 +29,12 @@ export class Cliente {
 
 }
 
+export class contacto {
+  asunto!: String;
+  nombre!: String;
+  correo!: String;
+  telefono!: String;
+  descripcion!: String;
+}
+
 

@@ -1,3 +1,4 @@
+// Importacion de librerias necesarias
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { AuthService } from '../Services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service';
 import { CarritoGuardService } from '../services/carrito-guard.service';
+
 
 @Component({
   selector: 'app-carrito',

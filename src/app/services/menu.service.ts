@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Menu } from '../models/menu';
+import { Menu, contacto} from '../models/menu';
 import { PersonalCocina } from '../models/personal-cocina';
 import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service';
 
@@ -39,6 +39,9 @@ export class MenuService {
   }
   peticionEliminar(menu:Object):Observable<any>{
     return this.http.post(`${environment.BASE_API}/menu/peticionEliminar`, menu);
+  }
+  peticionContacto(contacto:Object):Observable<any>{
+    return this.http.post(`${environment.BASE_API}/menu/peticionContacto`, contacto);
   }
   editarMenu(menu:Object):Observable<any>{
     return this.http.put(`${environment.BASE_API}/menu/editarMenu`, menu);
