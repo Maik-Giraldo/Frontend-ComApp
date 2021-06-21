@@ -13,21 +13,21 @@
 
 
     <ng-container matColumnDef="platillo">
-      <th mat-header-cell *matHeaderCellDef > <h6 style="font-weight: bold;">Platillo</h6></th>
+      <th mat-header-cell *matHeaderCellDef >  <div style="font-size: large; color:#f3b324">Platillo</div></th>
       <td mat-cell *matCellDef="let menu">  <span matBadge="{{menu.cantidad}}" matBadgePosition="before" matBadgeOverlap="false">{{menu.platillo}}</span> </td>
       <td mat-footer-cell *matFooterCellDef><button mat-raised-button></button></td>
     </ng-container>
 
 
     <ng-container matColumnDef="descripcion">
-      <th mat-header-cell *matHeaderCellDef> <h6 style="font-weight: bold;">Descripción</h6> </th>
+      <th mat-header-cell *matHeaderCellDef>  <div style="font-size: large; color:#f3b324">Descripción</div> </th>
       <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
       <td mat-footer-cell *matFooterCellDef>Total:</td>
     </ng-container>
 
 
     <ng-container matColumnDef="precio">
-      <th mat-header-cell *matHeaderCellDef> <h6 style="font-weight: bold;">Precio</h6> </th>
+      <th mat-header-cell *matHeaderCellDef>  <div style="font-size: large; color:#f3b324">Precio</div> </th>
       <td mat-cell *matCellDef="let menu">${{menu.precio_unitario | puntoMil}} </td>
       <td mat-footer-cell *matFooterCellDef>${{precio_total | puntoMil}}</td>
     </ng-container>
@@ -92,7 +92,7 @@
     </div>
     <div class="row">
       <div class="col-12" style="text-align: center;">
-        <button mat-raised-button color="warn" style="background-color: green; font-size: large; padding: 0.5rem;" (click)="aceptarForm()" [disabled]="!(form.valid)" >Aceptar</button>
+        <button mat-raised-button color="primary" style=" font-size: large; padding: 0.5rem;" (click)="aceptarForm()" [disabled]="!(form.valid)" >Aceptar</button>
         <button mat-raised-button></button>
         <button mat-raised-button color="warn" style="font-size: large; padding: 0.5rem;" (click)="cerrarForm()" >Cancelar</button>
       </div>
@@ -104,9 +104,9 @@
 </div>
 
 <div *ngIf="!formCliente"  role="group" aria-label="Basic mixed styles example" style="text-align: center;">
-  <button button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1rem;" (click)="abrirForm()" [disabled]="validacion"  type="button">Aceptar</button>
+  <button button mat-raised-button color="primary" style="color: inherit; font-size: x-large; padding: 1rem;" (click)="abrirForm()" [disabled]="validacion"  type="button">Aceptar</button>
   <button mat-raised-button></button>
-  <button mat-raised-button color="warn" style="font-size: x-large; padding: 1rem;" (click)="rechazar()" [disabled]="validacion" type="button" >Cancelar</button>
+  <button mat-raised-button color="warn" style="color: inherit; font-size: x-large; padding: 1rem;" (click)="rechazar()" [disabled]="validacion" type="button" >Cancelar</button>
 </div>
 
 
