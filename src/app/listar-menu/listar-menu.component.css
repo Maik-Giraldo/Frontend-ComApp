@@ -86,10 +86,6 @@ a:link, a:visited, a:active {
 
 }
 
-.example-card:hover{
-  transform: scale(1.05);
-  transition: 1s;
-}
 
 .example-header-image {
   background-image: url('https://pbs.twimg.com/media/E14UlspWEAASZOm?format=png&name=4096x4096');
