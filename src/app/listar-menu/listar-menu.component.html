@@ -13,8 +13,11 @@
 
   <!-- ENTRADAS -->
   <mat-tab mat label="Entradas" >
-    <div class="div_listar">
-      <div *ngFor = "let menu of menuArray" >
+    <div *ngIf="!load" role="status">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="div_listar" >
+      <div *ngFor = "let menu of menuArray"  >
         <mat-card class="example-card" style="border-radius: 10px;" *ngIf = "menu.tipo == 1">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>

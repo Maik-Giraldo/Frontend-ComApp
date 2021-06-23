@@ -28,10 +28,10 @@
 <button mat-raised-button style=" background-color: gray; width: 150px;" (click)="nuevo()" >
   Limpiar
 </button>
-<button mat-raised-button color="warn" style="background-color: green; width: 150px;" (click)="guardar()">
+<button mat-raised-button color="primary" style=" width: 150px;" (click)="guardar()">
   Guardar
 </button>
-<button mat-raised-button color="warn" style="background-color: blue; width: 150px;" (click)="editar()">
+<button mat-raised-button color="primary" style=" background-color: #fad481; width: 150px;" (click)="editar()">
   Editar
 </button>
 <button mat-raised-button color="warn" style="width: 150px;" (click)="eliminar()">
@@ -39,7 +39,7 @@
 </button>
 
 <input type="file" #seleccionar_imagen (change)="log($event)" style="visibility:hidden"/>
-<button mat-raised-button  style="background-color: rgb(0, 184, 184); width: 150px; " (click)="seleccionar_imagen.click()" type="button">
+<button mat-raised-button color="acent"  style=" width: 150px; " (click)="seleccionar_imagen.click()" type="button">
   Seleccionar imagen
 </button>
 </div>
