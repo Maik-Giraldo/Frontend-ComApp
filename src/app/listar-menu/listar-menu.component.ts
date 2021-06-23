@@ -23,11 +23,12 @@ import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service'
 
 export class ListarMenuComponent implements OnInit {
 
+
   cont: any = JSON.parse(localStorage.getItem('cont'));
   menuArray: Menu[] = [];
   contadorArray: Contador[] = [];
 
-
+  load: boolean = true;
 
   constructor(
     private menuService: MenuService,
@@ -35,7 +36,8 @@ export class ListarMenuComponent implements OnInit {
     private route: Router,
     public snackBar: MatSnackBar,
     private carrito : CarritoGuardService,
-    private id_mesa: ExpiracionIdMesaService
+    private id_mesa: ExpiracionIdMesaService,
+
   ) { }
 
   ngOnInit(): void {

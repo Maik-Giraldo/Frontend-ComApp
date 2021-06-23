@@ -1,8 +1,8 @@
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms" style="width: 100%;">
   <mat-tab label="Formulario de petición para agregar" >
-    <div class="container" style="width: 100%; padding: 15px; text-align: center;">
+    <div style="width: 100%; padding: 15px; text-align: center;">
       <div class="row">
-          <div class="col-md-12">
+          <div class="container">
             <mat-card-title>Ingrese un nuevo platillo para enviar la peticion de agregar</mat-card-title>
 <hr>
           <form [formGroup]="form" >
@@ -57,7 +57,7 @@
 <br>
             <div class="form-group">
               <input type="file" #seleccionar_imagen (change)="log($event)" style="visibility:hidden"/>
-              <button mat-raised-button color="warn" style="background-color: rgb(0, 194, 194); font-size: large; padding: 0.5rem; position: relative; left: 25%;" (click)="seleccionar_imagen.click()" type="button">
+              <button mat-raised-button color="acent" style=" font-size: large;  position: relative; left: 25%;" (click)="seleccionar_imagen.click()" type="button">
                 Seleccionar imagen
               </button>
             </div>
@@ -66,11 +66,11 @@
 
           </div>
           <div class="form-group">
-            <button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1rem;" [disabled]="!(form.valid)" (click)="guardar()">
+            <button mat-raised-button color="primary" style=" font-size: x-large; " [disabled]="!(form.valid)" (click)="guardar()">
               Enviar
             </button>
             <button mat-raised-button></button>
-            <button mat-raised-button color="warn" style="font-size: x-large; padding: 1rem;" (click)="nuevo()">
+            <button mat-raised-button color="warn" style="font-size: x-large; " (click)="nuevo()">
               Limpiar Formulario
             </button>
           </div>
@@ -78,17 +78,14 @@
         </div>
       </div>
       </div>
-
-
-
-
-
   </mat-tab>
 
+
+
   <mat-tab label="Formulario de petición para editar">
-    <div class="container" style="width: 100%;  padding: 15px;">
+    <div style="width: 100%; padding: 15px; text-align: center;">
       <div class="row">
-          <div class="col-md-12">
+          <div class="container">
             <mat-card-title>Seleccione un platillo del menú y edite sus campos, oprima enviar cuando ya esté listo</mat-card-title>
 <hr>
           <form [formGroup]="form" >
@@ -135,7 +132,7 @@
 
           <div class="form-group">
             <input type="file" #seleccionar_imagen2 (change)="log2($event)" style="visibility:hidden"/>
-              <button mat-raised-button color="warn" style="background-color: rgb(0, 194, 194); font-size: large; padding: 0.5rem; position: relative; left: 25%;" (click)="seleccionar_imagen2.click()" type="button" >
+              <button mat-raised-button color="acent" style=" font-size: large; position: relative; left: 25%;" (click)="seleccionar_imagen2.click()" type="button" >
                 Seleccionar imagen
               </button>
           </div>
@@ -143,11 +140,11 @@
           <img *ngIf="selectedMenu.img" [src]="selectedMenu.img" width="400" height="300">
 
           <div class="form-group">
-            <button mat-raised-button color="warn" style="background-color: blue; font-size: x-large; padding: 1rem;" [disabled]="!(form.valid)" (click)="editar()">
+            <button mat-raised-button color="primary" style="font-size: x-large; " [disabled]="!(form.valid)" (click)="editar()">
               Enviar
             </button>
             <button mat-raised-button></button>
-            <button mat-raised-button color="warn" style="font-size: x-large; padding: 1rem;" (click)="nuevo()">
+            <button mat-raised-button color="warn" style="font-size: x-large; " (click)="nuevo()">
               Limpiar Formulario
             </button>
           </div>
@@ -157,47 +154,47 @@
       <hr>
 
       <div class="example-container mat-elevation-z8">
-        <table mat-table [dataSource]="menuArray">
+        <table mat-table [dataSource]="menuArray" style="width: 100%;">
 
 
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef > ID. </th>
+            <th mat-header-cell *matHeaderCellDef ><div style="font-size: large; color:#f3b324">ID</div>  </th>
             <td mat-cell *matCellDef="let menu"> {{menu.id_platillo}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="platillo">
-            <th mat-header-cell *matHeaderCellDef> Platillo </th>
+            <th mat-header-cell *matHeaderCellDef><div style="font-size: large; color:#f3b324">Platillo</div>  </th>
             <td mat-cell *matCellDef="let menu"> {{menu.platillo}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="descripcion">
-            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <th mat-header-cell *matHeaderCellDef><div style="font-size: large; color:#f3b324">Descripcion</div>  </th>
             <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="precio">
-            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <th mat-header-cell *matHeaderCellDef><div style="font-size: large; color:#f3b324">Precio</div>  </th>
             <td mat-cell *matCellDef="let menu">$ {{menu.precio_unitario | puntoMil}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="tipo">
-            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <th mat-header-cell *matHeaderCellDef><div style="font-size: large; color:#f3b324">Tipo</div>  </th>
             <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="imagen">
-            <th mat-header-cell *matHeaderCellDef> Imagen </th>
+            <th mat-header-cell *matHeaderCellDef><div style="font-size: large; color:#f3b324">Imagen</div>  </th>
             <td mat-cell *matCellDef="let menu"><img [src]="menu.img" width="40px" height="40px"></td>
           </ng-container>
 
           <ng-container matColumnDef="acciones">
-            <th mat-header-cell *matHeaderCellDef> edit </th>
-            <td mat-cell *matCellDef="let menu"><button class="btn-light" style="width: 15px; height: 20px;" (click)= "seleccionar(menu)"></button></td>
+            <th mat-header-cell *matHeaderCellDef><div style="font-size: large; color:#f3b324">Edit</div>  </th>
+            <td mat-cell *matCellDef="let menu"><button mat-icon-button color="primary" (click)= "seleccionar(menu)"><mat-icon>create</mat-icon></button></td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
@@ -206,51 +203,55 @@
           *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
       </div>
+</div>
+</mat-tab>
+
+
 
   <mat-tab label="Formulario de petición para eliminar">
-    <div style="width: 190vh;  padding: 15px; align-items:center;">
+    <div style="width: 100%;  padding: 15px; align-items:center;">
       <div class="example-container">
-        <table mat-table [dataSource]="menuArray" style="position: relative; left: 150px;">
+        <table mat-table [dataSource]="menuArray" style="width: 100%;">
 
 
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef > ID. </th>
+            <th mat-header-cell *matHeaderCellDef > <div style="font-size: large; color:#f3b324">ID.</div> </th>
             <td mat-cell *matCellDef="let menu"> {{menu.id_platillo}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="platillo">
-            <th mat-header-cell *matHeaderCellDef> Platillo </th>
+            <th mat-header-cell *matHeaderCellDef><div style="font-size: large; color:#f3b324">Platillo</div>  </th>
             <td mat-cell *matCellDef="let menu"> {{menu.platillo}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="descripcion">
-            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <th mat-header-cell *matHeaderCellDef> <div style="font-size: large; color:#f3b324">Descripcion</div> </th>
             <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="precio">
-            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <th mat-header-cell *matHeaderCellDef> <div style="font-size: large; color:#f3b324">Precio</div> </th>
             <td mat-cell *matCellDef="let menu">$ {{menu.precio_unitario | puntoMil}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="tipo">
-            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <th mat-header-cell *matHeaderCellDef> <div style="font-size: large; color:#f3b324">Tipo</div> </th>
             <td mat-cell *matCellDef="let menu"> {{menu.descripcion}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="imagen">
-            <th mat-header-cell *matHeaderCellDef> Imagen </th>
+            <th mat-header-cell *matHeaderCellDef> <div style="font-size: large; color:#f3b324">Imagen</div> </th>
             <td mat-cell *matCellDef="let menu"><img [src]="menu.img" width="40px" height="40px"></td>
           </ng-container>
 
           <ng-container matColumnDef="acciones">
-            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
-            <td mat-cell *matCellDef="let menu"><button mat-button color="warn" type="button" (click)="eliminar(menu)">Eliminar</button></td>
+            <th mat-header-cell *matHeaderCellDef> <div style="font-size: large; color:#f3b324">Eliminar</div> </th>
+            <td mat-cell *matCellDef="let menu"><button mat-icon-button color="warn" type="button" (click)="eliminar(menu)"><mat-icon>delete_forever</mat-icon></button></td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
@@ -304,7 +305,7 @@
                           </div>
 
                           <div class="form-group">
-                            <button mat-raised-button color="warn" style="background-color: green; font-size: x-large; padding: 1rem;" [disabled]="!(fromContacto.valid)" (click)="contacto()">
+                            <button mat-raised-button color="primary" style=" font-size: x-large; " [disabled]="!(fromContacto.valid)" (click)="contacto()">
                               Enviar
                             </button>
                             <button mat-raised-button></button>
