@@ -13,6 +13,7 @@ import { AuthService } from '../Services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExpiracionIdMesaService } from '../services/expiracion-id-mesa.service';
 import { CarritoGuardService } from '../services/carrito-guard.service';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 
 @Component({
@@ -43,7 +44,8 @@ export class CarritoComponent implements OnInit {
     public auth: AuthService,
     private fb: FormBuilder,
     private carrito : CarritoGuardService,
-    private id_mesa : ExpiracionIdMesaService
+    private id_mesa: ExpiracionIdMesaService,
+    public snackBar: MatSnackBar,
   ) { }
 
   get nombre() { return this.form.get('nombre'); }
@@ -62,6 +64,11 @@ export class CarritoComponent implements OnInit {
       correo: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     });
   }
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 
   eliminar(lista: []){
     const id_mesa = this.id_mesa.detectar();
@@ -75,7 +82,7 @@ export class CarritoComponent implements OnInit {
         if(data.transaccion){
           const contador = data.resultados_count;
           this.carrito.changeCont(contador.toString())
-          
+
         }
         this.obtenerCarrito();
       })
