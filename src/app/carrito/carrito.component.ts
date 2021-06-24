@@ -55,7 +55,13 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.obtenerCarrito();
+    setInterval(() => {
+      this.menuService.getFaturas()
+    .subscribe(data=>{
+      this.obtenerCarrito();
+    },
+    error =>console.log(error));
+    },5000)
 
     this.form = this.fb.group({
       nombre: ['', [Validators.required]],
