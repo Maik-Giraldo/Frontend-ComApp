@@ -1,6 +1,14 @@
 <mat-tab-group mat-align-tabs="center" animationDuration="0ms" style="width: 100%;">
   <mat-tab label="Formulario de petición para agregar" >
-    <div style="width: 100%; padding: 15px; text-align: center;">
+    <div class="container">
+      <div class="row justify-content-center">
+      <div *ngIf="!load" role="status">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+    </div>
+
+    <div *ngIf="load" style="width: 100%; padding: 15px; text-align: center;">
       <div class="row">
           <div class="container">
             <mat-card-title>Ingrese un nuevo platillo para enviar la peticion de agregar</mat-card-title>
@@ -83,7 +91,14 @@
 
 
   <mat-tab label="Formulario de petición para editar">
-    <div style="width: 100%; padding: 15px; text-align: center;">
+    <div class="container">
+      <div class="row justify-content-center">
+      <div *ngIf="!load" role="status">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="load" style="width: 100%; padding: 15px; text-align: center;">
       <div class="row">
           <div class="container">
             <mat-card-title>Seleccione un platillo del menú y edite sus campos, oprima enviar cuando ya esté listo</mat-card-title>
@@ -209,7 +224,14 @@
 
 
   <mat-tab label="Formulario de petición para eliminar">
-    <div style="width: 100%;  padding: 15px; align-items:center;">
+    <div class="container">
+      <div class="row justify-content-center">
+      <div *ngIf="!load" role="status">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="load" style="width: 100%;  padding: 15px; align-items:center;">
       <div class="example-container">
         <table mat-table [dataSource]="menuArray" style="width: 100%;">
 
@@ -261,8 +283,17 @@
         </table>
 
       </div>
+      </div>
+      </mat-tab>
   <mat-tab label="Formulario de contacto">
-    <div class="container" style="width: 100%; padding: 15px;">
+    <div class="container">
+      <div class="row justify-content-center">
+      <div *ngIf="!load" role="status">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="load" class="container" style="width: 100%; padding: 15px;">
       <div class="row">
           <div class="col-md-12">
               <div class="well well-sm" style="text-align: center;">
@@ -319,7 +350,5 @@
       </div>
     </div>
   </mat-tab>
+</mat-tab-group>
 
-<div *ngIf="!load" class="spinner-border text-primary" role="status">
-  <span class="sr-only">Cargando...</span>
-</div>
