@@ -26,8 +26,8 @@
             <tr>
               <td>{{date.id_pedido}}</td>
               <td>{{date.id_mesa}}</td>
-              <td>{{date.fechaHora}}</td>
-              <td>{{date.precio_total}}</td>
+              <td>{{date.fechaHora|date:'medium'}}</td>
+              <td>{{date.precio_total | puntoMil}}</td>
             </tr>
           </tbody>
         </table>
